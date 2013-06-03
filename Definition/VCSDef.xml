@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VCSParameters>
+  <Project value="My Project" />
+  <BestPractice>
+    <AcceptCompileErrors value="Yes" />
+    <AcceptCompileWarnings value="Yes" />
+    <AcceptCompileToDos value="Yes" />
+    <AcceptBestPracticeErrors value="Yes" />
+    <RunTitleCaseUpdate value="No" />
+    <CheckInTestProject value="" />
+  </BestPractice>
+  <UnwantedObjectTypes />
+  <UnwantedObjectNames>
+    <ObjectName value="&lt;\_" />
+    <ObjectName value="&lt;aa" />
+    <ObjectName value="&lt;Action:d+" />
+    <ObjectName value="&lt;Class:d+" />
+    <ObjectName value="&lt;copyof" />
+    <ObjectName value="&lt;Dataset:d+" />
+    <ObjectName value="&lt;delete" />
+    <ObjectName value="&lt;DisplayContentItem:d+" />
+    <ObjectName value="&lt;Form:d+" />
+    <ObjectName value="&lt;Macro:d+" />
+    <ObjectName value="&lt;Map:d+" />
+    <ObjectName value="&lt;MenuItem:d+" />
+    <ObjectName value="&lt;OutputContentItem:d+" />
+    <ObjectName value="&lt;Report:d+" />
+    <ObjectName value="&lt;Service:d+" />
+    <ObjectName value="&lt;Table:d+" />
+    <ObjectName value="&lt;URL:d+" />
+    <ObjectName value="&lt;View:d+" />
+    <ObjectName value="&lt;WebletItem:d+" />
+    <ObjectName value="&lt;WebMenu:d+" />
+    <ObjectName value="&lt;Workflow:d+" />
+  </UnwantedObjectNames>
+  <AdditionalFolders />
+  <Models>
+    <Model folder="" description="Gitax" />
+  </Models>
+  <PluginSettings />
+</VCSParameters>

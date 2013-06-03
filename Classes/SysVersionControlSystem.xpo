@@ -1,0 +1,47 @@
+﻿Exportfile for AOT version 1.0 or later
+Formatversion: 1
+
+***Element: CLS
+
+; Microsoft Dynamics AX Class: SysVersionControlSystem unloaded
+; --------------------------------------------------------------------------------
+  CLSVERSION 1
+  
+  CLASS #SysVersionControlSystem
+    PROPERTIES
+      Name                #SysVersionControlSystem
+      RunOn               #Client
+      Origin              #{2D17035C-0000-1000-6C48-E401DEFD4050}
+      LegacyId            #860
+    ENDPROPERTIES
+    
+    METHODS
+      SOURCE #newType
+        #public static SysVersionControlSystem newType(SysVersionControlType _type)
+        #{
+        #    switch (_type)
+        #    {
+        #        case SysVersionControlType::SysVersionControlSourceDepot:
+        #            return SysVersionControlSystemFileBased::newBackEnd(SysVersionControlFileBasedBackEndSD::construct());
+        #
+        #        case SysVersionControlType::SysVersionControlSourceSafe:
+        #            return SysVersionControlSystemFileBased::newBackEnd(SysVersionControlFileBasedBackEndVSS::construct());
+        #
+        #        case SysVersionControlType::SysVersionControlMorphX:
+        #            return SysVersionControlSystemMorphX::construct();
+        #
+        #        case SysVersionControlType::SysVersionControlTfs:
+        #            return SysVersionControlSystemFileBased::newBackEnd(SysVersionControlFilebasedBackEndTfs::construct());
+        #//<GitAx>
+        #        case 10:
+        #            return SysVersionControlSystemFileBased::newBackEnd(new SysVersionControlFileBased_GitAx());
+        #//</GitAx>
+        #    }
+        #    return null;
+        #}
+        #
+      ENDSOURCE
+    ENDMETHODS
+  ENDCLASS
+
+***Element: END
