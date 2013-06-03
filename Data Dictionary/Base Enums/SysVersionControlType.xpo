@@ -1,0 +1,60 @@
+﻿Exportfile for AOT version 1.0 or later
+Formatversion: 1
+
+***Element: DBE
+
+; Microsoft Dynamics AX Enumtype : SysVersionControlType unloaded
+; --------------------------------------------------------------------------------
+  ENUMTYPEVERSION 1
+  
+  ENUMTYPE #SysVersionControlType
+    PROPERTIES
+      Name                #SysVersionControlType
+      Label               #@SYS85912
+      Help                #@SYS94419
+      UseEnumValue        #Yes
+      Origin              #{2815054D-0000-1000-6C63-0BB1D30B529A}
+      LegacyId            #1357
+    ENDPROPERTIES
+    
+    TYPEELEMENTS
+      #SysVersionControlSourceDepot
+      PROPERTIES
+        Name                #SysVersionControlSourceDepot
+        Label               #@SYS85682
+        EnumValue           #0
+      ENDPROPERTIES
+      
+      #SysVersionControlSourceSafe
+      PROPERTIES
+        Name                #SysVersionControlSourceSafe
+        Label               #@SYS94374
+        EnumValue           #1
+      ENDPROPERTIES
+      
+      #SysVersionControlMorphX
+      PROPERTIES
+        Name                #SysVersionControlMorphX
+        Label               #@SYS119116
+        EnumValue           #2
+      ENDPROPERTIES
+      
+      #SysVersionControlTfs
+      PROPERTIES
+        Name                #SysVersionControlTfs
+        Label               #@SYS117839
+        EnumValue           #3
+      ENDPROPERTIES
+      
+      #SysVersionControlGitax
+      PROPERTIES
+        Name                #SysVersionControlGitax
+        Label               #GitAx
+        EnumValue           #10
+      ENDPROPERTIES
+      
+    ENDTYPEELEMENTS
+  ENDENUMTYPE
+  
+
+***Element: END

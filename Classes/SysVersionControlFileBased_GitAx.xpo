@@ -1,0 +1,705 @@
+﻿Exportfile for AOT version 1.0 or later
+Formatversion: 1
+
+***Element: CLS
+
+; Microsoft Dynamics AX Class: SysVersionControlFileBased_GitAx unloaded
+; --------------------------------------------------------------------------------
+  CLSVERSION 1
+  
+  CLASS #SysVersionControlFileBased_GitAx
+    PROPERTIES
+      Name                #SysVersionControlFileBased_GitAx
+      RunOn               #Client
+      Origin              #{95BE7952-E6EA-4527-B998-1AF1B0199171}
+    ENDPROPERTIES
+    
+    METHODS
+      SOURCE #actionText
+        #/// <summary>
+        #/// Converts an action to the description of the back end of the action.
+        #/// </summary>
+        #/// <param name="_action">
+        #/// The action to convert.
+        #/// </param>
+        #/// <returns>
+        #/// The description of the back end of the action.
+        #/// </returns>
+        #/// <remarks>
+        #/// The description of the back end of the action must match the populated values in the <c>SysVersionControlTmpItem.ActionText</c> table field.
+        #/// </remarks>
+        #public str actionText(SysVersionControlSystemFileAction _action)
+        #{
+        #    return '';
+        #}
+      ENDSOURCE
+      SOURCE #actionTextForCheckedOutFile
+        #/// <summary>
+        #///    Gets the action text for a file that is checked-out.
+        #/// </summary>
+        #/// <param name="_filename">
+        #///    The file to retrieve the action text for.
+        #/// </param>
+        #/// <returns>
+        #///    The action text for this file.
+        #/// </returns>
+        #public str actionTextForCheckedOutFile(Filename _filename)
+        #{
+        #    return '';
+        #}
+      ENDSOURCE
+      SOURCE #changeListContents
+        #/// <summary>
+        #///    Gets the contents of a checked in change list.
+        #/// </summary>
+        #/// <param name="_number">
+        #///    The specified change list number of which to retrieve the contents.
+        #/// </param>
+        #/// <returns>
+        #///    The contents of the change list.
+        #/// </returns>
+        #/// <remarks>
+        #///    The returned table contains one record for each file in the change list.
+        #/// </remarks>
+        #public SysVersionControlTmpItem changeListContents(SysVersionControlChangeNumber _number)
+        #{
+        #    return null;
+        #}
+      ENDSOURCE
+      SOURCE #changeListsPending
+        #/// <summary>
+        #/// Gets the pending change lists.
+        #/// </summary>
+        #/// <returns>
+        #/// The pending change lists.
+        #/// </returns>
+        #/// <remarks>
+        #/// The returned table contains one record for each pending change list.
+        #/// </remarks>
+        #public SysVersionControlPendingChangeList changeListsPending()
+        #{
+        #    return null;
+        #}
+      ENDSOURCE
+      SOURCE #classDeclaration
+        #class SysVersionControlFileBased_GitAx implements SysVersionControlFilebasedBackEnd
+        #{
+        #}
+      ENDSOURCE
+      SOURCE #createRepositoryEnd
+        #/// <summary>
+        #///    Checks in the repository.
+        #/// </summary>
+        #/// <param name="_comment">
+        #///    The check in comment.
+        #/// </param>
+        #/// <remarks>
+        #///    This method is invoked at the end of the create repository operation.
+        #/// </remarks>
+        #public void createRepositoryEnd(SysVersionControlItemComment _comment)
+        #{
+        #}
+      ENDSOURCE
+      SOURCE #description
+        #/// <summary>
+        #/// Provides a description of the class.
+        #/// </summary>
+        #/// <returns>
+        #/// The class description.
+        #/// </returns>
+        #public ClassDescription description()
+        #{
+        #    return 'GitAx';
+        #}
+      ENDSOURCE
+      SOURCE #fileAddToVersionControl
+        #/// <summary>
+        #///    Adds a file to the version control system.
+        #/// </summary>
+        #/// <param name="_filename">
+        #///    The file to add.
+        #/// </param>
+        #/// <param name="_comment">
+        #///    Adds a comment about the file; optional.
+        #/// </param>
+        #/// <returns>
+        #///    true if the file was added successful; otherwise, false.
+        #/// </returns>
+        #/// <remarks>
+        #///    The file will be available to other users after a subsequent check-in operation.
+        #/// </remarks>
+        #public boolean fileAddToVersionControl(Filename _filename, SysVersionControlItemComment _comment = '')
+        #{
+        #    return true;
+        #}
+      ENDSOURCE
+      SOURCE #fileCheckedOutTo
+        #/// <summary>
+        #/// Returns a list of users to whom a file is checked out to.
+        #/// </summary>
+        #/// <param name="_filename">
+        #/// The file to verify.
+        #/// </param>
+        #/// <returns>
+        #/// A comma separated list of users; otherwise, an empty string.
+        #/// </returns>
+        #public str fileCheckedOutTo(Filename _filename)
+        #{
+        #    return '';
+        #}
+      ENDSOURCE
+      SOURCE #fileCheckout
+        #/// <summary>
+        #/// Checks out a file to modify.
+        #/// </summary>
+        #/// <param name="_filename">
+        #/// The file to check out.
+        #/// </param>
+        #/// <returns>
+        #/// true if the revision being checked out is the latest revision; otherwise false.
+        #/// </returns>
+        #/// <remarks>
+        #/// If the revision being checked out is not the latest, typically because the file has been updated
+        #/// remotely recently, MorphX will try a merge operation for certain file types, such as the label file.
+        #/// </remarks>
+        #public boolean fileCheckout(Filename _filename)
+        #{
+        #    return true;
+        #}
+      ENDSOURCE
+      SOURCE #fileDelete
+        #/// <summary>
+        #///    Checks out a file for delete.
+        #/// </summary>
+        #/// <param name="_filename">
+        #///    The file to delete.
+        #/// </param>
+        #/// <returns>
+        #///    true if the file was deleted successful; otherwise, false.
+        #/// </returns>
+        #/// <remarks>
+        #///    The file is deleted in the system by a subsequent check-in operation.
+        #/// </remarks>
+        #public boolean fileDelete(Filename _filename)
+        #{
+        #    return true;
+        #}
+      ENDSOURCE
+      SOURCE #fileExists
+        #/// <summary>
+        #/// Verifies whether a file exists in the back end.
+        #/// </summary>
+        #/// <param name="_filename">
+        #/// The file to verify.
+        #/// </param>
+        #/// <returns>
+        #/// true if the file exists in the back end; otherwise, false.
+        #/// </returns>
+        #public boolean fileExists(Filename _filename)
+        #{
+        #    return true;
+        #}
+      ENDSOURCE
+      SOURCE #fileGetVersion
+        #/// <summary>
+        #/// Retrieves a version of a file from the back end storage.
+        #/// </summary>
+        #/// <param name="_filename">
+        #/// The file to retrieve a version of.
+        #/// </param>
+        #/// <param name="_item">
+        #/// The temporary record that corresponds to the version control item in the requested version.
+        #/// </param>
+        #/// <returns>
+        #/// A fully qualified file name to a temporary location, where the version of the file has been saved.
+        #/// </returns>
+        #/// <remarks>
+        #/// If the <see cref="T:SysVersionControlItemVersion" /><paramref name="version" /> is 0 (zero), the
+        #/// latest version of the file is requested.If the <see cref="T:SysVersionControlItemVersion"
+        #/// /><paramref name="version" /> is -1 (minus-one), the back end copy of the local version is
+        #/// requested. That is the version the user received the last time that they synchronized.
+        #/// </remarks>
+        #public Filename fileGetVersion(Filename _filename, SysVersionControlTmpItem _item)
+        #{
+        #    return '';
+        #}
+      ENDSOURCE
+      SOURCE #fileHistory
+        #/// <summary>
+        #/// Retrieves a list of all revisions of a file from the back end storage.
+        #/// </summary>
+        #/// <param name="_filename">
+        #/// The file to retrieve information for.
+        #/// </param>
+        #/// <returns>
+        #/// A temporary table that contains a record describing each revision.
+        #/// </returns>
+        #public SysVersionControlTmpItem fileHistory(
+        #    Filename                    _filename)
+        #{
+        #    return null;
+        #}
+      ENDSOURCE
+      SOURCE #fileLock
+        #/// <summary>
+        #/// Locks a file.
+        #/// </summary>
+        #/// <param name="_filename">
+        #/// The file to lock.
+        #/// </param>
+        #/// <returns>
+        #/// true if the file is locked; otherwise, false.
+        #/// </returns>
+        #/// <remarks>
+        #/// While a file is locked, other users cannot check in changes to the file.
+        #/// </remarks>
+        #public boolean fileLock(Filename _filename)
+        #{
+        #    return false;
+        #}
+      ENDSOURCE
+      SOURCE #fileRename
+        #/// <summary>
+        #///    Renames a file.
+        #/// </summary>
+        #/// <param name="_oldFilename">
+        #///    The file to rename.
+        #/// </param>
+        #/// <param name="_newFilename">
+        #///    The new name of the file.
+        #/// </param>
+        #/// <returns>
+        #///    true if the file is renamed successfully; otherwise, false.
+        #/// </returns>
+        #public boolean fileRename(Filename _oldFilename, Filename _newFilename)
+        #{
+        #    return true;
+        #}
+      ENDSOURCE
+      SOURCE #fileSetCheckin
+        #/// <summary>
+        #/// Checks in a set of files.
+        #/// </summary>
+        #/// <param name="_setOfFiles">
+        #/// The set of files to check in.
+        #/// </param>
+        #/// <param name="_comment">
+        #/// The comment to use for the check-in.
+        #/// </param>
+        #/// <param name="_changeList">
+        #/// The changelist to check-in.
+        #/// </param>
+        #/// <param name="_workItems">
+        #/// The work items associated with the files to check-in.
+        #/// </param>
+        #/// <returns>
+        #/// true if the check-in is successful; otherwise, false.
+        #/// </returns>
+        #/// <remarks>
+        #/// Any file that is successfully checked in is also unlocked.
+        #/// </remarks>
+        #public boolean fileSetCheckin(
+        #    Map _setOfFiles,
+        #    SysVersionControlItemComment _comment,
+        #    SysVersionControlChangeListId _changeList = '',
+        #    SysVersionControlTmpWorkItems _workItems = null)
+        #{
+        #    return true;
+        #}
+      ENDSOURCE
+      SOURCE #fileSetResolve
+        #/// <summary>
+        #/// Resolves conflicts in a set of files.
+        #/// </summary>
+        #/// <param name="_setOfFiles">
+        #/// The set of files to resolve.
+        #/// </param>
+        #/// <returns>
+        #/// true if the set of files are resolved successful; otherwise, false.
+        #/// </returns>
+        #public boolean fileSetResolve(Map _setOfFiles)
+        #{
+        #    return true;
+        #}
+      ENDSOURCE
+      SOURCE #filesPending
+        #/// <summary>
+        #/// Gets the pending files.
+        #/// </summary>
+        #/// <param name="_changeListId">
+        #/// The ID of the pending change list of which to retrieve the contents.
+        #/// </param>
+        #/// <param name="_folder">
+        #/// The repository folder.
+        #/// </param>
+        #/// <returns>
+        #/// The pending files.
+        #/// </returns>
+        #/// <remarks>
+        #/// The returned table contains one record for each pending file.
+        #/// If _changeListId is blank, the contents of the default change list is returned.
+        #/// </remarks>
+        #public SysVersionControlTmpItem filesPending(
+        #    SysVersionControlChangeListId _changeListId,
+        #    SysVersionControlRepositoryFolder _folder)
+        #{
+        #    return null;
+        #}
+      ENDSOURCE
+      SOURCE #fileSynchronize
+        #/// <summary>
+        #/// Gets a specific version of a file in the back end version control system.
+        #/// </summary>
+        #/// <param name="_filename">
+        #/// The file to synchronize.
+        #/// </param>
+        #/// <param name="_syncParameters">
+        #/// An instance of the <c>SysVersionControlSyncParameters</c> class specifying the synchronization
+        #/// parameters.
+        #/// </param>
+        #/// <returns>
+        #/// A map that contains the file name and the action performed on the file.
+        #/// </returns>
+        #/// <remarks>
+        #/// When <see cref="T:SysVersionControlItemVersion" /><c>version</c> is not specified the latest
+        #/// version of the file will be retrieved.
+        #/// </remarks>
+        #public Map fileSynchronize(
+        #    Filename _filename,
+        #    SysVersionControlSyncParameters _syncParameters)
+        #{
+        #    return null;
+        #}
+      ENDSOURCE
+      SOURCE #fileUndoCheckout
+        #/// <summary>
+        #///    Reverts the check-out of a file.
+        #/// </summary>
+        #/// <param name="_filename">
+        #///    The file for which to undo check-out.
+        #/// </param>
+        #/// <returns>
+        #///    A container with a Boolean value that indicates whether the check-out was successful and the name
+        #///    of the file.
+        #/// </returns>
+        #public container fileUndoCheckout(Filename _filename)
+        #{
+        #    return conNull();
+        #}
+      ENDSOURCE
+      SOURCE #fileUnlock
+        #/// <summary>
+        #///    Unlocks a file.
+        #/// </summary>
+        #/// <param name="_filename">
+        #///    The file to unlock.
+        #/// </param>
+        #/// <returns>
+        #///    true if the file is unlocked successfully; otherwise, false.
+        #/// </returns>
+        #/// <remarks>
+        #///    While a file is locked, other users cannot check in changes to the file.
+        #/// </remarks>
+        #public boolean fileUnlock(Filename _filename)
+        #{
+        #    return false;
+        #}
+        #
+      ENDSOURCE
+      SOURCE #folderChanges
+        #/// <summary>
+        #///    Returns all change lists for a folder.
+        #/// </summary>
+        #/// <param name="_folder">
+        #///    The folder to retrieve information for.
+        #/// </param>
+        #/// <returns>
+        #///    The change lists for a folder in the back end version control system.
+        #/// </returns>
+        #/// <remarks>
+        #///    The returned table contains one record for each change list.
+        #/// </remarks>
+        #public SysVersionControlTmpChange folderChanges(FilePath _folder)
+        #{
+        #    return null;
+        #}
+      ENDSOURCE
+      SOURCE #folderSetSynchronize
+        #/// <summary>
+        #/// Retrieves the latest version of one or more folders.
+        #/// </summary>
+        #/// <param name="_folderSet">
+        #/// A set that contains the folders to synchronize.
+        #/// </param>
+        #/// <param name="_syncParameters">
+        #/// An instance of the <c>SysVersionControlSyncParameters</c> class specifying the synchronization
+        #/// parameters.
+        #/// </param>
+        #/// <returns>
+        #/// A map that contains the file name and the action performed on the file for each modified file.
+        #/// </returns>
+        #public Map folderSetSynchronize(
+        #    Set _folderSet,
+        #    SysVersionControlSyncParameters _syncParameters)
+        #{
+        #    return null;
+        #}
+      ENDSOURCE
+      SOURCE #init
+        #/// <summary>
+        #///    Initializes the version control system back end.
+        #/// </summary>
+        #/// <param name="_parameters">
+        #///    The parameters of the version control system back end.
+        #/// </param>
+        #/// <returns>
+        #///    The connection status of the version control system back end.
+        #/// </returns>
+        #/// <remarks>
+        #///    This method returns <see cref="T:SysVersionControlSystemStatus" /><c> WorkingOffline</c> when the
+        #///    back end is unavailable and version control should be enabled, but limited to offline capabilities.
+        #/// </remarks>
+        #public SysVersionControlSystemStatus init(SysVersionControlParameters _parameters)
+        #{
+        #    info('init');
+        #    return SysVersionControlSystemStatus::Connected;
+        #}
+      ENDSOURCE
+      SOURCE #interpretXMLPluginParameters
+        #/// <summary>
+        #/// Extracts parameter settings from an XML element.
+        #/// </summary>
+        #/// <param name="_topNode">
+        #/// The <see cref="T:XmlElement" /> that contains the parameters.
+        #/// </param>
+        #public void interpretXMLPluginParameters(XmlElement _topNode)
+        #{
+        #}
+      ENDSOURCE
+      SOURCE #requireSyncBeforeCheckOut
+        #/// <summary>
+        #/// Requires synchronizing files before checking out.
+        #/// </summary>
+        #/// <returns>
+        #/// true if the back end requires synchronization before check out; otherwise, false.
+        #/// </returns>
+        #/// <remarks>
+        #/// If the version control back end requires synchronization, Morphx will guarantee synchronization of
+        #/// the file before check out.
+        #/// </remarks>
+        #public boolean requireSyncBeforeCheckOut()
+        #{
+        #    return false;
+        #}
+      ENDSOURCE
+      SOURCE #reviewFilenameLookupFilter
+        #/// <summary>
+        #/// Returns the file name filter for the lookup dialog box.
+        #/// </summary>
+        #/// <returns>
+        #/// The file name filter for the lookup dialog box.
+        #/// </returns>
+        #public FilenameFilter reviewFilenameLookupFilter()
+        #{
+        #    FilenameFilter fileNameFilter;
+        #
+        #    return fileNameFilter;
+        #}
+      ENDSOURCE
+      SOURCE #reviewFileSet
+        #/// <summary>
+        #///    Creates a review file from a set of files in the back end version control system.
+        #/// </summary>
+        #/// <param name="_setOfFiles">
+        #///    The set of files to review.
+        #/// </param>
+        #/// <param name="_comment">
+        #///    The comment to use for the review.
+        #/// </param>
+        #/// <param name="_fileNameOfReviewPackage">
+        #///    The file name of the review file.
+        #/// </param>
+        #/// <param name="_folder">
+        #///    The repository folder.
+        #/// </param>
+        #public void reviewFileSet(
+        #    Set _setOfFiles,
+        #    SysVersionControlItemComment _comment,
+        #    FilenameSave _fileNameOfReviewPackage,
+        #    SysVersionControlRepositoryFolder _folder)
+        #{
+        #}
+      ENDSOURCE
+      SOURCE #showInfo
+        #/// <summary>
+        #/// Shows the connection information of the back end.
+        #/// </summary>
+        #public void showInfo()
+        #{
+        #}
+      ENDSOURCE
+      SOURCE #supportChangeVersion
+        #/// <summary>
+        #///    Implements change version functionality.
+        #/// </summary>
+        #/// <returns>
+        #///    true if the back end supports changing the version number; otherwise, false.
+        #/// </returns>
+        #/// <remarks>
+        #///    If the version control back end supports change version, MorphX will show the version number both
+        #///    in pending objects and history form.
+        #/// </remarks>
+        #public boolean supportChangeVersion()
+        #{
+        #    return true;
+        #}
+      ENDSOURCE
+      SOURCE #supportCheckInWizard
+        #/// <summary>
+        #///    Checks whether a check in wizard is used by the back end for the version control system.
+        #/// </summary>
+        #/// <returns>
+        #///    true if the back end has a check in wizard; otherwise, false.
+        #/// </returns>
+        #/// <remarks>
+        #///    If the back end uses a check in wizard, check in comments will not be requested as these comments
+        #///    are provided in the check in wizard.
+        #/// </remarks>
+        #public boolean supportCheckInWizard()
+        #{
+        #    return true;
+        #}
+      ENDSOURCE
+      SOURCE #supportMultipleCheckout
+        #/// <summary>
+        #/// Supports a check out of the same file by several users at the same time.
+        #/// </summary>
+        #/// <returns>
+        #/// true if the back end supports multiple check outs of a file at the same time; otherwise, false.
+        #/// </returns>
+        #/// <remarks>
+        #/// If the version control back end does not support multiple check out of a file at the same time,
+        #/// this method verifies that the file has not been checked out remotely before it tries a check out.
+        #/// </remarks>
+        #public boolean supportMultipleCheckout()
+        #{
+        #    return true;
+        #}
+      ENDSOURCE
+      SOURCE #supportPendingChangeLists
+        #/// <summary>
+        #///    Implements change list functionality.
+        #/// </summary>
+        #/// <returns>
+        #///    true if the back end supports pending change lists; otherwise, false.
+        #/// </returns>
+        #/// <remarks>
+        #///    If the version control back end supports change lists, it supports atomic operations on one or more
+        #///    files.
+        #///    When supported, change list operations in MorphX will be available, and the change list
+        #///    methods on this interface will be invoked.
+        #/// </remarks>
+        #public boolean supportPendingChangeLists()
+        #{
+        #    return true;
+        #}
+      ENDSOURCE
+      SOURCE #supportReviews
+        #/// <summary>
+        #///    Supports the review of a set of changed files.
+        #/// </summary>
+        #/// <returns>
+        #///    true if the back end supports review; otherwise, false.
+        #/// </returns>
+        #/// <remarks>
+        #///    If the version control back end support reviews, the Review button is shown on the Pending Objects
+        #///    form.
+        #///    When the Review button is clicked the <c>reviewFileSet</c> method on this interface will be
+        #///    invoked.
+        #/// </remarks>
+        #public boolean supportReviews()
+        #{
+        #    return false;
+        #}
+      ENDSOURCE
+      SOURCE #supportSubmittedChangeLists
+        #/// <summary>
+        #///    Implements change list functionality.
+        #/// </summary>
+        #/// <returns>
+        #///    true if the back end supports submitted change lists; otherwise, false.
+        #/// </returns>
+        #/// <remarks>
+        #///    If the version control back end supports change lists, it supports atomic operations on one or more
+        #///    files.
+        #///    When supported, change list operations in MorphX will be available, and the change list
+        #///    methods on this interface will be invoked.
+        #/// </remarks>
+        #public boolean supportSubmittedChangeLists()
+        #{
+        #    return false;
+        #}
+      ENDSOURCE
+      SOURCE #supportSyncDeleteLocalFiles
+        #/// <summary>
+        #///    Implements delete local files synchronization functionality.
+        #/// </summary>
+        #/// <returns>
+        #///    true if the back end supports delete local files synchronization; otherwise, false.
+        #/// </returns>
+        #/// <remarks>
+        #///    If the version control back end supports delete local files synchronization, MorphX will show a
+        #///    delete files field in the synchronization dialog box.
+        #/// </remarks>
+        #public boolean supportSyncDeleteLocalFiles()
+        #{
+        #    return false;
+        #}
+      ENDSOURCE
+      SOURCE #supportSyncLabel
+        #/// <summary>
+        #///    Implements label synchronization functionality.
+        #/// </summary>
+        #/// <returns>
+        #///    true if the back end supports label synchronization; otherwise, false.
+        #/// </returns>
+        #/// <remarks>
+        #///    If the version control back end supports label synchronization, MorphX will show a label field in
+        #///    the synchronization dialog box.
+        #/// </remarks>
+        #public boolean supportSyncLabel()
+        #{
+        #    return true;
+        #}
+      ENDSOURCE
+      SOURCE #verifyOwnerPrefix
+        #/// <summary>
+        #/// Indicates whether the element name contains valid owner prefix.
+        #/// </summary>
+        #/// <param name="elementName">
+        #/// The name of the element.
+        #/// </param>
+        #/// <returns>
+        #/// true if the element name contains valid owner prefix; otherwise, false.
+        #/// </returns>
+        #public boolean verifyOwnerPrefix(str elementName)
+        #{
+        #    return false;
+        #}
+      ENDSOURCE
+      SOURCE #workItemProvider
+        #/// <summary>
+        #/// Gets a work item provider that can be used to associate work items with a check-in.
+        #/// </summary>
+        #/// <returns>
+        #/// An initialized <c>SysVersionControlWorkItemProvider</c> object.
+        #/// </returns>
+        #public SysVersionControlWorkItemProvider workItemProvider()
+        #{
+        #    return null;
+        #}
+      ENDSOURCE
+    ENDMETHODS
+  ENDCLASS
+
+***Element: END
