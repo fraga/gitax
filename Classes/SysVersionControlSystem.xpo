@@ -33,7 +33,7 @@ Formatversion: 1
         #        case SysVersionControlType::SysVersionControlTfs:
         #            return SysVersionControlSystemFileBased::newBackEnd(SysVersionControlFilebasedBackEndTfs::construct());
         #//<GitAx>
-        #        case 10:
+        #        case SysVersionControlType::SysVersionControlGitax:
         #            return SysVersionControlSystemFileBased::newBackEnd(new SysVersionControlFileBased_GitAx());
         #//</GitAx>
         #    }
