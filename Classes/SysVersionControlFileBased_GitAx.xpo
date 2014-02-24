@@ -273,7 +273,15 @@ Formatversion: 1
         #/// </returns>
         #public boolean fileRename(Filename _oldFilename, Filename _newFilename)
         #{
-        #    return true;
+        #    try
+        #    {
+        #        System.IO.File::Move(_oldFilename, _newFilename);
+        #        return true;
+        #    }
+        #    catch
+        #    {
+        #        return false;
+        #    }
         #}
       ENDSOURCE
       SOURCE #fileSetCheckin
