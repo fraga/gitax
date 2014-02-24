@@ -461,7 +461,6 @@ Formatversion: 1
         #/// </remarks>
         #public SysVersionControlSystemStatus init(SysVersionControlParameters _parameters)
         #{
-        #    info('init');
         #    return SysVersionControlSystemStatus::Connected;
         #}
       ENDSOURCE
