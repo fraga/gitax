@@ -547,6 +547,7 @@ Formatversion: 1
         #/// </summary>
         #public void showInfo()
         #{
+        #    info(GTXRepository::showInfo());
         #}
       ENDSOURCE
       SOURCE #supportChangeVersion
