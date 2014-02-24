@@ -36,6 +36,25 @@ Formatversion: 1
         #    }
         #}
       ENDSOURCE
+      SOURCE #showInfo
+        #public static str showInfo()
+        #{
+        #    System.String   libGitVersion;
+        #    str             xppVersion = "";
+        #
+        #    try
+        #    {
+        #        libGitVersion = LibGit2Sharp.Repository::get_Version();
+        #        xppVersion = libGitVersion;
+        #    }
+        #    catch
+        #    {
+        #        error("error while calling git library");
+        #    }
+        #
+        #    return "GTX v1.0a - LibGit2Sharp " + xppVersion;
+        #}
+      ENDSOURCE
     ENDMETHODS
   ENDCLASS
 
