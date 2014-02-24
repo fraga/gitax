@@ -1,0 +1,42 @@
+﻿Exportfile for AOT version 1.0 or later
+Formatversion: 1
+
+***Element: CLS
+
+; Microsoft Dynamics AX Class: GTXRepository unloaded
+; --------------------------------------------------------------------------------
+  CLSVERSION 1
+  
+  CLASS #GTXRepository
+    PROPERTIES
+      Name                #GTXRepository
+      Origin              #{EC1CA9D8-2828-48E8-AE95-79290DDBAA9B}
+    ENDPROPERTIES
+    
+    METHODS
+      SOURCE #classDeclaration
+        #class GTXRepository
+        #{
+        #    LibGit2Sharp.Repository Repository;
+        #}
+      ENDSOURCE
+      SOURCE #init
+        #public void init(str _path)
+        #{
+        #    System.String   path;
+        #
+        #    path = _path;
+        #    try
+        #    {
+        #        LibGit2Sharp.Repository::Init(path, false);
+        #    }
+        #    catch
+        #    {
+        #        error("failed to initialize git repository");
+        #    }
+        #}
+      ENDSOURCE
+    ENDMETHODS
+  ENDCLASS
+
+***Element: END
