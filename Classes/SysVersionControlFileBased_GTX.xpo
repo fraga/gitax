@@ -3,13 +3,13 @@ Formatversion: 1
 
 ***Element: CLS
 
-; Microsoft Dynamics AX Class: SysVersionControlFileBased_GitAx unloaded
+; Microsoft Dynamics AX Class: SysVersionControlFileBased_GTX unloaded
 ; --------------------------------------------------------------------------------
   CLSVERSION 1
   
-  CLASS #SysVersionControlFileBased_GitAx
+  CLASS #SysVersionControlFileBased_GTX
     PROPERTIES
-      Name                #SysVersionControlFileBased_GitAx
+      Name                #SysVersionControlFileBased_GTX
       RunOn               #Client
       Origin              #{95BE7952-E6EA-4527-B998-1AF1B0199171}
     ENDPROPERTIES
@@ -82,7 +82,7 @@ Formatversion: 1
         #}
       ENDSOURCE
       SOURCE #classDeclaration
-        #class SysVersionControlFileBased_GitAx implements SysVersionControlFilebasedBackEnd
+        #class SysVersionControlFileBased_GTX implements SysVersionControlFilebasedBackEnd
         #{
         #}
       ENDSOURCE
