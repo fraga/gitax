@@ -84,6 +84,7 @@ Formatversion: 1
       SOURCE #classDeclaration
         #class SysVersionControlFileBased_GTX implements SysVersionControlFilebasedBackEnd
         #{
+        #    GTXRepository   repository;
         #}
       ENDSOURCE
       SOURCE #createRepositoryEnd
@@ -469,6 +470,9 @@ Formatversion: 1
         #/// </remarks>
         #public SysVersionControlSystemStatus init(SysVersionControlParameters _parameters)
         #{
+        #    repository  = new GTXRepository();
+        #    repository.init(_parameters.RepositoryFolder);
+        #
         #    return SysVersionControlSystemStatus::Connected;
         #}
       ENDSOURCE
