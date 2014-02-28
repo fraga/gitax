@@ -696,7 +696,7 @@ Formatversion: 1
         #/// </returns>
         #public boolean verifyOwnerPrefix(str elementName)
         #{
-        #    return false;
+        #    return true;
         #}
       ENDSOURCE
       SOURCE #workItemProvider
