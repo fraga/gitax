@@ -49,7 +49,7 @@ Formatversion: 1
       #SysVersionControlGitax
       PROPERTIES
         Name                #SysVersionControlGitax
-        Label               #GitAx
+        Label               #GTX
         EnumValue           #10
       ENDPROPERTIES
       
