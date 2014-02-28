@@ -15,6 +15,22 @@ Formatversion: 1
   ENDPROPERTIES
   
     PROJECTCLASS ProjectNode
+    GROUP #VSPRojects
+      PROPERTIES
+        Name                #VSPRojects
+        ProjectGroupType    #VisualStudioCSharpProjects
+        GroupMask           #
+        PreventEditProperties #No
+      ENDPROPERTIES
+      
+      BEGINNODE
+        FILETYPE 0
+        UTILTYPE 128
+        NODETYPE 1531
+        NAME #GTXLibGit2Sharp
+      ENDNODE
+      ENDGROUP
+      
     GROUP #Classes
       PROPERTIES
         Name                #Classes
@@ -27,7 +43,7 @@ Formatversion: 1
         FILETYPE 0
         UTILTYPE 45
         NODETYPE 329
-        NAME #SysVersionControlFileBased_GitAx
+        NAME #SysVersionControlFileBased_GTX
       ENDNODE
       BEGINNODE
         FILETYPE 0
@@ -45,6 +61,38 @@ Formatversion: 1
         PreventEditProperties #No
       ENDPROPERTIES
       
+      GROUP #Tables
+        PROPERTIES
+          Name                #Tables
+          ProjectGroupType    #Tables
+          GroupMask           #
+          PreventEditProperties #No
+        ENDPROPERTIES
+        
+        BEGINNODE
+          FILETYPE 0
+          UTILTYPE 44
+          NODETYPE 204
+          NAME #SysVersionControlTmpItem
+        ENDNODE
+        ENDGROUP
+        
+      GROUP #EDT
+        PROPERTIES
+          Name                #EDT
+          ProjectGroupType    #ExtendedDataTypes
+          GroupMask           #
+          PreventEditProperties #No
+        ENDPROPERTIES
+        
+        BEGINNODE
+          FILETYPE 0
+          UTILTYPE 41
+          NODETYPE 234
+          NAME #GTXSha
+        ENDNODE
+        ENDGROUP
+        
       GROUP #Base_Enums
         PROPERTIES
           Name                #Base_Enums
