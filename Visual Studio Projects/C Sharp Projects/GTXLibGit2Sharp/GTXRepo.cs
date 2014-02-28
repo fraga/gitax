@@ -44,28 +44,22 @@ namespace GTXLibGit2Sharp
 
             using (var repo = new Repository(repoPath))
             {
-                var commits = repo.Head.Commits;
+                var indexPath = fileInfo.FullName.Replace(repo.Info.WorkingDirectory, "");
+                var commits = repo.Head.Commits.Where(c => c.Parents.Count() == 1 && c.Tree[indexPath] != null && (c.Parents.FirstOrDefault().Tree[indexPath] == null || c.Tree[indexPath].Target.Id != c.Parents.FirstOrDefault().Tree[indexPath].Target.Id));
                 
-                //TODO: refactor from this point to use maybe linq to objects or something better
                 foreach (Commit commit in commits)
                 {
-                    var trees = commit.Tree;
-
-                    foreach (var tree in trees)
-                    {
-                        if (tree.Target is Tree && (tree.Target as Tree)[fileInfo.Name] != null)
-                        {
-                            tmpItem.User = commit.Author.ToString();
-                            tmpItem.GTXSha = commit.Sha.Substring(0, 7);
-                            tmpItem.Comment = commit.Message;
-                            tmpItem.ShortComment = commit.MessageShort;
-                            tmpItem.VCSDate = commit.Committer.When.Date;
-                            tmpItem.insert();
-                        }
-                    }
+                    tmpItem.User = commit.Author.ToString();
+                    tmpItem.GTXSha = commit.Sha.Substring(0, 7);
+                    tmpItem.Comment = commit.Message;
+                    tmpItem.ShortComment = commit.MessageShort;
+                    tmpItem.VCSDate = commit.Committer.When.Date;
+                    tmpItem.Filename_ = fileInfo.FullName;
+                    tmpItem.insert();
                 }
             }
             return tmpItem;
         }
+
     }
 }

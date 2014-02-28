@@ -49,6 +49,7 @@ FORM #SysVersionControlItemHistory
       #            gridOverview_Version.visible(false);
       #            GridOverview_ActionText.visible(false);
       #            ModifiedBy_ComputerName.visible(false);
+      #            element.design().caption("");
       #        }
       #        //</GTX>
       #    }
