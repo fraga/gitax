@@ -475,8 +475,8 @@ Formatversion: 1
         #/// </remarks>
         #public SysVersionControlSystemStatus init(SysVersionControlParameters _parameters)
         #{
-        #    repository  = new GTXRepository();
-        #    repository.init(_parameters.RepositoryFolder);
+        #    ;
+        #    GTXLibGit2Sharp.GTXRepo::Init(_parameters.RepositoryFolder);
         #
         #    return SysVersionControlSystemStatus::Connected;
         #}
