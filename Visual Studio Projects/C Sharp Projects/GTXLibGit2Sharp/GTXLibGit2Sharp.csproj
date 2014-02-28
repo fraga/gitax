@@ -13,7 +13,7 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{BF6F8E12-879D-49E7-ADF0-5503146B24B8};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <DeployToServer>Yes</DeployToServer>
+    <DeployToServer>No</DeployToServer>
     <DeployToClient>Yes</DeployToClient>
     <DeployToEP>No</DeployToEP>
     <StartupElement />
