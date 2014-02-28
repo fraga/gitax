@@ -83,7 +83,7 @@ Formatversion: 1
       ENDSOURCE
       SOURCE #classDeclaration
         #// This is a framework class. Customizing this class may cause problems with future upgrades to the software.
-        #class SysVersionControlFileBased_GTX implements SysVersionControlFilebasedBackEnd
+        #class SysVersionControlFileBased_GTX implements SysVersionControlFilebasedBackEnd, SysVersionControlBackendDirSupport
         #{
         #}
       ENDSOURCE
@@ -111,6 +111,33 @@ Formatversion: 1
         #public ClassDescription description()
         #{
         #    return 'GitAx';
+        #}
+      ENDSOURCE
+      SOURCE #directoryGetVersion
+        #/// <summary>
+        #/// Gets the directory of the specific version.
+        #/// </summary>
+        #/// <param name="_localDirectoryPath">The local directory path.</param>
+        #/// <param name="_item">The instance of the source control item.</param>
+        #/// <returns>The path where the directory was extracted.</returns>
+        #public FilePath directoryGetVersion(FilePath _localDirectoryPath, SysVersionControlTmpItem _item)
+        #{
+        #    return '';
+        #}
+      ENDSOURCE
+      SOURCE #directoryHistory
+        #/// <summary>
+        #/// Gets the history for the directory path.
+        #/// </summary>
+        #/// <param name="_localDirectoryPath">
+        #/// The local path of the directory.
+        #/// </param>
+        #/// <returns>
+        #/// The instance of the version control item that describes the history.
+        #/// </returns>
+        #public SysVersionControlTmpItem directoryHistory(FilePath _localDirectoryPath)
+        #{
+        #    return null;
         #}
       ENDSOURCE
       SOURCE #fileAddToVersionControl
