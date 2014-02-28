@@ -82,6 +82,7 @@ Formatversion: 1
         #}
       ENDSOURCE
       SOURCE #classDeclaration
+        #// This is a framework class. Customizing this class may cause problems with future upgrades to the software.
         #class SysVersionControlFileBased_GTX implements SysVersionControlFilebasedBackEnd
         #{
         #    GTXRepository   repository;
