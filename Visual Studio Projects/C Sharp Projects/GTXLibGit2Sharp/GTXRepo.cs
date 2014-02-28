@@ -46,6 +46,7 @@ namespace GTXLibGit2Sharp
             {
                 var commits = repo.Head.Commits;
                 
+                //TODO: refactor from this point to use maybe linq to objects or something better
                 foreach (Commit commit in commits)
                 {
                     var trees = commit.Tree;
