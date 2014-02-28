@@ -47,6 +47,7 @@ FORM #SysVersionControlItemHistory
       #        if(SysVersionControlParameters::getVCSType() == SysVersionControlType::SysVersionControlGitax)
       #        {
       #            gridOverview_Version.visible(false);
+      #            GridOverview_ActionText.visible(false);
       #        }
       #        //</GTX>
       #    }
@@ -62,6 +63,20 @@ FORM #SysVersionControlItemHistory
   
   DESIGN
     CONTAINER
+      CONTROL STRINGEDIT
+        PROPERTIES
+          Name                #GridOverview_ActionText
+          AutoDeclaration     #Yes
+          ElementPosition     #1476395006
+          HierarchyParent     #Overview
+          DataSource          #SysVersionControlTmpItem
+          DataField           #ActionText
+        ENDPROPERTIES
+        
+        METHODS
+        ENDMETHODS
+      ENDCONTROL 
+      
       CONTROL STRINGEDIT
         PROPERTIES
           Name                #Overview_GTXSha
