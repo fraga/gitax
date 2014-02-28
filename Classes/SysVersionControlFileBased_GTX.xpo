@@ -552,7 +552,7 @@ Formatversion: 1
         #/// </summary>
         #public void showInfo()
         #{
-        #    info(GTXRepository::showInfo());
+        #    info(GTXLibGit2Sharp.GTXRepo::Version());
         #}
       ENDSOURCE
       SOURCE #supportChangeVersion
