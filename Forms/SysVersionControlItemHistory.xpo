@@ -1,0 +1,91 @@
+﻿Exportfile for AOT version 1.0 or later
+Formatversion: 1
+
+***Element: FRM
+
+; Microsoft Dynamics AX Forms unloaded
+; --------------------------------------------------------------------------------
+FRMVERSION 12
+
+FORM #SysVersionControlItemHistory
+  PROPERTIES
+    Name                #SysVersionControlItemHistory
+    Origin              #{1727EE45-E35C-45ED-99C0-0E54740D636D}
+  ENDPROPERTIES
+  
+  METHODS
+    SOURCE #init
+      #public void init()
+      #{
+      #    SysVersionControlSystem sysVersionControlSystem = versioncontrol.parmSysVersionControlSystem();
+      #
+      #    if (SysVersionControlParameters::find().vcsEnabled == EnableDisable::Disable)
+      #    {
+      #        throw error("@SYS135983" + ' ' + strfmt("@SYS120745", "@SYS85914"), '', SysInfoAction_Formrun::newFormname(formstr(SysVersionControlParametersDev)));
+      #    }
+      #
+      #    super();
+      #
+      #    if (sysVersionControlSystem)
+      #    {
+      #        if(!sysVersionControlSystem.supportSubmittedChangeLists())
+      #        {
+      #            gridOverview_ChangeNumber.visible(false);
+      #            sysVersionControlChangeContents.visible(false);
+      #        }
+      #
+      #        if (!sysVersionControlSystem.supportSyncLabel())
+      #        {
+      #            gridOverview_Label.visible(false);
+      #        }
+      #
+      #        if (!sysVersionControlSystem.supportChangeVersion())
+      #        {
+      #            gridOverview_Version.visible(false);
+      #        }
+      #        //<GTX>
+      #        if(SysVersionControlParameters::getVCSType() == SysVersionControlType::SysVersionControlGitax)
+      #        {
+      #            gridOverview_Version.visible(false);
+      #        }
+      #        //</GTX>
+      #    }
+      #}
+      #
+    ENDSOURCE
+  ENDMETHODS
+  OBJECTBANK
+  ENDOBJECTBANK
+  
+  PARTREFERENCES
+  ENDPARTREFERENCES
+  
+  DESIGN
+    CONTAINER
+      CONTROL STRINGEDIT
+        PROPERTIES
+          Name                #Overview_GTXSha
+          ElementPosition     #715827882
+          HierarchyParent     #Overview
+          DataSource          #SysVersionControlTmpItem
+          DataField           #GTXSha
+        ENDPROPERTIES
+        
+        METHODS
+        ENDMETHODS
+      ENDCONTROL 
+      
+    ENDCONTAINER
+    
+  ENDDESIGN
+  
+  PERMISSIONS #Permissions
+    PROPERTIES
+    ENDPROPERTIES
+    
+  ENDPERMISSIONS
+  
+ENDFORM
+
+
+***Element: END
