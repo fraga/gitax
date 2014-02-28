@@ -1,0 +1,32 @@
+﻿Exportfile for AOT version 1.0 or later
+Formatversion: 1
+
+***Element: UTS
+
+; Microsoft Dynamics AX String: GTXSha unloaded
+; --------------------------------------------------------------------------------
+  USERTYPEVERSION 6
+  
+  USERTYPE #GTXSha
+  STRING
+    PROPERTIES
+      Name                #GTXSha
+      Label               #Sha
+      HelpText            #Git 40 chars long SHA
+      Origin              #{BC010326-E798-42EF-9909-A3AB8728F6DF}
+      StringSize          #40
+    ENDPROPERTIES
+    
+    TYPEELEMENTS
+    ENDTYPEELEMENTS
+    
+    TYPEREFERENCES
+    ENDTYPEREFERENCES
+    
+    TYPELOOKUPS
+    ENDTYPELOOKUPS
+    
+  ENDUSERTYPE
+  
+
+***Element: END
