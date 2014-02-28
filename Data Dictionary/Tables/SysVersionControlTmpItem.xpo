@@ -1,0 +1,58 @@
+﻿Exportfile for AOT version 1.0 or later
+Formatversion: 1
+
+***Element: DBT
+
+; Microsoft Dynamics AX Table : SysVersionControlTmpItem unloaded
+; --------------------------------------------------------------------------------
+  TABLEVERSION 1
+  
+  TABLE #SysVersionControlTmpItem
+    EnforceFKRelation 0
+    FIELDS
+      FIELD #GTXSha
+        STRING
+        PROPERTIES
+          Name                #GTXSha
+          Table               #SysVersionControlTmpItem
+          Origin              #{077064AE-C3FA-49FA-8134-0AA92C34DB29}
+          ExtendedDataType    #GTXSha
+          StringSize          #40
+        ENDPROPERTIES
+        
+    ENDFIELDS
+    GROUPS
+      GROUP #Overview
+        PROPERTIES
+          Name                #Overview
+          Label               #@SYS9039
+        ENDPROPERTIES
+        
+        GROUPFIELDS
+          #GTXSha
+          #Version
+          #ActionText
+          #VCSDate
+          #VCSTime
+          #User
+          #ChangeNumber
+          #itemPathUsingObjectName
+          #ShortComment
+          #Label
+        ENDGROUPFIELDS
+      ENDGROUP
+    ENDGROUPS
+    
+    INDICES
+    ENDINDICES
+    FULLTEXTINDICES
+    ENDFULLTEXTINDICES
+    REFERENCES
+    ENDREFERENCES
+    
+    METHODS
+    ENDMETHODS
+  ENDTABLE
+  
+
+***Element: END
