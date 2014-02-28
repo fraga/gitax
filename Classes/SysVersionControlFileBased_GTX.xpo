@@ -238,7 +238,12 @@ Formatversion: 1
         #public SysVersionControlTmpItem fileHistory(
         #    Filename                    _filename)
         #{
-        #    return null;
+        #
+        #    SysVersionControlTmpItem    tmpItem;
+        #
+        #    tmpItem = GTXLibGit2Sharp.GTXRepo::FileHistory(SysVersionControlParameters::find().RepositoryFolder, _filename);
+        #
+        #    return tmpItem;
         #}
       ENDSOURCE
       SOURCE #fileLock
