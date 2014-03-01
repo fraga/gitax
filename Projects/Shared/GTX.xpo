@@ -3,18 +3,34 @@ Formatversion: 1
 
 ***Element: PRN
 
-; Microsoft Dynamics AX Project : Gitax unloaded
+; Microsoft Dynamics AX Project : GTX unloaded
 ; --------------------------------------------------------------------------------
   PROJECTVERSION 2
   
-  PROJECT #Gitax
+  PROJECT #GTX
   SHARED
   PROPERTIES
-    Name                #Gitax
+    Name                #GTX
     Origin              #{126DFD1E-113C-4BDC-B86F-1959D115336C}
   ENDPROPERTIES
   
     PROJECTCLASS ProjectNode
+    GROUP #Forms
+      PROPERTIES
+        Name                #Forms
+        ProjectGroupType    #Forms
+        GroupMask           #
+        PreventEditProperties #No
+      ENDPROPERTIES
+      
+      BEGINNODE
+        FILETYPE 0
+        UTILTYPE 11
+        NODETYPE 201
+        NAME #SysVersionControlItemHistory
+      ENDNODE
+      ENDGROUP
+      
     GROUP #VSPRojects
       PROPERTIES
         Name                #VSPRojects
