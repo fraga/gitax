@@ -49,7 +49,6 @@ FORM #SysVersionControlItemHistory
       #            gridOverview_Version.visible(false);
       #            GridOverview_ActionText.visible(false);
       #            ModifiedBy_ComputerName.visible(false);
-      #            element.design().caption("");
       #        }
       #        //</GTX>
       #    }
@@ -65,6 +64,19 @@ FORM #SysVersionControlItemHistory
   
   DESIGN
     CONTAINER
+      CONTROL DATEEDIT
+        PROPERTIES
+          Name                #ModifiedBy_VCSDate
+          ElementPosition     #1431655764
+          HierarchyParent     #ModifiedBy
+          DataSource          #SysVersionControlTmpItem
+          DataField           #VCSDate
+        ENDPROPERTIES
+        
+        METHODS
+        ENDMETHODS
+      ENDCONTROL 
+      
       CONTROL STRINGEDIT
         PROPERTIES
           Name                #GridOverview_ActionText
@@ -95,11 +107,51 @@ FORM #SysVersionControlItemHistory
       
       CONTROL STRINGEDIT
         PROPERTIES
-          Name                #Overview_GTXSha
-          ElementPosition     #715827882
-          HierarchyParent     #Overview
+          Name                #ModifiedBy_GTXSha
+          AutoDeclaration     #Yes
+          ElementPosition     #536870910
+          HierarchyParent     #ModifiedBy
           DataSource          #SysVersionControlTmpItem
           DataField           #GTXSha
+        ENDPROPERTIES
+        
+        METHODS
+        ENDMETHODS
+      ENDCONTROL 
+      
+      CONTROL STRINGEDIT
+        PROPERTIES
+          Name                #ModifiedBy_User
+          ElementPosition     #805306365
+          HierarchyParent     #ModifiedBy
+          DataSource          #SysVersionControlTmpItem
+          DataField           #User
+        ENDPROPERTIES
+        
+        METHODS
+        ENDMETHODS
+      ENDCONTROL 
+      
+      CONTROL STRINGEDIT
+        PROPERTIES
+          Name                #Overview_GTXShaShort
+          ElementPosition     #805306365
+          HierarchyParent     #Overview
+          DataSource          #SysVersionControlTmpItem
+          DataField           #GTXShaShort
+        ENDPROPERTIES
+        
+        METHODS
+        ENDMETHODS
+      ENDCONTROL 
+      
+      CONTROL TIMEEDIT
+        PROPERTIES
+          Name                #ModifiedBy_VCSTime
+          ElementPosition     #1789569705
+          HierarchyParent     #ModifiedBy
+          DataSource          #SysVersionControlTmpItem
+          DataField           #VCSTime
         ENDPROPERTIES
         
         METHODS
