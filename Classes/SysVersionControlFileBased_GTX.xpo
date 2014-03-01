@@ -85,6 +85,7 @@ Formatversion: 1
         #// This is a framework class. Customizing this class may cause problems with future upgrades to the software.
         #class SysVersionControlFileBased_GTX implements SysVersionControlFilebasedBackEnd, SysVersionControlBackendDirSupport
         #{
+        #    SysVersionControlRepositoryFolder repositoryFolder;
         #}
       ENDSOURCE
       SOURCE #createRepositoryEnd
@@ -268,7 +269,7 @@ Formatversion: 1
         #
         #    SysVersionControlTmpItem    tmpItem;
         #
-        #    tmpItem = GTXLibGit2Sharp.GTXRepo::FileHistory(SysVersionControlParameters::find().RepositoryFolder, _filename);
+        #    tmpItem = GTXLibGit2Sharp.GTXRepo::FileHistory(repositoryFolder, _filename);
         #
         #    return tmpItem;
         #}
@@ -502,8 +503,9 @@ Formatversion: 1
         #/// </remarks>
         #public SysVersionControlSystemStatus init(SysVersionControlParameters _parameters)
         #{
-        #    ;
-        #    GTXLibGit2Sharp.GTXRepo::Init(_parameters.RepositoryFolder);
+        #    repositoryFolder = _parameters.RepositoryFolder;
+        #
+        #    GTXLibGit2Sharp.GTXRepo::Init(repositoryFolder);
         #
         #    return SysVersionControlSystemStatus::Connected;
         #}
