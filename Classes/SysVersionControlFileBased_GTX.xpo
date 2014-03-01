@@ -138,7 +138,11 @@ Formatversion: 1
         #/// </returns>
         #public SysVersionControlTmpItem directoryHistory(FilePath _localDirectoryPath)
         #{
-        #    return null;
+        #    SysVersionControlTmpItem    tmpItem;
+        #
+        #    tmpItem = GTXLibGit2Sharp.GTXRepo::FileHistory(repositoryFolder, _localDirectoryPath);
+        #
+        #    return tmpItem;
         #}
       ENDSOURCE
       SOURCE #fileAddToVersionControl
