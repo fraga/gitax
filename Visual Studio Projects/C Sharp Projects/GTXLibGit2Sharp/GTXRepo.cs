@@ -50,7 +50,8 @@ namespace GTXLibGit2Sharp
                 foreach (Commit commit in commits)
                 {
                     tmpItem.User = commit.Author.ToString();
-                    tmpItem.GTXSha = commit.Sha.Substring(0, 7);
+                    tmpItem.GTXShaShort = commit.Sha.Substring(0, 7);
+                    tmpItem.GTXSha = commit.Sha;
                     tmpItem.Comment = commit.Message;
                     tmpItem.ShortComment = commit.MessageShort;
                     tmpItem.VCSDate = commit.Committer.When.Date;

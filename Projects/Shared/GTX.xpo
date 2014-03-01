@@ -107,6 +107,12 @@ Formatversion: 1
           NODETYPE 234
           NAME #GTXSha
         ENDNODE
+        BEGINNODE
+          FILETYPE 0
+          UTILTYPE 41
+          NODETYPE 234
+          NAME #GTXShaShort
+        ENDNODE
         ENDGROUP
         
       GROUP #Base_Enums

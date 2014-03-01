@@ -20,8 +20,32 @@ Formatversion: 1
           StringSize          #40
         ENDPROPERTIES
         
+      FIELD #GTXShaShort
+        STRING
+        PROPERTIES
+          Name                #GTXShaShort
+          Table               #SysVersionControlTmpItem
+          Origin              #{48989460-33F0-47BB-B693-460854BA8F99}
+          ExtendedDataType    #GTXShaShort
+          StringSize          #7
+        ENDPROPERTIES
+        
     ENDFIELDS
     GROUPS
+      GROUP #ModifiedBy
+        PROPERTIES
+          Name                #ModifiedBy
+          Label               #@SYS75729
+        ENDPROPERTIES
+        
+        GROUPFIELDS
+          #User
+          #ComputerName
+          #VCSDate
+          #VCSTime
+          #GTXSha
+        ENDGROUPFIELDS
+      ENDGROUP
       GROUP #Overview
         PROPERTIES
           Name                #Overview
@@ -29,7 +53,7 @@ Formatversion: 1
         ENDPROPERTIES
         
         GROUPFIELDS
-          #GTXSha
+          #GTXShaShort
           #Version
           #ActionText
           #VCSDate
