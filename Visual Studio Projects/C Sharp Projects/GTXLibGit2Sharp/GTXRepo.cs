@@ -41,11 +41,12 @@ namespace GTXLibGit2Sharp
         {
             SysVersionControlTmpItem tmpItem = new SysVersionControlTmpItem();
 
+            //TODO: Dangerous, consider refactoring
             FileInfo fileInfo = new FileInfo(filePath);
 
             using (var repo = new Repository(repoPath))
             {
-                var indexPath = fileInfo.FullName.Replace(repo.Info.WorkingDirectory, "");
+                var indexPath = fileInfo.FullName.Replace(repo.Info.WorkingDirectory, string.Empty);
                 var commits = repo.Head.Commits.Where(c => c.Parents.Count() == 1 && c.Tree[indexPath] != null && (c.Parents.FirstOrDefault().Tree[indexPath] == null || c.Tree[indexPath].Target.Id != c.Parents.FirstOrDefault().Tree[indexPath].Target.Id));
                 
                 foreach (Commit commit in commits)
@@ -67,7 +68,7 @@ namespace GTXLibGit2Sharp
         /// <summary>
         /// Get a single file version from the git repository
         /// </summary>
-        /// <param name="repoPath">Main repository folder</param>
+        /// <param name="repoPath">Repository main path</param>
         /// <param name="tmpItem">The temporary item table holding the sha commit</param>
         /// <returns>a temporary file path</returns>
         public static string FileGetVersion(string repoPath, string fileName, SysVersionControlTmpItem tmpItem)
