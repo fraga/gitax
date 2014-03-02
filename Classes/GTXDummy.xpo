@@ -1,0 +1,25 @@
+﻿Exportfile for AOT version 1.0 or later
+Formatversion: 1
+
+***Element: CLS
+
+; Microsoft Dynamics AX Class: GTXDummy unloaded
+; --------------------------------------------------------------------------------
+  CLSVERSION 1
+  
+  CLASS #GTXDummy
+    PROPERTIES
+      Name                #GTXDummy
+      Origin              #{E5F2CCC1-56FC-4161-ADFB-D4CAB6075B98}
+    ENDPROPERTIES
+    
+    METHODS
+      SOURCE #classDeclaration
+        #class GTXDummy
+        #{
+        #}
+      ENDSOURCE
+    ENDMETHODS
+  ENDCLASS
+
+***Element: END
