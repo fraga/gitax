@@ -254,7 +254,22 @@ Formatversion: 1
         #/// </remarks>
         #public Filename fileGetVersion(Filename _filename, SysVersionControlTmpItem _item)
         #{
-        #    return '';
+        #    Filename tempFileName;
+        #
+        #    if(_filename && _item && _item.GTXSha)
+        #    {
+        #        try
+        #        {
+        #            tempFileName = GTXLibGit2Sharp.GTXRepo::FileGetVersion(repositoryFolder, _filename, _item);
+        #        }
+        #        catch
+        #        {
+        #            error(strFmt('Error while importing: %1', CLRInterop::getLastException().toString()));
+        #        }
+        #
+        #    }
+        #
+        #    return tempFileName;
         #}
       ENDSOURCE
       SOURCE #fileHistory
