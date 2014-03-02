@@ -30,6 +30,12 @@ Formatversion: 1
         #/// </remarks>
         #public str actionText(SysVersionControlSystemFileAction _action)
         #{
+        #    switch(_action)
+        #    {
+        #        case SysVersionControlSystemFileAction::Edit:
+        #            return 'Update';
+        #    }
+        #
         #    return '';
         #}
       ENDSOURCE
@@ -45,7 +51,7 @@ Formatversion: 1
         #/// </returns>
         #public str actionTextForCheckedOutFile(Filename _filename)
         #{
-        #    return '';
+        #    return 'Update';
         #}
       ENDSOURCE
       SOURCE #changeListContents
