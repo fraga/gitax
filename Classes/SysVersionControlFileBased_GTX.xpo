@@ -451,7 +451,20 @@ Formatversion: 1
         #/// </returns>
         #public container fileUndoCheckout(Filename _filename)
         #{
-        #    return conNull();
+        #    System.Boolean  netBool;
+        #    boolean         ret;
+        #    try
+        #    {
+        #        netBool = GTXLibGit2Sharp.GTXRepo::FileUndoCheckout(repositoryFolder, _filename);
+        #    }
+        #    catch
+        #    {
+        #        return [false, _filename];
+        #    }
+        #
+        #    ret = netBool;
+        #
+        #    return [ret, _filename];
         #}
       ENDSOURCE
       SOURCE #fileUnlock
