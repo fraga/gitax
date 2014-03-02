@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using LibGit2Sharp;
 using System.IO;
+using LibGit2Sharp;
+using LibGit2Sharp.Handlers;
 
 namespace GTXLibGit2Sharp
 {
@@ -63,5 +64,38 @@ namespace GTXLibGit2Sharp
             return tmpItem;
         }
 
+        /// <summary>
+        /// Get a single file version from the git repository
+        /// </summary>
+        /// <param name="repoPath">Main repository folder</param>
+        /// <param name="tmpItem">The temporary item table holding the sha commit</param>
+        /// <returns>a temporary file path</returns>
+        public static string FileGetVersion(string repoPath, string fileName, SysVersionControlTmpItem tmpItem)
+        {
+            string indexPath = tmpItem.InternalFilename.Replace(repoPath, string.Empty);
+            
+            CheckoutOptions options = new CheckoutOptions();
+            options.CheckoutModifiers = CheckoutModifiers.Force;
+
+            using (Repository repo = new Repository(repoPath))
+            {
+                var commit = repo.Lookup<Commit>(tmpItem.GTXSha);
+                if (commit != null)
+                {
+                    try
+                    {
+                        repo.CheckoutPaths(commit.Id.Sha, new string[] { fileName }, options);
+                    }
+                    catch (MergeConflictException ex)
+                    {
+                        //should not reach here as we're forcing checkout
+                        throw ex;
+                    }
+                    
+                }
+            }
+
+            return fileName;
+        }
     }
 }
