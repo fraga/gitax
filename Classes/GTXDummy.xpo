@@ -17,6 +17,7 @@ Formatversion: 1
       SOURCE #classDeclaration
         #class GTXDummy
         #{
+        #    //version 2
         #}
       ENDSOURCE
     ENDMETHODS
