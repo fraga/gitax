@@ -440,13 +440,13 @@ Formatversion: 1
       ENDSOURCE
       SOURCE #fileUndoCheckout
         #/// <summary>
-        #///    Reverts the check-out of a file.
+        #///    Resets the file to HEAD
         #/// </summary>
         #/// <param name="_filename">
-        #///    The file for which to undo check-out.
+        #///    The file for which to reset
         #/// </param>
         #/// <returns>
-        #///    A container with a Boolean value that indicates whether the check-out was successful and the name
+        #///    A container with a Boolean value that indicates whether the reset was successful and the name
         #///    of the file.
         #/// </returns>
         #public container fileUndoCheckout(Filename _filename)
