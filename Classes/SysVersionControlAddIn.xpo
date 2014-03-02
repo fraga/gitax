@@ -1,0 +1,108 @@
+﻿Exportfile for AOT version 1.0 or later
+Formatversion: 1
+
+***Element: CLS
+
+; Microsoft Dynamics AX Class: SysVersionControlAddIn unloaded
+; --------------------------------------------------------------------------------
+  CLSVERSION 1
+  
+  CLASS #SysVersionControlAddIn
+    PROPERTIES
+      Name                #SysVersionControlAddIn
+      RunOn               #Client
+      Origin              #{2D160349-0000-1000-6C62-ED34075D1BAB}
+      LegacyId            #841
+    ENDPROPERTIES
+    
+    METHODS
+      SOURCE #doItem
+        #/// <summary>
+        #///    Invokes a version control action on a <c>SysVersionControlTmpItem</c> table record.
+        #/// </summary>
+        #/// <param name="_callerItem">
+        #///    The <c>SysVersionControlTmpItem</c> table record the action should be invoked upon.
+        #/// </param>
+        #/// <param name="_action">
+        #///    The action to perform.
+        #/// </param>
+        #/// <param name="_batchNum">
+        #///    In case the action is "Undo check-out", this optional parameter can be used to group multiple <c>SysVersionControlTmpItem</c> records into the same Synchronization log.
+        #/// </param>
+        #static protected void doItem(
+        #    SysVersionControlTmpItem                _callerItem,
+        #    SysVersionControlAction                 _action,
+        #    SysVersionControlSynchronizeBatchNum    _batchNum = SysVersionControlSynchronizeLog::nextBatchNum()
+        #)
+        #{
+        #    SysVersionControllable          controllable;
+        #    Filename                        getFilename;
+        #    SysVersionControlSyncParameters syncParm;
+        #
+        #    controllable = _callerItem.getControllable(_action == SysVersionControlAction::UndoCheckOut);
+        #
+        #    if (controllable)
+        #    {
+        #        switch (_action)
+        #        {
+        #            case SysVersionControlAction::Get:
+        #                setprefix("@SYS85749");
+        #                if (!(controllable is SysTreeNodeVirtualDeleted) &&
+        #                    versioncontrol.parmSysVersionControlSystem().allowEdit(controllable))
+        #                {
+        #                    getFilename = versioncontrol.parmSysVersionControlSystem().getItemVersion(controllable, _callerItem);
+        #                    controllable.fromFile(getFilename);
+        #                    //<GTX>
+        #                    if(SysVersionControlParameters::getVCSType() == SysVersionControlType::SysVersionControlGitax)
+        #                        info(strfmt("@SYS85990", _callerItem.GTXShaShort, _callerItem.ItemPath));
+        #                    else
+        #                        info(strfmt("@SYS85990", _callerItem.Version, _callerItem.ItemPath));
+        #                    //</GTX>
+        #                }
+        #                else
+        #                {
+        #                    syncParm = SysVersionControlSyncParameters::construct();
+        #                    syncParm.parmSilent(false);
+        #                    syncParm.parmForce(true);
+        #                    syncParm.parmVersion(_callerItem.Version);
+        #                    syncParm.parmChangeListNumber(_callerItem.ChangeNumber);
+        #                    syncParm.parmDeleteLocalObjects(false);
+        #                    syncParm.parmLabel(_callerItem.Label);
+        #                    syncParm.parmBatchNumber(_batchNum);
+        #                    syncParm.parmDateTime(DateTimeUtil::newDateTime(_callerItem.vcsDate, _callerItem.vcsTime));
+        #
+        #                    if (!prmisdefault(_batchNum))
+        #                    {
+        #                        //Import is done in an outer loop
+        #                        syncParm.parmSkipImport(true);
+        #                    }
+        #                    versioncontrol.parmSysVersionControlSystem().commandSynchronize(controllable, syncParm);
+        #                }
+        #                break;
+        #            default:
+        #                if (controllable)
+        #                {
+        #                    switch (_action)
+        #                    {
+        #                        case SysVersionControlAction::UndoCheckOut:
+        #                            setprefix("@SYS83894");
+        #                            if (prmisdefault(_batchNum))
+        #                            {
+        #                                versioncontrol.parmSysVersionControlSystem().commandUndoCheckOut(controllable, true);
+        #                            }
+        #                            else
+        #                            {
+        #                                versioncontrol.parmSysVersionControlSystem().commandUndoCheckOut(controllable, true, _batchNum);
+        #                            }
+        #                            versioncontrol.colorAOT();
+        #                            break;
+        #                    }
+        #                }
+        #        }
+        #    }
+        #}
+      ENDSOURCE
+    ENDMETHODS
+  ENDCLASS
+
+***Element: END
