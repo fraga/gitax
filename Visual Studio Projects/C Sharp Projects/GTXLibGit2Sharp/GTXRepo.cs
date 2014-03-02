@@ -97,5 +97,38 @@ namespace GTXLibGit2Sharp
 
             return fileName;
         }
+
+        /// <summary>
+        /// Resets the changes of a file to it's HEAD last commit
+        /// </summary>
+        /// <param name="repoPath">Repository main path</param>
+        /// <param name="fileName">The file path</param>
+        /// <returns>True if reset was successful false if not</returns>
+        public static bool FileUndoCheckout(string repoPath, string fileName)
+        {
+            //TODO: Dangerous, consider refactoring
+            FileInfo fileInfo = new FileInfo(fileName);
+
+            using (Repository repo = new Repository(repoPath))
+            {
+                string indexPath = fileInfo.FullName.Replace(repo.Info.WorkingDirectory, string.Empty);
+
+                CheckoutOptions doForceCheckout = new CheckoutOptions();
+                doForceCheckout.CheckoutModifiers = CheckoutModifiers.Force;
+
+                var fileCommits = repo.Head.Commits.Where(c => c.Parents.Count() == 1 && c.Tree[indexPath] != null && (c.Parents.FirstOrDefault().Tree[indexPath] == null || c.Tree[indexPath].Target.Id != c.Parents.FirstOrDefault().Tree[indexPath].Target.Id));
+
+                if (fileCommits.Any())
+                {
+                    var lastCommit = fileCommits.First();
+                    repo.CheckoutPaths(lastCommit.Id.Sha, new string[] { fileName }, doForceCheckout);
+
+                    return true;
+                }
+                else
+                    return false;
+            }
+        }
+
     }
 }
