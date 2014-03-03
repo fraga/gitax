@@ -226,7 +226,7 @@ Formatversion: 1
       ENDSOURCE
       SOURCE #fileExists
         #/// <summary>
-        #/// Verifies whether a file exists in the back end.
+        #/// Verifies whether a file exists in the repository.
         #/// </summary>
         #/// <param name="_filename">
         #/// The file to verify.
@@ -236,7 +236,21 @@ Formatversion: 1
         #/// </returns>
         #public boolean fileExists(Filename _filename)
         #{
-        #    return true;
+        #    System.Boolean  netBool;
+        #    boolean         ret;
+        #    try
+        #    {
+        #        netBool = GTXLibGit2Sharp.GTXRepo::FileExists(repositoryFolder, _filename);
+        #    }
+        #    catch
+        #    {
+        #        return false;
+        #    }
+        #
+        #    ret = netBool;
+        #
+        #    return ret;
+        #
         #}
       ENDSOURCE
       SOURCE #fileGetVersion
