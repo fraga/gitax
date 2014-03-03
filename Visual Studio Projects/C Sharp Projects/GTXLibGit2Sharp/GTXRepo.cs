@@ -131,5 +131,24 @@ namespace GTXLibGit2Sharp
             }
         }
 
+        /// <summary>
+        /// Check if the file exists or ever existed in the repository
+        /// </summary>
+        /// <param name="repoPath">Repository main path</param>
+        /// <param name="filePath">full file path to be checking</param>
+        /// <returns>True if the file exists in the repository</returns>
+        public static bool FileExists(string repoPath, string filePath)
+        {
+            bool fileExisted;
+
+            using (Repository repo = new Repository(repoPath))
+            {
+                string indexPath = filePath.Replace(repo.Info.WorkingDirectory, string.Empty);
+                fileExisted = repo.Head.Commits.Where(c => c.Tree[indexPath] != null).Any();
+            }
+
+            return fileExisted;
+        }
+
     }
 }
