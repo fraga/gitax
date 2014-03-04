@@ -41,7 +41,7 @@ Formatversion: 1
         #    {
         #        modelFile = modelsEnumerator.currentValue();
         #//<GTX>
-        #        if (strStartsWith(this.stripFilePathDelimiter(_filename), this.stripFilePathDelimiter(modelFile.parmModelFolder())))
+        #        if (strStartsWith(this.GTXstripFilePathDelimiter(_filename), this.GTXstripFilePathDelimiter(modelFile.parmModelFolder())))
         #//</GTX>
         #        {
         #            return modelFile.parmModelId();
@@ -51,7 +51,7 @@ Formatversion: 1
         #    return #ModelId_Undefined;
         #}
       ENDSOURCE
-      SOURCE #stripFilePathDelimiter
+      SOURCE #GTXstripFilePathDelimiter
         #/// <summary>
         #/// Removes the folders delimiter
         #/// </summary>
@@ -61,7 +61,7 @@ Formatversion: 1
         #/// <returns>
         #/// A fileName without folder delimiters
         #/// </returns>
-        #public str stripFilePathDelimiter(Filename _fileName)
+        #public str GTXstripFilePathDelimiter(Filename _fileName)
         #{
         #    #file
         #
