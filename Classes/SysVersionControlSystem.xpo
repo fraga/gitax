@@ -16,6 +16,58 @@ Formatversion: 1
     ENDPROPERTIES
     
     METHODS
+      SOURCE #getModelFromFile
+        #/// <summary>
+        #/// Gets the model ID for the specified file name.
+        #/// </summary>
+        #/// <param name="_filename">
+        #/// A file name.
+        #/// </param>
+        #/// <returns>
+        #/// The ID of the model.
+        #/// </returns>
+        #/// <remarks>
+        #/// <c>#ModelId_Undefined</c> is returned if no model is found.
+        #/// </remarks>
+        #public modelId getModelFromFile(Filename _filename)
+        #{
+        #    MapEnumerator modelsEnumerator;
+        #    SysVersionControlModelFile modelFile;
+        #    #File
+        #    #SysModelStore
+        #
+        #    modelsEnumerator = models.getEnumerator();
+        #    while (modelsEnumerator.moveNext())
+        #    {
+        #        modelFile = modelsEnumerator.currentValue();
+        #//<GTX>
+        #        if (strStartsWith(this.stripFilePathDelimiter(_filename), this.stripFilePathDelimiter(modelFile.parmModelFolder())))
+        #//</GTX>
+        #        {
+        #            return modelFile.parmModelId();
+        #        }
+        #    }
+        #
+        #    return #ModelId_Undefined;
+        #}
+      ENDSOURCE
+      SOURCE #stripFilePathDelimiter
+        #/// <summary>
+        #/// Removes the folders delimiter
+        #/// </summary>
+        #/// <param name="_fileName">
+        #/// Filename to remove folder
+        #/// </param>
+        #/// <returns>
+        #/// A fileName without folder delimiters
+        #/// </returns>
+        #public str stripFilePathDelimiter(Filename _fileName)
+        #{
+        #    #file
+        #
+        #    return strReplace(_filename, #FilePathDelimiter, '');
+        #}
+      ENDSOURCE
       SOURCE #newType
         #public static SysVersionControlSystem newType(SysVersionControlType _type)
         #{
