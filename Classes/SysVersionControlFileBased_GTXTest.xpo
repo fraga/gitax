@@ -24,6 +24,30 @@ Formatversion: 1
         #    SysVersionControlParameters         parametersInTest;
         #}
       ENDSOURCE
+      SOURCE #getTemporaryFolder
+        #public System.String getTemporaryFolder()
+        #{
+        #    System.String   repositoryFolder = 'gitaxrepotest';
+        #    System.String   tempFolder = System.IO.Path::Combine(System.IO.Path::GetTempPath(), repositoryFolder);
+        #    System.String   gitFolder = System.IO.Path::Combine(tempFolder, '.git');
+        #
+        #    return tempFolder;
+        #}
+      ENDSOURCE
+      SOURCE #testInit
+        #[SysTestMethodAttribute]
+        #public void testInit()
+        #{
+        #    System.String       gitFolder = this.getTemporaryFolder();
+        #
+        #    versionControlInTest = new SysVersionControlFileBased_GTX();
+        #
+        #    parametersInTest.RepositoryFolder = gitFolder;
+        #
+        #    this.assertEquals(SysVersionControlSystemStatus::Connected, versionControlInTest.init(parametersInTest));
+        #    this.assertTrue(System.IO.Directory::Exists(gitFolder));
+        #}
+      ENDSOURCE
     ENDMETHODS
   ENDCLASS
 
