@@ -170,7 +170,8 @@ namespace GTXLibGit2Sharp
                 tipSha = repo.Head.Tip.Id.Sha;
             }
 
-            Directory.EnumerateFiles(folderPath, "*.xpo", SearchOption.AllDirectories).ToList().ForEach(f =>
+            //TODO: We should get a list of files from the repository
+            Directory.EnumerateFiles(folderPath, "*.xpo, Model.xml", SearchOption.AllDirectories).ToList().ForEach(f =>
             {
                 tmpItem.InternalFilename = f;
                 tmpItem.GTXSha = tipSha;
