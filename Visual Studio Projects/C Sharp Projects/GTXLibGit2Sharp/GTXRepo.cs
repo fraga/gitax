@@ -169,7 +169,8 @@ namespace GTXLibGit2Sharp
                 repo.CheckoutPaths(repo.Head.Tip.Id.Sha, new string[] { folderPath }, checkoutOptions);
                 tipSha = repo.Head.Tip.Id.Sha;
             }
-
+            
+            //TODO: We should get a list of files from the repository
             Directory.EnumerateFiles(folderPath, "*.xpo", SearchOption.AllDirectories).ToList().ForEach(f =>
             {
                 tmpItem.InternalFilename = f;
