@@ -536,7 +536,29 @@ Formatversion: 1
         #    Set _folderSet,
         #    SysVersionControlSyncParameters _syncParameters)
         #{
-        #    return null;
+        #    Map                         resultMap = new Map(Types::String, Types::Enum);
+        #    Enumerator                  enumerator;
+        #    SysVersionControlTmpItem    tmpItem;
+        #    boolean                     forceCheckout = _syncParameters.parmForce();
+        #
+        #    if(!_folderSet)
+        #        throw error("@SYS104799");
+        #
+        #    enumerator = _folderSet.getEnumerator();
+        #
+        #    while(enumerator.moveNext())
+        #    {
+        #        tmpItem = null;
+        #        tmpItem = GTXLibGit2Sharp.GTXRepo::FolderSync(repositoryFolder, enumerator.current(), forceCheckout);
+        #
+        #        while select internalFileName from tmpItem
+        #        {
+        #            resultMap.insert(tmpItem.Filename, SysVersionControlSynchronizeCommand::Update);
+        #        }
+        #
+        #    }
+        #
+        #    return resultMap;
         #}
       ENDSOURCE
       SOURCE #init

@@ -150,5 +150,36 @@ namespace GTXLibGit2Sharp
             return fileExisted;
         }
 
+        /// <summary>
+        /// Synchronizes a folder
+        /// </summary>
+        /// <param name="repoPath">Main repository path</param>
+        /// <param name="folderPath">The folder to synchronize (checkout)</param>
+        /// <param name="forceCheckout">Forces the update from the latest comit (head tip)</param>
+        /// <returns>A SysVersionControlItem with all the files that have been affected</returns>
+        public static SysVersionControlTmpItem FolderSync(string repoPath, string folderPath, bool forceCheckout)
+        {
+            SysVersionControlTmpItem tmpItem = new SysVersionControlTmpItem();
+            CheckoutOptions checkoutOptions = new CheckoutOptions();
+            checkoutOptions.CheckoutModifiers = forceCheckout ? CheckoutModifiers.Force : CheckoutModifiers.None;
+            string tipSha;
+
+            using (Repository repo = new Repository(repoPath))
+            {
+                repo.CheckoutPaths(repo.Head.Tip.Id.Sha, new string[] { folderPath }, checkoutOptions);
+                tipSha = repo.Head.Tip.Id.Sha;
+            }
+
+            Directory.EnumerateFiles(folderPath, "*.xpo").ToList().ForEach(f =>
+            {
+                tmpItem.InternalFilename = f;
+                tmpItem.GTXSha = tipSha;
+                tmpItem.ActionText = "Update";
+                tmpItem.insert();
+            });
+
+            return tmpItem;
+        }
+
     }
 }
