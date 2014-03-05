@@ -553,7 +553,7 @@ Formatversion: 1
         #
         #        while select internalFileName from tmpItem
         #        {
-        #            resultMap.insert(tmpItem.Filename, SysVersionControlSynchronizeCommand::Update);
+        #            resultMap.insert(tmpItem.InternalFilename, SysVersionControlSynchronizeCommand::Update);
         #        }
         #
         #    }
