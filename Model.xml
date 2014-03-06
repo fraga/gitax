@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ModelManifest SchemaVersion="1.9" ModelFileVersion="18" ElementCount="132" ModelBuildVersion="">
+<ModelManifest SchemaVersion="1.9" ModelFileVersion="18" ElementCount="83" ModelBuildVersion="">
   <Name>Gitax</Name>
   <DisplayName>Gitax</DisplayName>
   <Description>Git source control for Dynamics AX</Description>
