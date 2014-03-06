@@ -173,7 +173,7 @@ namespace GTXLibGit2Sharp
             //TODO: We should get a list of files from the repository
             Directory.EnumerateFiles(folderPath, "*.xpo", SearchOption.AllDirectories).ToList().ForEach(f =>
             {
-                tmpItem.InternalFilename = f;
+                tmpItem.ItemPath = "\\" + f.Replace(repoPath, string.Empty);
                 tmpItem.GTXSha = tipSha;
                 tmpItem.ActionText = "Update";
                 tmpItem.insert();
