@@ -15,6 +15,42 @@ Formatversion: 1
   ENDPROPERTIES
   
     PROJECTCLASS ProjectNode
+    GROUP #Visual_Studio_Projects
+      PROPERTIES
+        Name                #Visual_Studio_Projects
+        ProjectGroupType    #VisualStudioProjects
+        GroupMask           #
+        PreventEditProperties #No
+      ENDPROPERTIES
+      
+      GROUP #C_Sharp_Projects
+        PROPERTIES
+          Name                #C_Sharp_Projects
+          ProjectGroupType    #VisualStudioCSharpProjects
+          GroupMask           #
+          PreventEditProperties #No
+        ENDPROPERTIES
+        
+        BEGINNODE
+          FILETYPE 0
+          UTILTYPE 128
+          NODETYPE 1531
+          NAME #GTXLibGit2Sharp
+        ENDNODE
+        ENDGROUP
+        
+      ENDGROUP
+      
+    GROUP #Jobs
+      PROPERTIES
+        Name                #Jobs
+        ProjectGroupType    #Jobs
+        GroupMask           #
+        PreventEditProperties #No
+      ENDPROPERTIES
+      
+      ENDGROUP
+      
     GROUP #Forms
       PROPERTIES
         Name                #Forms
@@ -59,13 +95,37 @@ Formatversion: 1
         FILETYPE 0
         UTILTYPE 45
         NODETYPE 329
+        NAME #GTXDummy
+      ENDNODE
+      BEGINNODE
+        FILETYPE 0
+        UTILTYPE 45
+        NODETYPE 329
+        NAME #SysVersionControlAddIn
+      ENDNODE
+      BEGINNODE
+        FILETYPE 0
+        UTILTYPE 45
+        NODETYPE 329
         NAME #SysVersionControlFileBased_GTX
       ENDNODE
       BEGINNODE
         FILETYPE 0
         UTILTYPE 45
         NODETYPE 329
+        NAME #SysVersionControlFileBased_GTXTest
+      ENDNODE
+      BEGINNODE
+        FILETYPE 0
+        UTILTYPE 45
+        NODETYPE 329
         NAME #SysVersionControlSystem
+      ENDNODE
+      BEGINNODE
+        FILETYPE 0
+        UTILTYPE 45
+        NODETYPE 329
+        NAME #SysVersionControlSystemFileBased
       ENDNODE
       ENDGROUP
       
@@ -77,6 +137,28 @@ Formatversion: 1
         PreventEditProperties #No
       ENDPROPERTIES
       
+      GROUP #Extended_Data_Types
+        PROPERTIES
+          Name                #Extended_Data_Types
+          ProjectGroupType    #ExtendedDataTypes
+          GroupMask           #
+          PreventEditProperties #No
+        ENDPROPERTIES
+        
+        BEGINNODE
+          FILETYPE 0
+          UTILTYPE 41
+          NODETYPE 234
+          NAME #GTXSha
+        ENDNODE
+        BEGINNODE
+          FILETYPE 0
+          UTILTYPE 41
+          NODETYPE 234
+          NAME #GTXShaShort
+        ENDNODE
+        ENDGROUP
+        
       GROUP #Tables
         PROPERTIES
           Name                #Tables
