@@ -162,14 +162,14 @@ Formatversion: 1
         #///    Adds a comment about the file; optional.
         #/// </param>
         #/// <returns>
-        #///    true if the file was added successful; otherwise, false.
+        #///    Always true as this will trigger the creation of the file in the git working folder.
         #/// </returns>
         #/// <remarks>
-        #///    The file will be available to other users after a subsequent check-in operation.
+        #///    The file will be available to other users after a subsequent staging and commit operations. Here let's just make sure the file was created.
         #/// </remarks>
         #public boolean fileAddToVersionControl(Filename _filename, SysVersionControlItemComment _comment = '')
         #{
-        #    return true;
+        #    return System.IO.File::Exists(_filename);
         #}
       ENDSOURCE
       SOURCE #fileCheckedOutTo
@@ -536,7 +536,29 @@ Formatversion: 1
         #    Set _folderSet,
         #    SysVersionControlSyncParameters _syncParameters)
         #{
-        #    return null;
+        #    Map                         resultMap = new Map(Types::String, Types::Enum);
+        #    Enumerator                  enumerator;
+        #    SysVersionControlTmpItem    tmpItem;
+        #    boolean                     forceCheckout = _syncParameters.parmForce();
+        #
+        #    if(!_folderSet)
+        #        throw error("@SYS104799");
+        #
+        #    enumerator = _folderSet.getEnumerator();
+        #
+        #    while(enumerator.moveNext())
+        #    {
+        #        tmpItem = null;
+        #        tmpItem = GTXLibGit2Sharp.GTXRepo::FolderSync(repositoryFolder, enumerator.current(), forceCheckout);
+        #
+        #        while select internalFileName from tmpItem
+        #        {
+        #            resultMap.insert(tmpItem.InternalFilename, SysVersionControlSynchronizeCommand::Update);
+        #        }
+        #
+        #    }
+        #
+        #    return resultMap;
         #}
       ENDSOURCE
       SOURCE #init
