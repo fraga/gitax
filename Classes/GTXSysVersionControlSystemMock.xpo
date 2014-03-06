@@ -1,0 +1,38 @@
+﻿Exportfile for AOT version 1.0 or later
+Formatversion: 1
+
+***Element: CLS
+
+; Microsoft Dynamics AX Class: GTXSysVersionControlSystemMock unloaded
+; --------------------------------------------------------------------------------
+  CLSVERSION 1
+  
+  CLASS #GTXSysVersionControlSystemMock
+    PROPERTIES
+      Name                #GTXSysVersionControlSystemMock
+      Extends             #SysVersionControlSystem
+      RunOn               #Client
+      Origin              #{A1A36F24-2DD8-4824-9599-ACD6DF484027}
+    ENDPROPERTIES
+    
+    METHODS
+      SOURCE #classDeclaration
+        #class GTXSysVersionControlSystemMock extends SysVersionControlSystem
+        #{
+        #}
+      ENDSOURCE
+      SOURCE #isTmpItemOpenedForDelete
+        #public boolean isTmpItemOpenedForDelete(SysVersionControlTmpItem _sysVersionControlTmpItem)
+        #{
+        #    return true;
+        #}
+      ENDSOURCE
+      SOURCE #new
+        #public void new()
+        #{
+        #}
+      ENDSOURCE
+    ENDMETHODS
+  ENDCLASS
+
+***Element: END
