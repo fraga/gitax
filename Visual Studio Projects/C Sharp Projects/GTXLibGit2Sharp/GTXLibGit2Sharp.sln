@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GTXLibGit2Sharp", "C:\gitax\Visual Studio Projects\C Sharp Projects\GTXLibGit2Sharp\GTXLibGit2Sharp.csproj", "{7AEBF18C-7650-4162-90B2-69FEC722BD84}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GTXLibGit2Sharp", "C:\vcs\gitax\Visual Studio Projects\C Sharp Projects\GTXLibGit2Sharp\GTXLibGit2Sharp.csproj", "{7AEBF18C-7650-4162-90B2-69FEC722BD84}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
