@@ -1,0 +1,38 @@
+﻿Exportfile for AOT version 1.0 or later
+Formatversion: 1
+
+***Element: CLS
+
+; Microsoft Dynamics AX Class: GTXSysVersionControlSystemTest unloaded
+; --------------------------------------------------------------------------------
+  CLSVERSION 1
+  
+  CLASS #GTXSysVersionControlSystemTest
+    PROPERTIES
+      Name                #GTXSysVersionControlSystemTest
+      Extends             #SysTestCase
+      Origin              #{876C312E-988B-40D4-A18A-F37E85CCE5E3}
+    ENDPROPERTIES
+    
+    METHODS
+      SOURCE #classDeclaration
+        #[SysTestTargetAttribute('GTXSysVersionControlSystemTest', UtilElementType::Class)]
+        #// This is a framework class. Customizing this class may cause problems with future upgrades to the software.
+        #class GTXSysVersionControlSystemTest extends SysTestCase
+        #{
+        #    GTXSysVersionControlSystemMock     vcsSystemMock;
+        #}
+      ENDSOURCE
+      SOURCE #testGTXstripFilePathDelimiter
+        #[SysTestMethodAttribute]
+        #public void testGTXstripFilePathDelimiter()
+        #{
+        #    vcsSystemMock = new GTXSysVersionControlSystemMock();
+        #
+        #    this.assertEquals('c:gitaxsomefolder', vcsSystemMock.GTXstripFilePathDelimiter('C:\\gitax\\somefolder'));
+        #}
+      ENDSOURCE
+    ENDMETHODS
+  ENDCLASS
+
+***Element: END

@@ -91,6 +91,22 @@ Formatversion: 1
         PreventEditProperties #No
       ENDPROPERTIES
       
+      GROUP #Mocks
+        PROPERTIES
+          Name                #Mocks
+          ProjectGroupType    #Classes
+          GroupMask           #
+          PreventEditProperties #No
+        ENDPROPERTIES
+        
+        BEGINNODE
+          FILETYPE 0
+          UTILTYPE 45
+          NODETYPE 329
+          NAME #GTXSysVersionControlSystemMock
+        ENDNODE
+        ENDGROUP
+        
       BEGINNODE
         FILETYPE 0
         UTILTYPE 45
@@ -120,6 +136,12 @@ Formatversion: 1
         UTILTYPE 45
         NODETYPE 329
         NAME #SysVersionControlSystem
+      ENDNODE
+      BEGINNODE
+        FILETYPE 0
+        UTILTYPE 45
+        NODETYPE 329
+        NAME #SysVersionControlSystemTest
       ENDNODE
       BEGINNODE
         FILETYPE 0
