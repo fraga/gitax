@@ -117,6 +117,24 @@ Formatversion: 1
         FILETYPE 0
         UTILTYPE 45
         NODETYPE 329
+        NAME #GTXSysVersionControlFileBased_GTXTest
+      ENDNODE
+      BEGINNODE
+        FILETYPE 0
+        UTILTYPE 45
+        NODETYPE 329
+        NAME #GTXSysVersionControlSystemMock
+      ENDNODE
+      BEGINNODE
+        FILETYPE 0
+        UTILTYPE 45
+        NODETYPE 329
+        NAME #GTXSysVersionControlSystemTest
+      ENDNODE
+      BEGINNODE
+        FILETYPE 0
+        UTILTYPE 45
+        NODETYPE 329
         NAME #SysVersionControlAddIn
       ENDNODE
       BEGINNODE
@@ -129,19 +147,7 @@ Formatversion: 1
         FILETYPE 0
         UTILTYPE 45
         NODETYPE 329
-        NAME #SysVersionControlFileBased_GTXTest
-      ENDNODE
-      BEGINNODE
-        FILETYPE 0
-        UTILTYPE 45
-        NODETYPE 329
         NAME #SysVersionControlSystem
-      ENDNODE
-      BEGINNODE
-        FILETYPE 0
-        UTILTYPE 45
-        NODETYPE 329
-        NAME #SysVersionControlSystemTest
       ENDNODE
       BEGINNODE
         FILETYPE 0
