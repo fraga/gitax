@@ -3,22 +3,22 @@ Formatversion: 1
 
 ***Element: CLS
 
-; Microsoft Dynamics AX Class: SysVersionControlFileBased_GTXTest unloaded
+; Microsoft Dynamics AX Class: GTXSysVersionControlFileBased_GTXTest unloaded
 ; --------------------------------------------------------------------------------
   CLSVERSION 1
   
-  CLASS #SysVersionControlFileBased_GTXTest
+  CLASS #GTXSysVersionControlFileBased_GTXTest
     PROPERTIES
-      Name                #SysVersionControlFileBased_GTXTest
+      Name                #GTXSysVersionControlFileBased_GTXTest
       Extends             #SysTestCase
       Origin              #{6C9AA74D-71DC-4AC4-99CA-AFC6F077EF2C}
     ENDPROPERTIES
     
     METHODS
       SOURCE #classDeclaration
-        #[SysTestTargetAttribute('SysVersionControlFileBased_GTX', UtilElementType::Class)]
+        #[SysTestTargetAttribute('GTXSysVersionControlFileBased_GTXTest', UtilElementType::Class)]
         #// This is a framework class. Customizing this class may cause problems with future upgrades to the software.
-        #class SysVersionControlFileBased_GTXTest extends SysTestCase
+        #class GTXSysVersionControlFileBased_GTXTest extends SysTestCase
         #{
         #    SysVersionControlFileBased_GTX      versionControlInTest;
         #    SysVersionControlParameters         parametersInTest;
