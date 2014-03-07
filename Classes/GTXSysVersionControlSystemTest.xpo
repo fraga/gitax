@@ -32,6 +32,22 @@ Formatversion: 1
         #    this.assertEquals('c:gitaxsomefolder', vcsSystemMock.GTXstripFilePathDelimiter('C:\\gitax\\somefolder'));
         #}
       ENDSOURCE
+      SOURCE #testNewType
+        #[SysTestMethodAttribute]
+        #public void testNewType()
+        #{
+        #    SysVersionControlSystem             system;
+        #    SysVersionControlSystemFileBased    systemFileBased;
+        #
+        #    system = SysVersionControlSystem::newType(SysVersionControlType::SysVersionControlGitax);
+        #
+        #    this.assertTrue(system is SysVersionControlSystemFileBased);
+        #
+        #    systemFileBased = system as SysVersionControlSystemFileBased;
+        #
+        #    this.assertTrue(systemFileBased.parmBackend() is SysVersionControlFileBased_GTX);
+        #}
+      ENDSOURCE
     ENDMETHODS
   ENDCLASS
 
