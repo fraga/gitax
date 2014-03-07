@@ -1,0 +1,48 @@
+﻿Exportfile for AOT version 1.0 or later
+Formatversion: 1
+
+***Element: PRN
+
+; Microsoft Dynamics AX Project : GTXTestSuite unloaded
+; --------------------------------------------------------------------------------
+  PROJECTVERSION 2
+  
+  PROJECT #GTXTestSuite
+  SHARED
+  PROPERTIES
+    Name                #GTXTestSuite
+    Origin              #{8368C653-4B0D-43EB-A52E-00A24EA58C0F}
+  ENDPROPERTIES
+  
+    PROJECTCLASS SysTestProject
+    APPDATAEXPORT
+    SOURCE #GTXTestSuite
+      #<APPDATA><info><version>3</version><onErrorAction>0</onErrorAction><codeCoverage>0</codeCoverage><recordCount>0</recordCount><testStrategy>0</testStrategy><listeners></listeners></info></APPDATA>
+    ENDSOURCE
+    ENDAPPDATAEXPORT
+    GROUP #TestSuite
+      PROPERTIES
+        Name                #TestSuite
+        ProjectGroupType    #Classes
+        GroupMask           #
+        PreventEditProperties #No
+      ENDPROPERTIES
+      
+      BEGINNODE
+        FILETYPE 0
+        UTILTYPE 45
+        NODETYPE 329
+        NAME #GTXSysVersionControlFileBased_GTXTest
+      ENDNODE
+      BEGINNODE
+        FILETYPE 0
+        UTILTYPE 45
+        NODETYPE 329
+        NAME #GTXSysVersionControlSystemTest
+      ENDNODE
+      ENDGROUP
+      
+  ENDPROJECT
+  
+
+***Element: END
