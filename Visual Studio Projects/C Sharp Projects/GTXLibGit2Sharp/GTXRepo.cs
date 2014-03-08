@@ -182,5 +182,24 @@ namespace GTXLibGit2Sharp
             return tmpItem;
         }
 
+        /// <summary>
+        /// Gets the file status in the index.
+        /// </summary>
+        /// <param name="repoPath">Main repository path</param>
+        /// <param name="fileName">The filename to check it's status</param>
+        /// <returns>An integer representing the FileStatus</returns>
+        public static int FileStatus(string repoPath, string fileName)
+        {
+            FileStatus fileStatus;
+
+            using (Repository repo = new Repository(repoPath))
+            {
+                string indexPath = fileName.Replace(repo.Info.WorkingDirectory, string.Empty);
+                fileStatus = repo.Index.RetrieveStatus(indexPath);
+            }
+
+            return (int)fileStatus;
+        }
+
     }
 }
