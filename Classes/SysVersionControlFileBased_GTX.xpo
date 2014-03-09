@@ -214,10 +214,10 @@ Formatversion: 1
         #///    The file to delete.
         #/// </param>
         #/// <returns>
-        #///    true if the file was deleted successful; otherwise, false.
+        #///    Always true, the caller will delete the file and the index will yield status 'missing'
         #/// </returns>
         #/// <remarks>
-        #///    The file is deleted in the system by a subsequent check-in operation.
+        #///    The file is deleted in the system by a subsequent commit operation.
         #/// </remarks>
         #public boolean fileDelete(Filename _filename)
         #{
