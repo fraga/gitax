@@ -561,6 +561,52 @@ Formatversion: 1
         #    return resultMap;
         #}
       ENDSOURCE
+      SOURCE #GTXFileStatus
+        #/// <summary>
+        #/// Converts git file status to GTX file status
+        #/// </summary>
+        #/// <param name="_fileName">
+        #/// The filename to check it's status in the repository.
+        #/// </param>
+        #/// <returns>
+        #/// THe file status in the repository
+        #/// </returns>
+        #public GTXFileStatus GTXFileStatus(Filename _fileName)
+        #{
+        #    int fileStatus = GTXLibGit2Sharp.GTXRepo::FileStatus(repositoryFolder, _fileName);
+        #
+        #    switch(fileStatus)
+        #    {
+        #        case 0:
+        #            return GTXFileStatus::Unaltered;
+        #        case 1 << 0:
+        #            return GTXFileStatus::Added;
+        #        case 1 << 1:
+        #            return GTXFileStatus::Staged;
+        #        case 1 << 2:
+        #            return GTXFileStatus::Removed;
+        #        case 1 << 3:
+        #            return GTXFileStatus::RenamedInIndex;
+        #        case 1 << 4:
+        #            return GTXFileStatus::StagedTypeChange;
+        #        case 1 << 7:
+        #            return GTXFileStatus::Untracked;
+        #        case 1 << 8:
+        #            return GTXFileStatus::Modified;
+        #        case 1 << 9:
+        #            return GTXFileStatus::Missing;
+        #        case 1 << 10:
+        #            return GTXFileStatus::TypeChanged;
+        #        case 1 << 11:
+        #            return GTXFileStatus::RenamedInWorkDir;
+        #        case 1 << 14:
+        #            return GTXFileStatus::Ignored;
+        #        default:
+        #            return GTXFileStatus::NonExistent;
+        #    }
+        #
+        #}
+      ENDSOURCE
       SOURCE #init
         #/// <summary>
         #///    Initializes the version control system back end.
