@@ -1,0 +1,113 @@
+﻿Exportfile for AOT version 1.0 or later
+Formatversion: 1
+
+***Element: DBE
+
+; Microsoft Dynamics AX Enumtype : GTXFileStatus unloaded
+; --------------------------------------------------------------------------------
+  ENUMTYPEVERSION 1
+  
+  ENUMTYPE #GTXFileStatus
+    PROPERTIES
+      Name                #GTXFileStatus
+      UseEnumValue        #Yes
+      Origin              #{4F6F8EB0-60B8-4A83-B99C-70C3B929DB57}
+    ENDPROPERTIES
+    
+    TYPEELEMENTS
+      #Unaltered
+      PROPERTIES
+        Name                #Unaltered
+        Label               #Unaltered
+        EnumValue           #0
+      ENDPROPERTIES
+      
+      #Added
+      PROPERTIES
+        Name                #Added
+        Label               #Added
+        EnumValue           #1
+      ENDPROPERTIES
+      
+      #Staged
+      PROPERTIES
+        Name                #Staged
+        Label               #Staged
+        EnumValue           #2
+      ENDPROPERTIES
+      
+      #Removed
+      PROPERTIES
+        Name                #Removed
+        Label               #Removed
+        EnumValue           #3
+      ENDPROPERTIES
+      
+      #RenamedInIndex
+      PROPERTIES
+        Name                #RenamedInIndex
+        Label               #Renamed in index
+        EnumValue           #4
+      ENDPROPERTIES
+      
+      #StagedTypeChange
+      PROPERTIES
+        Name                #StagedTypeChange
+        Label               #Staged type change
+        EnumValue           #5
+      ENDPROPERTIES
+      
+      #Untracked
+      PROPERTIES
+        Name                #Untracked
+        Label               #Untracked
+        EnumValue           #6
+      ENDPROPERTIES
+      
+      #Modified
+      PROPERTIES
+        Name                #Modified
+        Label               #Modified
+        EnumValue           #7
+      ENDPROPERTIES
+      
+      #Missing
+      PROPERTIES
+        Name                #Missing
+        Label               #Missing
+        EnumValue           #8
+      ENDPROPERTIES
+      
+      #TypeChanged
+      PROPERTIES
+        Name                #TypeChanged
+        Label               #TypeChanged
+        EnumValue           #9
+      ENDPROPERTIES
+      
+      #RenamedInWorkDir
+      PROPERTIES
+        Name                #RenamedInWorkDir
+        Label               #Renamed in work dir
+        EnumValue           #10
+      ENDPROPERTIES
+      
+      #Ignored
+      PROPERTIES
+        Name                #Ignored
+        Label               #Ignored
+        EnumValue           #11
+      ENDPROPERTIES
+      
+      #NonExistent
+      PROPERTIES
+        Name                #NonExistent
+        Label               #NonExistent
+        EnumValue           #12
+      ENDPROPERTIES
+      
+    ENDTYPEELEMENTS
+  ENDENUMTYPE
+  
+
+***Element: END
