@@ -237,6 +237,12 @@ Formatversion: 1
           FILETYPE 0
           UTILTYPE 40
           NODETYPE 209
+          NAME #GTXFileStatus
+        ENDNODE
+        BEGINNODE
+          FILETYPE 0
+          UTILTYPE 40
+          NODETYPE 209
           NAME #SysVersionControlType
         ENDNODE
         ENDGROUP
