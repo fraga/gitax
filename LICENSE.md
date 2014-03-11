@@ -1,31 +1,31 @@
-Microsoft Public License (Ms-PL)
+MICROSOFT PUBLIC LICENSE (MS-PL)
 
-This license governs use of the accompanying software. If you use the software, you accept this license. If you do not accept the license, do not use the software.
+THIS LICENSE GOVERNS USE OF THE ACCOMPANYING SOFTWARE. IF YOU USE THE SOFTWARE, YOU ACCEPT THIS LICENSE. IF YOU DO NOT ACCEPT THE LICENSE, DO NOT USE THE SOFTWARE.
 
-1. Definitions
+1. DEFINITIONS
 
-The terms "reproduce," "reproduction," "derivative works," and "distribution" have the same meaning here as under U.S. copyright law.
+THE TERMS "REPRODUCE," "REPRODUCTION," "DERIVATIVE WORKS," AND "DISTRIBUTION" HAVE THE SAME MEANING HERE AS UNDER U.S. COPYRIGHT LAW.
 
-A "contribution" is the original software, or any additions or changes to the software.
+A "CONTRIBUTION" IS THE ORIGINAL SOFTWARE, OR ANY ADDITIONS OR CHANGES TO THE SOFTWARE.
 
-A "contributor" is any person that distributes its contribution under this license.
+A "CONTRIBUTOR" IS ANY PERSON THAT DISTRIBUTES ITS CONTRIBUTION UNDER THIS LICENSE.
 
-"Licensed patents" are a contributor's patent claims that read directly on its contribution.
+"LICENSED PATENTS" ARE A CONTRIBUTOR'S PATENT CLAIMS THAT READ DIRECTLY ON ITS CONTRIBUTION.
 
-2. Grant of Rights
+2. GRANT OF RIGHTS
 
-(A) Copyright Grant- Subject to the terms of this license, including the license conditions and limitations in section 3, each contributor grants you a non-exclusive, worldwide, royalty-free copyright license to reproduce its contribution, prepare derivative works of its contribution, and distribute its contribution or any derivative works that you create.
+(A) COPYRIGHT GRANT- SUBJECT TO THE TERMS OF THIS LICENSE, INCLUDING THE LICENSE CONDITIONS AND LIMITATIONS IN SECTION 3, EACH CONTRIBUTOR GRANTS YOU A NON-EXCLUSIVE, WORLDWIDE, ROYALTY-FREE COPYRIGHT LICENSE TO REPRODUCE ITS CONTRIBUTION, PREPARE DERIVATIVE WORKS OF ITS CONTRIBUTION, AND DISTRIBUTE ITS CONTRIBUTION OR ANY DERIVATIVE WORKS THAT YOU CREATE.
 
-(B) Patent Grant- Subject to the terms of this license, including the license conditions and limitations in section 3, each contributor grants you a non-exclusive, worldwide, royalty-free license under its licensed patents to make, have made, use, sell, offer for sale, import, and/or otherwise dispose of its contribution in the software or derivative works of the contribution in the software.
+(B) PATENT GRANT- SUBJECT TO THE TERMS OF THIS LICENSE, INCLUDING THE LICENSE CONDITIONS AND LIMITATIONS IN SECTION 3, EACH CONTRIBUTOR GRANTS YOU A NON-EXCLUSIVE, WORLDWIDE, ROYALTY-FREE LICENSE UNDER ITS LICENSED PATENTS TO MAKE, HAVE MADE, USE, SELL, OFFER FOR SALE, IMPORT, AND/OR OTHERWISE DISPOSE OF ITS CONTRIBUTION IN THE SOFTWARE OR DERIVATIVE WORKS OF THE CONTRIBUTION IN THE SOFTWARE.
 
-3. Conditions and Limitations
+3. CONDITIONS AND LIMITATIONS
 
-(A) No Trademark License- This license does not grant you rights to use any contributors' name, logo, or trademarks.
+(A) NO TRADEMARK LICENSE- THIS LICENSE DOES NOT GRANT YOU RIGHTS TO USE ANY CONTRIBUTORS' NAME, LOGO, OR TRADEMARKS.
 
-(B) If you bring a patent claim against any contributor over patents that you claim are infringed by the software, your patent license from such contributor to the software ends automatically.
+(B) IF YOU BRING A PATENT CLAIM AGAINST ANY CONTRIBUTOR OVER PATENTS THAT YOU CLAIM ARE INFRINGED BY THE SOFTWARE, YOUR PATENT LICENSE FROM SUCH CONTRIBUTOR TO THE SOFTWARE ENDS AUTOMATICALLY.
 
-(C) If you distribute any portion of the software, you must retain all copyright, patent, trademark, and attribution notices that are present in the software.
+(C) IF YOU DISTRIBUTE ANY PORTION OF THE SOFTWARE, YOU MUST RETAIN ALL COPYRIGHT, PATENT, TRADEMARK, AND ATTRIBUTION NOTICES THAT ARE PRESENT IN THE SOFTWARE.
 
-(D) If you distribute any portion of the software in source code form, you may do so only under this license by including a complete copy of this license with your distribution. If you distribute any portion of the software in compiled or object code form, you may only do so under a license that complies with this license.
+(D) IF YOU DISTRIBUTE ANY PORTION OF THE SOFTWARE IN SOURCE CODE FORM, YOU MAY DO SO ONLY UNDER THIS LICENSE BY INCLUDING A COMPLETE COPY OF THIS LICENSE WITH YOUR DISTRIBUTION. IF YOU DISTRIBUTE ANY PORTION OF THE SOFTWARE IN COMPILED OR OBJECT CODE FORM, YOU MAY ONLY DO SO UNDER A LICENSE THAT COMPLIES WITH THIS LICENSE.
 
-(E) The software is licensed "as-is." You bear the risk of using it. The contributors give no express warranties, guarantees or conditions. You may have additional consumer rights under your local laws which this license cannot change. To the extent permitted under your local laws, the contributors exclude the implied warranties of merchantability, fitness for a particular purpose and non-infringement.
+(E) THE SOFTWARE IS LICENSED "AS-IS." YOU BEAR THE RISK OF USING IT. THE CONTRIBUTORS GIVE NO EXPRESS WARRANTIES, GUARANTEES OR CONDITIONS. YOU MAY HAVE ADDITIONAL CONSUMER RIGHTS UNDER YOUR LOCAL LAWS WHICH THIS LICENSE CANNOT CHANGE. TO THE EXTENT PERMITTED UNDER YOUR LOCAL LAWS, THE CONTRIBUTORS EXCLUDE THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT.
