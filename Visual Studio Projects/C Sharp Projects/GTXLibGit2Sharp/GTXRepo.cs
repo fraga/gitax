@@ -28,7 +28,7 @@ namespace GTXLibGit2Sharp
         /// <returns>Libgit2Sharp version</returns>
         public static string Version()
         {
-            return Repository.Version;
+            return String.Format("GitAx {0} - libGit2Sharp {1}", "1.1.1", Repository.Version);
         }
 
         /// <summary>
