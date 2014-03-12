@@ -59,6 +59,7 @@ namespace GTXLibGit2Sharp
                     tmpItem.VCSDate = commit.Committer.When.Date;
                     tmpItem.Filename_ = fileInfo.FullName;
                     tmpItem.InternalFilename = fileInfo.FullName;
+                    tmpItem.ItemPath = indexPath;
                     tmpItem.insert();
                 }
             }
