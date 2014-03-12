@@ -85,7 +85,7 @@ namespace GTXLibGit2Sharp
                 {
                     try
                     {
-                        repo.CheckoutPaths(commit.Id.Sha, new string[] { fileName }, options);
+                        repo.CheckoutPaths(commit.Id.Sha, new [] { fileName }, options);
                     }
                     catch (MergeConflictException ex)
                     {
@@ -127,7 +127,7 @@ namespace GTXLibGit2Sharp
                 if (fileCommits.Any())
                 {
                     var lastCommit = fileCommits.First();
-                    repo.CheckoutPaths(lastCommit.Id.Sha, new string[] { fileName }, doForceCheckout);
+                    repo.CheckoutPaths(lastCommit.Id.Sha, new [] { fileName }, doForceCheckout);
 
                     return true;
                 }
