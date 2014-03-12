@@ -114,20 +114,20 @@ namespace GTXLibGit2Sharp
             {
                 string indexPath = fileInfo.FullName.Replace(repo.Info.WorkingDirectory, string.Empty);
 
-                CheckoutOptions doForceCheckout = new CheckoutOptions
-                                                      {
-                                                          CheckoutModifiers =
-                                                              forceCheckout
-                                                                  ? CheckoutModifiers.Force
-                                                                  : CheckoutModifiers.None
-                                                      };
+                CheckoutOptions checkoutOptions = new CheckoutOptions
+                {
+                    CheckoutModifiers =
+                        forceCheckout
+                            ? CheckoutModifiers.Force
+                            : CheckoutModifiers.None
+                };
 
                 var fileCommits = repo.Head.Commits.Where(c => c.Parents.Count() == 1 && c.Tree[indexPath] != null && (c.Parents.FirstOrDefault().Tree[indexPath] == null || c.Tree[indexPath].Target.Id != c.Parents.FirstOrDefault().Tree[indexPath].Target.Id));
 
                 if (fileCommits.Any())
                 {
                     var lastCommit = fileCommits.First();
-                    repo.CheckoutPaths(lastCommit.Id.Sha, new [] { fileName }, doForceCheckout);
+                    repo.CheckoutPaths(lastCommit.Id.Sha, new [] { fileName }, checkoutOptions);
 
                     return true;
                 }
@@ -165,13 +165,20 @@ namespace GTXLibGit2Sharp
         public static SysVersionControlTmpItem FolderSync(string repoPath, string folderPath, bool forceCheckout)
         {
             SysVersionControlTmpItem tmpItem = new SysVersionControlTmpItem();
-            CheckoutOptions checkoutOptions = new CheckoutOptions();
-            checkoutOptions.CheckoutModifiers = forceCheckout ? CheckoutModifiers.Force : CheckoutModifiers.None;
+
+            CheckoutOptions checkoutOptions = new CheckoutOptions
+            {
+                CheckoutModifiers =
+                    forceCheckout
+                        ? CheckoutModifiers.Force
+                        : CheckoutModifiers.None
+            };
+            
             string tipSha;
 
             using (Repository repo = new Repository(repoPath))
             {
-                repo.CheckoutPaths(repo.Head.Tip.Id.Sha, new string[] { folderPath }, checkoutOptions);
+                repo.CheckoutPaths(repo.Head.Tip.Id.Sha, new[] { folderPath }, checkoutOptions);
                 tipSha = repo.Head.Tip.Id.Sha;
             }
             
