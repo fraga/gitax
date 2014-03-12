@@ -131,8 +131,8 @@ namespace GTXLibGit2Sharp
 
                     return true;
                 }
-                else
-                    return false;
+
+                return false;
             }
         }
 
