@@ -469,7 +469,7 @@ Formatversion: 1
         #    boolean         ret;
         #    try
         #    {
-        #        netBool = GTXLibGit2Sharp.GTXRepo::FileUndoCheckout(repositoryFolder, _filename);
+        #        netBool = GTXLibGit2Sharp.GTXRepo::FileUndoCheckout(repositoryFolder, _filename, true);
         #    }
         #    catch
         #    {
@@ -602,7 +602,7 @@ Formatversion: 1
         #        case 1 << 14: /* GIT_STATUS_IGNORED */
         #            return GTXFileStatus::Ignored;
         #        default: /* (1 << 31) */
-        #            return GTXFileStatus::NonExistent; 
+        #            return GTXFileStatus::NonExistent;
         #    }
         #
         #}

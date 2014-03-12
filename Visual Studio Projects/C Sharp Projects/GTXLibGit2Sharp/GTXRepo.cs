@@ -105,7 +105,7 @@ namespace GTXLibGit2Sharp
         /// <param name="repoPath">Repository main path</param>
         /// <param name="fileName">The file path</param>
         /// <returns>True if reset was successful false if not</returns>
-        public static bool FileUndoCheckout(string repoPath, string fileName)
+        public static bool FileUndoCheckout(string repoPath, string fileName, bool forceCheckout)
         {
             //TODO: Dangerous, consider refactoring
             FileInfo fileInfo = new FileInfo(fileName);
@@ -114,8 +114,13 @@ namespace GTXLibGit2Sharp
             {
                 string indexPath = fileInfo.FullName.Replace(repo.Info.WorkingDirectory, string.Empty);
 
-                CheckoutOptions doForceCheckout = new CheckoutOptions();
-                doForceCheckout.CheckoutModifiers = CheckoutModifiers.Force;
+                CheckoutOptions doForceCheckout = new CheckoutOptions
+                                                      {
+                                                          CheckoutModifiers =
+                                                              forceCheckout
+                                                                  ? CheckoutModifiers.Force
+                                                                  : CheckoutModifiers.None
+                                                      };
 
                 var fileCommits = repo.Head.Commits.Where(c => c.Parents.Count() == 1 && c.Tree[indexPath] != null && (c.Parents.FirstOrDefault().Tree[indexPath] == null || c.Tree[indexPath].Target.Id != c.Parents.FirstOrDefault().Tree[indexPath].Target.Id));
 
