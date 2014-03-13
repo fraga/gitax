@@ -5,6 +5,7 @@ using System.Text;
 using System.IO;
 using LibGit2Sharp;
 using LibGit2Sharp.Handlers;
+using System.Reflection;
 
 namespace GTXLibGit2Sharp
 {
@@ -28,7 +29,16 @@ namespace GTXLibGit2Sharp
         /// <returns>Libgit2Sharp version</returns>
         public static string Version()
         {
-            return String.Format("GitAx {0} - libGit2Sharp {1}", "1.1.1", Repository.Version);
+            return String.Format("GitAx {0} - libGit2Sharp {1}", GTXVersion(), Repository.Version);
+        }
+
+        /// <summary>
+        /// Get the GTXLibGit2Sharp version
+        /// </summary>
+        /// <returns>GTXLibGit2Sharp assembly version</returns>
+        public static string GTXVersion()
+        {
+            return Assembly.GetExecutingAssembly().GetName().Version.ToString();
         }
 
         /// <summary>
