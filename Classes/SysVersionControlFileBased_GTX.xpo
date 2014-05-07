@@ -561,6 +561,25 @@ Formatversion: 1
         #    return resultMap;
         #}
       ENDSOURCE
+      SOURCE #GTXFileIsDirt
+        #/// <summary>
+        #/// Checks if the file is dirt
+        #/// </summary>
+        #/// <param name="_fileName">
+        #/// The filename to check against the repo
+        #/// </param>
+        #/// <returns>
+        #/// True if the file is dirt (Has been deleted, or modified or added for the first time)
+        #/// </returns>
+        #public boolean GTXFileIsDirt(Filename _fileName)
+        #{
+        #    GTXFileStatus   fileStatus = this.GTXFileStatus(_fileName);
+        #
+        #    return  (fileStatus != GTXFileStatus::Ignored) &&
+        #            (fileStatus != GTXFileStatus::NonExistent) &&
+        #            (fileStatus != GTXFileStatus::Unaltered);
+        #}
+      ENDSOURCE
       SOURCE #GTXFileStatus
         #/// <summary>
         #/// Converts git file status to GTX file status
