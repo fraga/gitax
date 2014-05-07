@@ -112,6 +112,31 @@ namespace GTXLibGit2Sharp
         }
 
         /// <summary>
+        /// Gets a version from an SHA and saves it to another folder
+        /// </summary>
+        /// <param name="repoPath">Repository main path</param>
+        /// <param name="sha">Git SHA</param>
+        /// <param name="destinationPath">The destination path</param>
+        /// <returns>Destination path</returns>
+        public static string FileGetVersion(string repoPath, string fileName, string sha, string destinationPath)
+        {
+            using (Repository repo = new Repository(repoPath))
+            {
+                string indexPath = fileName.Replace(repo.Info.WorkingDirectory, string.Empty);
+
+                var commit = repo.Lookup<Commit>(sha);
+                var blob = (Blob)commit.Tree[indexPath].Target;
+
+                using (StreamWriter writer = new StreamWriter(destinationPath))
+                {
+                    writer.Write(blob.GetContentText(Encoding.UTF8));
+                }
+            }
+
+            return destinationPath;
+        }
+
+        /// <summary>
         /// Resets the changes of a file to it's HEAD last commit
         /// </summary>
         /// <param name="repoPath">Repository main path</param>
