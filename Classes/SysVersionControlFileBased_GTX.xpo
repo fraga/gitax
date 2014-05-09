@@ -571,9 +571,9 @@ Formatversion: 1
         #/// <returns>
         #/// True if the file is dirt (Has been deleted, or modified or added for the first time)
         #/// </returns>
-        #public boolean GTXFileIsDirt(Filename _fileName)
+        #public boolean GTXFileIsDirt(SysVersionControlRepositoryFolder _repositoryFolder, Filename _fileName)
         #{
-        #    GTXFileStatus   fileStatus = this.GTXFileStatus(_fileName);
+        #    GTXFileStatus   fileStatus = this.GTXFileStatus(_repositoryFolder, _fileName);
         #
         #    return  (fileStatus != GTXFileStatus::Ignored) &&
         #            (fileStatus != GTXFileStatus::NonExistent) &&
@@ -590,9 +590,9 @@ Formatversion: 1
         #/// <returns>
         #/// THe file status in the repository
         #/// </returns>
-        #public GTXFileStatus GTXFileStatus(Filename _fileName)
+        #public GTXFileStatus GTXFileStatus(SysVersionControlRepositoryFolder _repositoryFolder, Filename _fileName)
         #{
-        #    int fileStatus = GTXLibGit2Sharp.GTXRepo::FileStatus(repositoryFolder, _fileName);
+        #    int fileStatus = GTXLibGit2Sharp.GTXRepo::FileStatus(_repositoryFolder, _fileName);
         #
         #    switch(fileStatus)
         #    {
