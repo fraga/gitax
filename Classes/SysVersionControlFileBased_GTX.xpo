@@ -53,6 +53,22 @@ Formatversion: 1
         #/// </returns>
         #public str actionTextForCheckedOutFile(Filename _filename)
         #{
+        #    GTXFileStatus   fileStatus;
+        #
+        #    fileStatus = this.GTXFileStatus(repositoryFolder, _filename);
+        #
+        #    switch(fileStatus)
+        #    {
+        #        case GTXFileStatus::Modified:
+        #        case GTXFileStatus::RenamedInWorkDir:
+        #        case GTXFileStatus::Added:
+        #            return 'Update';
+        #        case GTXFileStatus::Untracked:
+        #        case GTXFileStatus::Missing:
+        #        case GTXFileStatus::NonExistent:
+        #        case GTXFileStatus::Ignored:
+        #            return 'Delete';
+        #    }
         #    return 'Update';
         #}
       ENDSOURCE
