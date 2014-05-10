@@ -32,6 +32,8 @@ Formatversion: 1
         #{
         #    switch(_action)
         #    {
+        #        case SysVersionControlSystemFileAction::Delete:
+        #            return 'Delete';
         #        case SysVersionControlSystemFileAction::Edit:
         #            return 'Update';
         #    }
