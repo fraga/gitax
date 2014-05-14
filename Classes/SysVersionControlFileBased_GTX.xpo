@@ -610,7 +610,7 @@ Formatversion: 1
         #/// </returns>
         #public GTXFileStatus GTXFileStatus(SysVersionControlRepositoryFolder _repositoryFolder, Filename _fileName)
         #{
-        #    int fileStatus = GTXLibGit2Sharp.GTXRepo::FileStatus(_repositoryFolder, _fileName);
+        #    int fileStatus = GTXLibGit2Sharp.GTXRepo::GetFileStatus(_repositoryFolder, _fileName);
         #
         #    switch(fileStatus)
         #    {
