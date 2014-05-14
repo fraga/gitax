@@ -237,7 +237,7 @@ namespace GTXLibGit2Sharp
         /// <param name="repoPath">Main repository path</param>
         /// <param name="fileName">The filename to check it's status</param>
         /// <returns>An integer representing the FileStatus</returns>
-        public static int FileStatus(string repoPath, string fileName)
+        public static int GetFileStatus(string repoPath, string fileName)
         {
             FileStatus fileStatus;
 
