@@ -70,8 +70,7 @@ Formatversion: 1
         #        case GTXFileStatus::Untracked:
         #        case GTXFileStatus::Missing:
         #        case GTXFileStatus::NonExistent:
-        #        case GTXFileStatus::Ignored:
-        #            return 'Delete';
+        #            return 'Added';
         #    }
         #    return 'Update';
         #}
