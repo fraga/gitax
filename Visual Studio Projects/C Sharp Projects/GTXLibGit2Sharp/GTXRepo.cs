@@ -50,30 +50,36 @@ namespace GTXLibGit2Sharp
         public static SysVersionControlTmpItem FileHistory(string repoPath, string filePath)
         {
             SysVersionControlTmpItem tmpItem = new SysVersionControlTmpItem();
-
-            //TODO: Dangerous, consider refactoring
-            FileInfo fileInfo = new FileInfo(filePath);
-
-            using (var repo = new Repository(repoPath))
+            try
             {
-                var indexPath = fileInfo.FullName.Replace(repo.Info.WorkingDirectory, string.Empty);
-                var commits = repo.Head.Commits.Where(c => c.Parents.Count() == 1 && c.Tree[indexPath] != null && (c.Parents.FirstOrDefault().Tree[indexPath] == null || c.Tree[indexPath].Target.Id != c.Parents.FirstOrDefault().Tree[indexPath].Target.Id));
-                
-                foreach (Commit commit in commits)
+                FileInfo fileInfo = new FileInfo(filePath);
+
+                using (var repo = new Repository(repoPath))
                 {
-                    tmpItem.User = commit.Author.ToString();
-                    tmpItem.GTXShaShort = commit.Sha.Substring(0, 7);
-                    tmpItem.GTXSha = commit.Sha;
-                    tmpItem.Comment = commit.Message;
-                    tmpItem.ShortComment = commit.MessageShort;
-                    tmpItem.VCSDate = commit.Committer.When.Date;
-                    tmpItem.VCSTime = (int)commit.Committer.When.DateTime.TimeOfDay.TotalSeconds;
-                    tmpItem.Filename_ = FileGetVersion(repoPath, fileInfo.FullName, commit.Sha, Path.Combine(Path.GetTempPath(), commit.Sha + fileInfo.Extension));
-                    tmpItem.InternalFilename = fileInfo.FullName;
-                    tmpItem.ItemPath = indexPath;
-                    tmpItem.insert();
+                    var indexPath = fileInfo.FullName.Replace(repo.Info.WorkingDirectory, string.Empty);
+                    var commits = repo.Head.Commits.Where(c => c.Parents.Count() == 1 && c.Tree[indexPath] != null && (c.Parents.FirstOrDefault().Tree[indexPath] == null || c.Tree[indexPath].Target.Id != c.Parents.FirstOrDefault().Tree[indexPath].Target.Id));
+
+                    foreach (Commit commit in commits)
+                    {
+                        tmpItem.User = commit.Author.ToString();
+                        tmpItem.GTXShaShort = commit.Sha.Substring(0, 7);
+                        tmpItem.GTXSha = commit.Sha;
+                        tmpItem.Comment = commit.Message;
+                        tmpItem.ShortComment = commit.MessageShort;
+                        tmpItem.VCSDate = commit.Committer.When.Date;
+                        tmpItem.VCSTime = (int)commit.Committer.When.DateTime.TimeOfDay.TotalSeconds;
+                        tmpItem.Filename_ = FileGetVersion(repoPath, fileInfo.FullName, commit.Sha, Path.Combine(Path.GetTempPath(), commit.Sha + fileInfo.Extension));
+                        tmpItem.InternalFilename = fileInfo.FullName;
+                        tmpItem.ItemPath = indexPath;
+                        tmpItem.insert();
+                    }
                 }
             }
+            catch (IOException ex)
+            {
+                throw ex;
+            }
+            
             return tmpItem;
         }
 
