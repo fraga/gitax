@@ -165,7 +165,11 @@ namespace GTXLibGit2Sharp
                             : CheckoutModifiers.None
                 };
 
-                var fileCommits = repo.Head.Commits.Where(c => c.Parents.Count() == 1 && c.Tree[indexPath] != null && (c.Parents.FirstOrDefault().Tree[indexPath] == null || c.Tree[indexPath].Target.Id != c.Parents.FirstOrDefault().Tree[indexPath].Target.Id));
+                var fileCommits = repo.Head.Commits.Where(c => c.Parents.Count() == 1 && 
+                                                          c.Tree[indexPath] != null   && 
+                                                          (c.Parents.FirstOrDefault().Tree[indexPath] == null || 
+                                                            c.Tree[indexPath].Target.Id != c.Parents.FirstOrDefault().Tree[indexPath].Target.Id)
+                                                          );
 
                 if (fileCommits.Any())
                 {
