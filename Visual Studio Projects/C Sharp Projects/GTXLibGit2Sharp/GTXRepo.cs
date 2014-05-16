@@ -131,7 +131,13 @@ namespace GTXLibGit2Sharp
                 string indexPath = fileName.Replace(repo.Info.WorkingDirectory, string.Empty);
 
                 var commit = repo.Lookup<Commit>(sha);
-                var blob = (Blob)commit.Tree[indexPath].Target;
+                
+                Blob blob = null;
+
+                if (commit != null)
+                    blob = (Blob)commit.Tree[indexPath].Target;
+                else
+                    blob = (Blob)repo.Lookup(sha, ObjectType.Blob);
 
                 using (StreamWriter writer = new StreamWriter(destinationPath))
                 {
