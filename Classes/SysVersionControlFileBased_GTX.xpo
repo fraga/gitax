@@ -586,6 +586,9 @@ Formatversion: 1
         #/// <summary>
         #/// Checks if the file is dirt
         #/// </summary>
+        #/// <param name="_repositoryFolder">
+        #/// The main repository folder
+        #/// </param>
         #/// <param name="_fileName">
         #/// The filename to check against the repo
         #/// </param>
@@ -605,6 +608,9 @@ Formatversion: 1
         #/// <summary>
         #/// Converts git file status to GTX file status
         #/// </summary>
+        #/// <param name="_repositoryFolder">
+        #/// The main repository folder
+        #/// </param>
         #/// <param name="_fileName">
         #/// The filename to check it's status in the repository.
         #/// </param>
