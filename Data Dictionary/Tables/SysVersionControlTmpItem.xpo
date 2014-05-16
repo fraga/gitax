@@ -10,6 +10,16 @@ Formatversion: 1
   TABLE #SysVersionControlTmpItem
     EnforceFKRelation 0
     FIELDS
+      FIELD #GTXFileRepoStatus
+        ENUM
+        PROPERTIES
+          Name                #GTXFileRepoStatus
+          Table               #SysVersionControlTmpItem
+          Origin              #{89AC2641-0522-41E5-A4CE-25F6412F1CC3}
+          ExtendedDataType    #GTXFileRepoStatus
+          EnumType            #GTXFileStatus
+        ENDPROPERTIES
+        
       FIELD #GTXSha
         STRING
         PROPERTIES
@@ -32,6 +42,19 @@ Formatversion: 1
         
     ENDFIELDS
     GROUPS
+      GROUP #ChangelistGrid
+        PROPERTIES
+          Name                #ChangelistGrid
+          Label               #@SYS9039
+        ENDPROPERTIES
+        
+        GROUPFIELDS
+          #ItemPath
+          #Version
+          #ActionText
+          #GTXFileRepoStatus
+        ENDGROUPFIELDS
+      ENDGROUP
       GROUP #ModifiedBy
         PROPERTIES
           Name                #ModifiedBy
