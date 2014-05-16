@@ -49,6 +49,8 @@ FORM #SysVersionControlItemHistory
       #            gridOverview_Version.visible(false);
       #            GridOverview_ActionText.visible(false);
       #            ModifiedBy_ComputerName.visible(false);
+      #            ModifiedBy_GTXSha.visible(true);
+      #            Overview_GTXShaShort.visible(true);
       #            element.design().titleDatasource('');
       #        }
       #        //</GTX>
@@ -110,6 +112,7 @@ FORM #SysVersionControlItemHistory
         PROPERTIES
           Name                #ModifiedBy_GTXSha
           AutoDeclaration     #Yes
+          Visible             #No
           ElementPosition     #536870910
           HierarchyParent     #ModifiedBy
           DataSource          #SysVersionControlTmpItem
@@ -137,6 +140,8 @@ FORM #SysVersionControlItemHistory
         PROPERTIES
           Name                #Overview_GTXShaShort
           ElementPosition     #805306365
+          AutoDeclaration     #Yes
+          Visible             #No
           HierarchyParent     #Overview
           DataSource          #SysVersionControlTmpItem
           DataField           #GTXShaShort
