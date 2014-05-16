@@ -180,12 +180,10 @@ namespace GTXLibGit2Sharp
                 if (fileCommits.Any())
                 {
                     var lastCommit = fileCommits.First();
-                    repo.CheckoutPaths(lastCommit.Id.Sha, new [] { fileName }, checkoutOptions);
-
-                    return true;
+                    repo.CheckoutPaths(lastCommit.Id.Sha, new[] { fileName }, checkoutOptions);
                 }
 
-                return false;
+                return true;
             }
         }
 
