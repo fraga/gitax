@@ -264,5 +264,55 @@ namespace GTXLibGit2Sharp
             return (int)fileStatus;
         }
 
+        /// <summary>
+        /// Gets all files that are dirty in index
+        /// </summary>
+        /// <param name="repoPath">Repository main path</param>
+        /// <returns>A list of files that have status dirt in index</returns>
+        public static SysVersionControlTmpItem GetFilesInIndex(string repoPath)
+        {
+            SysVersionControlTmpItem tmpItem = new SysVersionControlTmpItem();
+
+            using (Repository repo = new Repository(repoPath))
+            {
+                if (!repo.Index.RetrieveStatus().IsDirty)
+                    return tmpItem;
+
+                var allDirtFiles = repo.Index.RetrieveStatus(new StatusOptions { Show = StatusShowOption.IndexAndWorkDir }).
+                                        Where(t => t.State != FileStatus.Unaltered && t.State != FileStatus.Ignored);
+                
+                foreach (var dirtFile in allDirtFiles)
+                {
+                    FileInfo fileInfo = new FileInfo(Path.Combine(repoPath, dirtFile.FilePath));
+
+                    IndexEntry indexEntry = repo.Index[dirtFile.FilePath];
+
+                    //No index entry means new file, untracked content
+                    if (indexEntry != null)
+                    {
+                        tmpItem.GTXShaShort = indexEntry.Id.Sha.Substring(0, 7);
+                        tmpItem.GTXSha = indexEntry.Id.Sha;
+                        tmpItem.Filename_ = FileGetVersion(repoPath, fileInfo.FullName, indexEntry.Id.Sha, Path.Combine(Path.GetTempPath(), indexEntry.Id.Sha + fileInfo.Extension));
+                        tmpItem.InternalFilename = fileInfo.FullName;
+                        tmpItem.ItemPath = indexEntry.Path;
+                    }
+                    else
+                    {
+                        var tempFileName = Path.Combine(Path.GetTempPath(), fileInfo.Name);
+
+                        File.Copy(fileInfo.FullName, tempFileName, true);
+
+                        tmpItem.Filename_ = tempFileName;
+                        tmpItem.InternalFilename = fileInfo.FullName;
+                        tmpItem.ItemPath = dirtFile.FilePath;
+                    }
+                    tmpItem.insert();
+                }
+                
+            }
+
+            return tmpItem;
+        }
+
     }
 }
