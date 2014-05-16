@@ -1,0 +1,32 @@
+﻿Exportfile for AOT version 1.0 or later
+Formatversion: 1
+
+***Element: UTE
+
+; Microsoft Dynamics AX Enum: GTXFileRepoStatus unloaded
+; --------------------------------------------------------------------------------
+  USERTYPEVERSION 6
+  
+  USERTYPE #GTXFileRepoStatus
+  ENUM
+    PROPERTIES
+      Name                #GTXFileRepoStatus
+      Label               #Status
+      HelpText            #The status of the file in the repository
+      Origin              #{2DE6485B-92CF-415E-9529-5D89B9F0BF96}
+      EnumType            #GTXFileStatus
+    ENDPROPERTIES
+    
+    TYPEELEMENTS
+    ENDTYPEELEMENTS
+    
+    TYPEREFERENCES
+    ENDTYPEREFERENCES
+    
+    TYPELOOKUPS
+    ENDTYPELOOKUPS
+    
+  ENDUSERTYPE
+  
+
+***Element: END
