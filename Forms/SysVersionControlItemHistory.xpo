@@ -70,7 +70,7 @@ FORM #SysVersionControlItemHistory
       CONTROL DATEEDIT
         PROPERTIES
           Name                #ModifiedBy_VCSDate
-          ElementPosition     #1431655764
+          ElementPosition     #1533916890
           HierarchyParent     #ModifiedBy
           DataSource          #SysVersionControlTmpItem
           DataField           #VCSDate
@@ -98,7 +98,7 @@ FORM #SysVersionControlItemHistory
         PROPERTIES
           Name                #ModifiedBy_ComputerName
           AutoDeclaration     #Yes
-          ElementPosition     #1073741823
+          ElementPosition     #1227133512
           HierarchyParent     #ModifiedBy
           DataSource          #SysVersionControlTmpItem
           DataField           #ComputerName
@@ -113,7 +113,7 @@ FORM #SysVersionControlItemHistory
           Name                #ModifiedBy_GTXSha
           AutoDeclaration     #Yes
           Visible             #No
-          ElementPosition     #536870910
+          ElementPosition     #613566756
           HierarchyParent     #ModifiedBy
           DataSource          #SysVersionControlTmpItem
           DataField           #GTXSha
@@ -126,7 +126,7 @@ FORM #SysVersionControlItemHistory
       CONTROL STRINGEDIT
         PROPERTIES
           Name                #ModifiedBy_User
-          ElementPosition     #805306365
+          ElementPosition     #920350134
           HierarchyParent     #ModifiedBy
           DataSource          #SysVersionControlTmpItem
           DataField           #User
@@ -139,9 +139,9 @@ FORM #SysVersionControlItemHistory
       CONTROL STRINGEDIT
         PROPERTIES
           Name                #Overview_GTXShaShort
-          ElementPosition     #805306365
           AutoDeclaration     #Yes
           Visible             #No
+          ElementPosition     #715827882
           HierarchyParent     #Overview
           DataSource          #SysVersionControlTmpItem
           DataField           #GTXShaShort
@@ -154,7 +154,7 @@ FORM #SysVersionControlItemHistory
       CONTROL TIMEEDIT
         PROPERTIES
           Name                #ModifiedBy_VCSTime
-          ElementPosition     #1789569705
+          ElementPosition     #1840700268
           HierarchyParent     #ModifiedBy
           DataSource          #SysVersionControlTmpItem
           DataField           #VCSTime
