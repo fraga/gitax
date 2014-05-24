@@ -231,16 +231,10 @@ namespace GTXLibGit2Sharp
             {
                 repo.CheckoutPaths(repo.Head.Tip.Id.Sha, new[] { folderPath }, checkoutOptions);
                 tipSha = repo.Head.Tip.Id.Sha;
+
+                InitTmpItemFromTree(repoPath, repo.Head.Tip.Tree, ref tmpItem);
+
             }
-            
-            //TODO: We should get a list of files from the repository
-            Directory.EnumerateFiles(folderPath, "*.xpo", SearchOption.AllDirectories).ToList().ForEach(f =>
-            {
-                tmpItem.ItemPath = "\\" + f.Replace(repoPath, string.Empty);
-                tmpItem.GTXSha = tipSha;
-                tmpItem.ActionText = "Update";
-                tmpItem.insert();
-            });
 
             return tmpItem;
         }
@@ -312,6 +306,37 @@ namespace GTXLibGit2Sharp
             }
 
             return tmpItem;
+        }
+
+        /// <summary>
+        /// Initializes a SysVersionControlTmpItem from a tree path
+        /// </summary>
+        /// <param name="repoPath">The main repo path</param>
+        /// <param name="tree">The tree git to iterate from</param>
+        /// <param name="tmpItem">ref to the SysVersionControlTmpItem</param>
+        /// <param name="recursive">If true will go recursively to all tree entries found (in case of a dir)</param>
+        public static void InitTmpItemFromTree(string repoPath, Tree tree, ref SysVersionControlTmpItem tmpItem, bool recursive = true)
+        {
+            if (tmpItem == null)
+                tmpItem = new SysVersionControlTmpItem();
+
+            foreach (var treeEntry in tree)
+            {
+                if (treeEntry.TargetType == TreeEntryTargetType.Tree && recursive)
+                    InitTmpItemFromTree(repoPath, treeEntry.Target as Tree, ref tmpItem);
+
+                if (treeEntry.Mode == Mode.Directory || treeEntry.Mode == Mode.ExecutableFile || treeEntry.Mode == Mode.GitLink)
+                    continue;
+
+                string fileName = Path.Combine(repoPath, treeEntry.Path);
+
+                tmpItem.ItemPath = "\\" + treeEntry.Path.Replace(repoPath, string.Empty);
+                tmpItem.Filename_ = fileName;
+                tmpItem.InternalFilename = fileName;
+                tmpItem.insert();
+
+            }
+
         }
 
     }
