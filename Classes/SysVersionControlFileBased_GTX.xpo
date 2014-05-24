@@ -445,7 +445,11 @@ Formatversion: 1
         #    SysVersionControlChangeListId _changeListId,
         #    SysVersionControlRepositoryFolder _folder)
         #{
-        #    return null;
+        #    SysVersionControlTmpItem tmpItem;
+        #
+        #    tmpItem = GTXLibGit2Sharp.GTXRepo::GetFilesInIndex(repositoryFolder);
+        #
+        #    return tmpItem;
         #}
       ENDSOURCE
       SOURCE #fileSynchronize
