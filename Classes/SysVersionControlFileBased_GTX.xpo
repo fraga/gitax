@@ -59,7 +59,7 @@ Formatversion: 1
         #{
         #    GTXFileStatus   fileStatus;
         #
-        #    fileStatus = this.GTXFileStatus(repositoryFolder, _filename);
+        #    fileStatus = GTXFileUtil::fileStatus(repositoryFolder, _filename);
         #
         #    switch(fileStatus)
         #    {
@@ -584,77 +584,6 @@ Formatversion: 1
         #    }
         #
         #    return resultMap;
-        #}
-      ENDSOURCE
-      SOURCE #GTXFileIsDirt
-        #/// <summary>
-        #/// Checks if the file is dirt
-        #/// </summary>
-        #/// <param name="_repositoryFolder">
-        #/// The main repository folder
-        #/// </param>
-        #/// <param name="_fileName">
-        #/// The filename to check against the repo
-        #/// </param>
-        #/// <returns>
-        #/// True if the file is dirt (Has been deleted, or modified or added for the first time)
-        #/// </returns>
-        #public boolean GTXFileIsDirt(SysVersionControlRepositoryFolder _repositoryFolder, Filename _fileName)
-        #{
-        #    GTXFileStatus   fileStatus = this.GTXFileStatus(_repositoryFolder, _fileName);
-        #
-        #    return  (fileStatus != GTXFileStatus::Ignored) &&
-        #            (fileStatus != GTXFileStatus::NonExistent) &&
-        #            (fileStatus != GTXFileStatus::Unaltered);
-        #}
-      ENDSOURCE
-      SOURCE #GTXFileStatus
-        #/// <summary>
-        #/// Converts git file status to GTX file status
-        #/// </summary>
-        #/// <param name="_repositoryFolder">
-        #/// The main repository folder
-        #/// </param>
-        #/// <param name="_fileName">
-        #/// The filename to check it's status in the repository.
-        #/// </param>
-        #/// <returns>
-        #/// THe file status in the repository
-        #/// </returns>
-        #public GTXFileStatus GTXFileStatus(SysVersionControlRepositoryFolder _repositoryFolder, Filename _fileName)
-        #{
-        #    int fileStatus = GTXLibGit2Sharp.GTXRepo::GetFileStatus(_repositoryFolder, _fileName);
-        #
-        #    switch(fileStatus)
-        #    {
-        #        case 0: /* GIT_STATUS_CURRENT */
-        #            return GTXFileStatus::Unaltered;
-        #        case 1 << 0: /* GIT_STATUS_INDEX_NEW */
-        #            return GTXFileStatus::Added;
-        #        case 1 << 1: /* GIT_STATUS_INDEX_MODIFIED */
-        #            return GTXFileStatus::Staged;
-        #        case 1 << 2: /* GIT_STATUS_INDEX_DELETED */
-        #            return GTXFileStatus::Removed;
-        #        case 1 << 3: /* GIT_STATUS_INDEX_RENAMED */
-        #            return GTXFileStatus::RenamedInIndex;
-        #        case 1 << 4: /* GIT_STATUS_INDEX_TYPECHANGE */
-        #            return GTXFileStatus::StagedTypeChange;
-        #        case 1 << 7: /* GIT_STATUS_WT_NEW */
-        #            return GTXFileStatus::Untracked;
-        #        case 1 << 8: /* GIT_STATUS_WT_MODIFIED */
-        #            return GTXFileStatus::Modified;
-        #        case 1 << 9: /* GIT_STATUS_WT_DELETED */
-        #            return GTXFileStatus::Missing;
-        #        case 1 << 10: /* GIT_STATUS_WT_TYPECHANGE */
-        #            return GTXFileStatus::TypeChanged;
-        #        case 1 << 11: /* GIT_STATUS_WT_RENAMED */
-        #            return GTXFileStatus::RenamedInWorkDir;
-        #        case 1 << 14: /* GIT_STATUS_IGNORED */
-        #            return GTXFileStatus::Ignored;
-        #        default: /* (1 << 31) */
-        #            return GTXFileStatus::NonExistent;
-        #    }
-        #
         #}
       ENDSOURCE
       SOURCE #init
