@@ -1,0 +1,112 @@
+﻿Exportfile for AOT version 1.0 or later
+Formatversion: 1
+
+***Element: FRM
+
+; Microsoft Dynamics AX Forms unloaded
+; --------------------------------------------------------------------------------
+FRMVERSION 12
+
+FORM #SysVersionControlCheckedOut
+  PROPERTIES
+    Name                #SysVersionControlCheckedOut
+    Origin              #{004BC647-42A1-48E5-A3FC-4DFF5DFDB09C}
+  ENDPROPERTIES
+  
+  METHODS
+    SOURCE #init
+      #public void init()
+      #{
+      #    SysVersionControlSystem sysVersionControlSystem = versioncontrol.parmSysVersionControlSystem();
+      #
+      #    if (SysVersionControlParameters::find().vcsEnabled == EnableDisable::Disable)
+      #    {
+      #        throw error("@SYS135983" + ' ' + strfmt("@SYS120745", "@SYS85914"), '', SysInfoAction_Formrun::newFormname(formstr(SysVersionControlParametersDev)));
+      #    }
+      #
+      #    super();
+      #
+      #    aotImage.imageList(new ImageListAppl_Aot().imageList());
+      #
+      #    if (sysVersionControlSystem)
+      #    {
+      #        if (!sysVersionControlSystem.supportReviews())
+      #        {
+      #            sysVersionControlReview.visible(false);
+      #        }
+      #        if (!sysVersionControlSystem.supportPendingChangeLists())
+      #        {
+      #            changeListId.visible(false);
+      #        }
+      #        if (!sysVersionControlSystem.supportChangeVersion())
+      #        {
+      #            overview_Version.visible(false);
+      #        }
+      #        if (!sysVersionControlSystem.supportImportOfPendingElements())
+      #        {
+      #            importList.visible(false);
+      #        }
+      #        //<GTX>
+      #        if(SysVersionControlParameters::getVCSType() == SysVersionControlType::SysVersionControlGitax)
+      #        {
+      #            element.design().titleDatasource('');
+      #            overview_Version.visible(false);
+      #            overview_actionText.visible(false);
+      #            Overview_GTXFileRepoStatus.visible(true);
+      #        }
+      #        //</GTX>
+      #    }
+      #}
+    ENDSOURCE
+  ENDMETHODS
+  OBJECTBANK
+  ENDOBJECTBANK
+  
+  PARTREFERENCES
+  ENDPARTREFERENCES
+  
+  DESIGN
+    CONTAINER
+      CONTROL COMBOBOX
+        PROPERTIES
+          Name                #Overview_GTXFileRepoStatus
+          AutoDeclaration     #Yes
+          Visible             #No
+          ElementPosition     #1968526674
+          HierarchyParent     #Overview
+          DataSource          #SysVersionControlTmpItem
+          DataField           #GTXFileRepoStatus
+        ENDPROPERTIES
+        
+        METHODS
+        ENDMETHODS
+      ENDCONTROL 
+      
+      CONTROL STRINGEDIT
+        PROPERTIES
+          Name                #Overview_ActionText
+          AutoDeclaration     #Yes
+          ElementPosition     #1789569704
+          HierarchyParent     #Overview
+          DataSource          #SysVersionControlTmpItem
+          DataField           #ActionText
+        ENDPROPERTIES
+        
+        METHODS
+        ENDMETHODS
+      ENDCONTROL 
+      
+    ENDCONTAINER
+    
+  ENDDESIGN
+  
+  PERMISSIONS #Permissions
+    PROPERTIES
+    ENDPROPERTIES
+    
+  ENDPERMISSIONS
+  
+ENDFORM
+
+
+***Element: END
