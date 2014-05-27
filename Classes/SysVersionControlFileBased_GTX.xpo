@@ -59,7 +59,7 @@ Formatversion: 1
         #{
         #    GTXFileStatus   fileStatus;
         #
-        #    fileStatus = GTXFileUtil::fileStatus(repositoryFolder, _filename);
+        #    fileStatus = GTXLibGit2Sharp.GTXRepo::GetFileStatus(repositoryFolder, _filename);
         #
         #    switch(fileStatus)
         #    {

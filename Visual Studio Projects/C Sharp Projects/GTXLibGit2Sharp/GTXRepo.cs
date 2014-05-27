@@ -71,6 +71,7 @@ namespace GTXLibGit2Sharp
                         tmpItem.Filename_ = FileGetVersion(repoPath, fileInfo.FullName, commit.Sha, Path.Combine(Path.GetTempPath(), commit.Sha + fileInfo.Extension));
                         tmpItem.InternalFilename = fileInfo.FullName;
                         tmpItem.ItemPath = indexPath;
+                        tmpItem.GTXFileRepoStatus = GetFileStatus(repoPath, fileInfo.FullName);
                         tmpItem.insert();
                     }
                 }
@@ -245,17 +246,55 @@ namespace GTXLibGit2Sharp
         /// <param name="repoPath">Main repository path</param>
         /// <param name="fileName">The filename to check it's status</param>
         /// <returns>An integer representing the FileStatus</returns>
-        public static int GetFileStatus(string repoPath, string fileName)
+        public static GTXFileStatus GetFileStatus(string repoPath, string fileName)
         {
-            FileStatus fileStatus;
+            int fileStatus;
 
             using (Repository repo = new Repository(repoPath))
             {
                 string indexPath = fileName.Replace(repo.Info.WorkingDirectory, string.Empty);
-                fileStatus = repo.Index.RetrieveStatus(indexPath);
+                fileStatus = (int)repo.Index.RetrieveStatus(indexPath);
             }
 
-            return (int)fileStatus;
+            return GetGTXFileStatus(fileStatus);
+        }
+
+        /// <summary>
+        /// Due to restrictions on enum in AX, we're getting GTXFileStatus enum type from here
+        /// </summary>
+        /// <param name="fileStatus">LibGit2Sharp standard fileStatus</param>
+        /// <returns>GTXFileStatus according to LibGit2Sharp</returns>
+        private static GTXFileStatus GetGTXFileStatus(int fileStatus)
+        {
+            switch (fileStatus)
+            {
+                case 0: /* GIT_STATUS_CURRENT */
+                    return GTXFileStatus.Unaltered;
+                case 1 << 0: /* GIT_STATUS_INDEX_NEW */
+                    return GTXFileStatus.Added;
+                case 1 << 1: /* GIT_STATUS_INDEX_MODIFIED */
+                    return GTXFileStatus.Staged;
+                case 1 << 2: /* GIT_STATUS_INDEX_DELETED */
+                    return GTXFileStatus.Removed;
+                case 1 << 3: /* GIT_STATUS_INDEX_RENAMED */
+                    return GTXFileStatus.RenamedInIndex;
+                case 1 << 4: /* GIT_STATUS_INDEX_TYPECHANGE */
+                    return GTXFileStatus.StagedTypeChange;
+                case 1 << 7: /* GIT_STATUS_WT_NEW */
+                    return GTXFileStatus.Untracked;
+                case 1 << 8: /* GIT_STATUS_WT_MODIFIED */
+                    return GTXFileStatus.Modified;
+                case 1 << 9: /* GIT_STATUS_WT_DELETED */
+                    return GTXFileStatus.Missing;
+                case 1 << 10: /* GIT_STATUS_WT_TYPECHANGE */
+                    return GTXFileStatus.TypeChanged;
+                case 1 << 11: /* GIT_STATUS_WT_RENAMED */
+                    return GTXFileStatus.RenamedInWorkDir;
+                case 1 << 14: /* GIT_STATUS_IGNORED */
+                    return GTXFileStatus.Ignored;
+                default: /* (1 << 31) */
+                    return GTXFileStatus.NonExistent;
+            }
         }
 
         /// <summary>
@@ -289,6 +328,7 @@ namespace GTXLibGit2Sharp
                         tmpItem.Filename_ = FileGetVersion(repoPath, fileInfo.FullName, indexEntry.Id.Sha, Path.Combine(Path.GetTempPath(), indexEntry.Id.Sha + fileInfo.Extension));
                         tmpItem.InternalFilename = fileInfo.FullName;
                         tmpItem.ItemPath = indexEntry.Path;
+                        tmpItem.GTXFileRepoStatus = GetFileStatus(repoPath, fileInfo.FullName);
                     }
                     else
                     {
@@ -299,6 +339,7 @@ namespace GTXLibGit2Sharp
                         tmpItem.Filename_ = tempFileName;
                         tmpItem.InternalFilename = fileInfo.FullName;
                         tmpItem.ItemPath = dirtFile.FilePath;
+                        tmpItem.GTXFileRepoStatus = GetFileStatus(repoPath, fileInfo.FullName);
                     }
                     tmpItem.insert();
                 }
