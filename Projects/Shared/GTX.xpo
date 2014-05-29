@@ -93,6 +93,12 @@ Formatversion: 1
         PreventEditProperties #No
       ENDPROPERTIES
       
+      BEGINNODE
+        FILETYPE 0
+        UTILTYPE 45
+        NODETYPE 329
+        NAME #GTXDummyClass
+      ENDNODE
       GROUP #Mocks
         PROPERTIES
           Name                #Mocks
@@ -109,12 +115,6 @@ Formatversion: 1
         ENDNODE
         ENDGROUP
         
-      BEGINNODE
-        FILETYPE 0
-        UTILTYPE 45
-        NODETYPE 329
-        NAME #GTXDummy
-      ENDNODE
       BEGINNODE
         FILETYPE 0
         UTILTYPE 45
