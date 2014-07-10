@@ -371,10 +371,13 @@ namespace GTXLibGit2Sharp
 
                 string fileName = Path.Combine(repoPath, treeEntry.Path);
 
-                tmpItem.ItemPath = "\\" + treeEntry.Path.Replace(repoPath, string.Empty);
-                tmpItem.Filename_ = fileName;
-                tmpItem.InternalFilename = fileName;
-                tmpItem.insert();
+                if (SysVersionControlTmpItem.isValidXPOFile(fileName))
+                {
+                    tmpItem.ItemPath = "\\" + treeEntry.Path.Replace(repoPath, string.Empty);
+                    tmpItem.Filename_ = fileName;
+                    tmpItem.InternalFilename = fileName;
+                    tmpItem.insert();
+                }
 
             }
 
