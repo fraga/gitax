@@ -264,7 +264,7 @@ namespace GTXLibGit2Sharp
         /// </summary>
         /// <param name="fileStatus">LibGit2Sharp standard fileStatus</param>
         /// <returns>GTXFileStatus according to LibGit2Sharp</returns>
-        private static GTXFileStatus GetGTXFileStatus(int fileStatus)
+        private static GTXLibGit2Sharp.GTXFileStatus GetGTXFileStatus(int fileStatus)
         {
             switch (fileStatus)
             {
