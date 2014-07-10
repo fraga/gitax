@@ -15,6 +15,64 @@ Formatversion: 1
   ENDPROPERTIES
   
     PROJECTCLASS ProjectNode
+    GROUP #Menu_Items
+      PROPERTIES
+        Name                #Menu_Items
+        ProjectGroupType    #MenuItems
+        GroupMask           #
+        PreventEditProperties #No
+      ENDPROPERTIES
+      
+      GROUP #Action
+        PROPERTIES
+          Name                #Action
+          ProjectGroupType    #Action
+          GroupMask           #
+          PreventEditProperties #No
+        ENDPROPERTIES
+        
+        BEGINNODE
+          FILETYPE 0
+          UTILTYPE 3
+          NODETYPE 296
+          NAME #GTXPendingVCSObjects
+        ENDNODE
+        ENDGROUP
+        
+      ENDGROUP
+      
+    GROUP #Services
+      PROPERTIES
+        Name                #Services
+        ProjectGroupType    #Services
+        GroupMask           #
+        PreventEditProperties #No
+      ENDPROPERTIES
+      
+      BEGINNODE
+        FILETYPE 0
+        UTILTYPE 76
+        NODETYPE 1321
+        NAME #GTXPendingVCSObjectsService
+      ENDNODE
+      ENDGROUP
+      
+    GROUP #Label_Files
+      PROPERTIES
+        Name                #Label_Files
+        ProjectGroupType    #LabelFiles
+        GroupMask           #
+        PreventEditProperties #No
+      ENDPROPERTIES
+      
+      BEGINNODE
+        FILETYPE 0
+        UTILTYPE 117
+        NODETYPE 831
+        NAME #GTX
+      ENDNODE
+      ENDGROUP
+      
     GROUP #Visual_Studio_Projects
       PROPERTIES
         Name                #Visual_Studio_Projects
@@ -66,6 +124,18 @@ Formatversion: 1
         UTILTYPE 11
         NODETYPE 201
         NAME #SysVersionControlItemHistory
+      ENDNODE
+      BEGINNODE
+        FILETYPE 0
+        UTILTYPE 11
+        NODETYPE 201
+        NAME #TaxWithholdSettleTrans_IN
+      ENDNODE
+      BEGINNODE
+        FILETYPE 0
+        UTILTYPE 11
+        NODETYPE 201
+        NAME #VendSpecTransOverview
       ENDNODE
       ENDGROUP
       
@@ -120,6 +190,12 @@ Formatversion: 1
         UTILTYPE 45
         NODETYPE 329
         NAME #GTXFileUtil
+      ENDNODE
+      BEGINNODE
+        FILETYPE 0
+        UTILTYPE 45
+        NODETYPE 329
+        NAME #GTXPendingVCSObjects
       ENDNODE
       BEGINNODE
         FILETYPE 0
