@@ -37,6 +37,17 @@ We follow Microsoft best practices for Dynamics AX.
 * Never use infolog.add directly. Use the indirection methods: error, warning, info and checkFailed.
 * Design your application to avoid deadlocks.
 
+## Compiler
+
+* Set compiler to level 4 and BP errors.
+* Fix all BP errors
+
+## Project Specific
+
+* Use GTX prefix on new objects.
+* Use GTX prefix on new fields/methods added on existing classes/tables.
+* Use //<GTX> //</GTX> when adding/modifying methods
+
 # Additional Resources
 
 [Best Practices for Microsoft Dynamics AX Development AX 2012](http://msdn.microsoft.com/en-us/library/aa658028.aspx)
