@@ -163,6 +163,12 @@ Formatversion: 1
         PreventEditProperties #No
       ENDPROPERTIES
       
+      BEGINNODE
+        FILETYPE 0
+        UTILTYPE 45
+        NODETYPE 329
+        NAME #SysTreeNodeVirtualVCS
+      ENDNODE
       GROUP #Mocks
         PROPERTIES
           Name                #Mocks
