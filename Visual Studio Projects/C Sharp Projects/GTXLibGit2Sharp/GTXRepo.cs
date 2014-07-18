@@ -383,5 +383,20 @@ namespace GTXLibGit2Sharp
 
         }
 
+        /// <summary>
+        /// Verifies if the relative path is the root folder
+        /// </summary>
+        /// <param name="repoPath">The main repo path</param>
+        /// <param name="relativePath">Relative path to compare too</param>
+        /// <returns>True if the relative path is the root git folder path</returns>
+        public static bool IsRootFolder(string repoPath, string relativePath)
+        {
+            using (Repository repo = new Repository(repoPath))
+            {
+                return repo.Info.WorkingDirectory.Equals(relativePath);
+            }
+
+        }
+
     }
 }
