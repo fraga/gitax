@@ -51,6 +51,13 @@ Formatversion: 1
         #    return #ModelId_Undefined;
         #}
       ENDSOURCE
+      SOURCE #GTXIsRootFolder
+        #public boolean GTXIsRootFolder(str repoPath, str relativePath)
+        #{
+        #    ;
+        #    return GTXLibGit2Sharp.GTXRepo::IsRootFolder(repoPath, relativePath);
+        #}
+      ENDSOURCE
       SOURCE #GTXstripFilePathDelimiter
         #/// <summary>
         #/// Removes the folders delimiter
