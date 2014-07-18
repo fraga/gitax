@@ -1,0 +1,37 @@
+﻿Exportfile for AOT version 1.0 or later
+Formatversion: 1
+
+***Element: CLS
+
+; Microsoft Dynamics AX Class: SysTreeNodeVirtualVCS unloaded
+; --------------------------------------------------------------------------------
+  CLSVERSION 1
+  
+  CLASS #SysTreeNodeVirtualVCS
+    PROPERTIES
+      Name                #SysTreeNodeVirtualVCS
+      Extends             #SysTreeNodeVirtual
+      Origin              #{2D1503CA-0000-1000-432F-1228C23A286F}
+      LegacyId            #970
+    ENDPROPERTIES
+    
+    METHODS
+      SOURCE #comparableName
+        #public str comparableName()
+        #{
+        #    //<GTX>
+        #    if(SysVersionControlParameters::getVCSType() == SysVersionControlType::SysVersionControlGitax)
+        #        return strFmt('%1 (%2)', vcsItem.itemPathUsingObjectName(), vcsItem.GTXShaShort);
+        #    //</GTX>
+        #    if (vcsItem.ChangeNumber &&
+        #        vcsItem.ChangeNumber != vcsItem.Version)
+        #    {
+        #        return strfmt('%1 (Version %2 - %3)', vcsItem.itemPathUsingObjectName(), vcsItem.Version, vcsItem.ChangeNumber);
+        #    }
+        #    return strfmt('%1 (Version %2)', vcsItem.itemPathUsingObjectName(), vcsItem.Version);
+        #}
+      ENDSOURCE
+    ENDMETHODS
+  ENDCLASS
+
+***Element: END
