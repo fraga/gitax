@@ -1,0 +1,27 @@
+﻿Exportfile for AOT version 1.0 or later
+Formatversion: 1
+
+***Element: FTM
+
+; Microsoft Dynamics AX MENUITEM : GTXPendingVCSObjects unloaded
+; --------------------------------------------------------------------------------
+  VERSION 1
+  
+  MENUITEM #GTXPendingVCSObjects
+    Type: 3
+    PROPERTIES
+      Name                #GTXPendingVCSObjects
+      Label               #Get pending VCS objects
+      ObjectType          #Class
+      Object              #SysOperationServiceController
+      Parameters          #GTXPendingVCSObjects.process
+      EnumTypeParameter   #SysOperationExecutionMode
+      EnumParameter       #ReliableAsynchronous
+      RunOn               #Client
+      Origin              #{EFEA510E-6D40-45DB-8D73-C8C13344E157}
+    ENDPROPERTIES
+    
+  ENDMENUITEM
+  
+
+***Element: END

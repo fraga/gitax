@@ -1,0 +1,46 @@
+﻿Exportfile for AOT version 1.0 or later
+Formatversion: 1
+
+***Element: SVC
+
+; Microsoft Dynamics AX SERVICE : GTXPendingVCSObjectsService unloaded
+; --------------------------------------------------------------------------------
+  VERSION 1
+  
+  SERVICE #GTXPendingVCSObjectsService
+    PROPERTIES
+      Name                #GTXPendingVCSObjectsService
+      Class               #GTXPendingVCSObjects
+      Origin              #{2A870D13-B2B9-466A-A6A0-7D9019B70F06}
+    ENDPROPERTIES
+    
+    OPERATIONS
+      OPERATION #process
+        PROPERTIES
+          Name                #process
+          Method              #process
+        ENDPROPERTIES
+        
+        PERMISSIONSET #Permissions
+          PROPERTIES
+          ENDPROPERTIES
+          
+          TABLES #Tables
+          ENDTABLES
+          
+        SERVERMETHODS #Server Methods
+        ENDSERVERMETHODS
+        
+      ASSOCIATEDCODEPERMISSIONS #Associated Code Permissions
+      ENDASSOCIATEDCODEPERMISSIONS
+      
+  ENDPERMISSIONSET
+  
+ENDOPERATION
+
+ENDOPERATIONS
+
+ENDSERVICE
+
+
+***Element: END
