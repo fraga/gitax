@@ -68,6 +68,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="LibGit2Sharp, Version=0.18.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Microsoft Dynamics AX\60\Client\Bin\LibGit2Sharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
