@@ -1,0 +1,21 @@
+﻿Exportfile for AOT version 1.0 or later
+Formatversion: 1
+
+***Element: JOB
+
+; Microsoft Dynamics AX Job: Job1 unloaded
+; --------------------------------------------------------------------------------
+  JOBVERSION 1
+  
+  SOURCE #Job1
+    #static void Job1(Args _args)
+    #{
+    #    info("test");
+    #}
+  ENDSOURCE
+  PROPERTIES
+    Origin              #{2C6C534E-AA3D-4EBD-B921-12CBDB2CDECA}
+  ENDPROPERTIES
+  
+
+***Element: END
