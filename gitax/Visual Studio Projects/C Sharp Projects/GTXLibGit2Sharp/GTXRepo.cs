@@ -24,19 +24,28 @@ namespace GTXLibGit2Sharp
         }
 
         /// <summary>
-        /// Gets the libGit2Sharp version
+        /// Combines GTX and libGit2Sharp version
         /// </summary>
-        /// <returns>Libgit2Sharp version</returns>
+        /// <returns>Combined GTX and Libgit2Sharp version</returns>
         public static string Version()
         {
-            return String.Format("GitAx {0} - libGit2Sharp {1}", GTXVersion(), Repository.Version);
+            return String.Format("GitAx {0} - libGit2Sharp {1}", GetGTXVersion(), GetLibGit2SharpVersion());
+        }
+
+        /// <summary>
+        /// Gets the LibGit2Sharp version
+        /// </summary>
+        /// <returns>LibGit2Sharp version</returns>
+        public static string GetLibGit2SharpVersion()
+        {
+            return Repository.Version;
         }
 
         /// <summary>
         /// Get the GTXLibGit2Sharp version
         /// </summary>
         /// <returns>GTXLibGit2Sharp assembly version</returns>
-        public static string GTXVersion()
+        public static string GetGTXVersion()
         {
             return Assembly.GetExecutingAssembly().GetName().Version.ToString();
         }
