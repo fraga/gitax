@@ -111,12 +111,6 @@ Formatversion: 1
         FILETYPE 0
         UTILTYPE 11
         NODETYPE 201
-        NAME #ProjCategory
-      ENDNODE
-      BEGINNODE
-        FILETYPE 0
-        UTILTYPE 11
-        NODETYPE 201
         NAME #SysVersionControlCheckedOut
       ENDNODE
       BEGINNODE
@@ -124,18 +118,6 @@ Formatversion: 1
         UTILTYPE 11
         NODETYPE 201
         NAME #SysVersionControlItemHistory
-      ENDNODE
-      BEGINNODE
-        FILETYPE 0
-        UTILTYPE 11
-        NODETYPE 201
-        NAME #TaxWithholdSettleTrans_IN
-      ENDNODE
-      BEGINNODE
-        FILETYPE 0
-        UTILTYPE 11
-        NODETYPE 201
-        NAME #VendSpecTransOverview
       ENDNODE
       ENDGROUP
       
@@ -163,12 +145,6 @@ Formatversion: 1
         PreventEditProperties #No
       ENDPROPERTIES
       
-      BEGINNODE
-        FILETYPE 0
-        UTILTYPE 45
-        NODETYPE 329
-        NAME #SysTreeNodeVirtualVCS
-      ENDNODE
       GROUP #Mocks
         PROPERTIES
           Name                #Mocks
@@ -214,6 +190,12 @@ Formatversion: 1
         UTILTYPE 45
         NODETYPE 329
         NAME #GTXSysVersionControlSystemTest
+      ENDNODE
+      BEGINNODE
+        FILETYPE 0
+        UTILTYPE 45
+        NODETYPE 329
+        NAME #SysTreeNodeVirtualVCS
       ENDNODE
       BEGINNODE
         FILETYPE 0

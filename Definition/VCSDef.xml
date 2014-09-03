@@ -38,7 +38,7 @@
   </UnwantedObjectNames>
   <AdditionalFolders />
   <Models>
-    <Model folder="" description="Gitax" aldlocation="" />
+    <Model folder="gitax" description="Gitax" aldlocation="" />
   </Models>
   <PluginSettings />
 </VCSParameters>
