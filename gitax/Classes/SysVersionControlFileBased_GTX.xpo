@@ -37,7 +37,9 @@ Formatversion: 1
         #        case SysVersionControlSystemFileAction::Delete:
         #            return 'Delete';
         #        case SysVersionControlSystemFileAction::Rename:
+        #            return 'Rename';
         #        case SysVersionControlSystemFileAction::Branch:
+        #            return 'Branch';
         #        case SysVersionControlSystemFileAction::Edit:
         #            return 'Update';
         #    }
