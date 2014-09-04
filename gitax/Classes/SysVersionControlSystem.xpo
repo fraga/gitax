@@ -16,6 +16,39 @@ Formatversion: 1
     ENDPROPERTIES
     
     METHODS
+      SOURCE #commandSave
+        #public boolean commandSave(SysVersionControllable _controllable)
+        #{
+        #    Filename filename;
+        #    SysTreeNodeContainer treeNodeContainer = _controllable as SysTreeNodeContainer;
+        #    if (treeNodeContainer != null)
+        #    {
+        #        treeNodeContainer.parmTreeNodeContainerDispatcher().save();
+        #        return true;
+        #    }
+        #
+        #    filename = this.fileName(_controllable);
+        #
+        #    if (!this.allowCreate(_controllable))
+        #    {
+        #        // Skip save operation during XPO import/Synchronization
+        #        if (!versioncontrol.parmIsSynchronizing())
+        #        {
+        #            if (SysVersionControlSynchronizeLog::validateFile(filename))
+        #            {
+        #                if (!_controllable.toFile(filename, true))
+        #                {
+        #                    throw error(strFmt("@SYS26666", filename));
+        #                }
+        #            }
+        #        }
+        #    }
+        #    //<GTX>
+        #    versionControl.colorAOT();
+        #    //</GTX>
+        #    return true;
+        #}
+      ENDSOURCE
       SOURCE #getModelFromFile
         #/// <summary>
         #/// Gets the model ID for the specified file name.
