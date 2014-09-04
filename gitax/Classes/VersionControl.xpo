@@ -1,0 +1,111 @@
+﻿Exportfile for AOT version 1.0 or later
+Formatversion: 1
+
+***Element: CLS
+
+; Microsoft Dynamics AX Class: VersionControl unloaded
+; --------------------------------------------------------------------------------
+  CLSVERSION 1
+  
+  CLASS #VersionControl
+    PROPERTIES
+      Name                #VersionControl
+      Extends             #xVersionControl
+      RunOn               #Client
+      Origin              #{2D0EF007-0000-1000-0BF4-8C429AD9FE53}
+      LegacyId            #61447
+    ENDPROPERTIES
+    
+    METHODS
+      SOURCE #colorAOT
+        #public void colorAOT()
+        #{
+        #    Set checkedOutObjects = new Set(Types::String);
+        #    SysVersionControlTmpItem items;
+        #    SysVersionControlItemPath itemPath;
+        #    Filename filename;
+        #    MapEnumerator modelFolderEnumerator;
+        #    MapEnumerator additionalFolderEnumerator;
+        #    int pos;
+        #    int len;
+        #    str subFolder;
+        #    str checkedOutPath;
+        #    #File
+        #
+        #    void checkMap(MapEnumerator mapEnumerator)
+        #    {
+        #        str addFolder;
+        #
+        #        mapEnumerator.reset();
+        #        while (mapEnumerator.moveNext())
+        #        {
+        #            addFolder = mapEnumerator.currentKey();
+        #            addFolder = strReplace(addFolder,#FilePathDelimiter,'/');
+        #            len = strLen(addFolder);
+        #            if (strScan(subfolder,addFolder,strLen(subFolder),-(len+1)))
+        #            {
+        #                checkedOutObjects.add(checkedOutPath);
+        #                break;
+        #            }
+        #        }
+        #    }
+        #
+        #    if (sysVersionControlSystem && sysVersionControlSystem.parmAOTColoring())
+        #    {
+        #        items = sysVersionControlSystem.getCheckedOutItems();
+        #
+        #        if (sysVersionControlSystem.parmModelFolders())
+        #        {
+        #            modelFolderEnumerator = sysVersionControlSystem.parmModelFolders().getEnumerator();
+        #        }
+        #
+        #        if (sysVersionControlSystem.parmAdditionalFolders())
+        #        {
+        #            additionalFolderEnumerator = sysVersionControlSystem.parmAdditionalFolders().getEnumerator();
+        #        }
+        #
+        #        while select items
+        #        {
+        #
+        #            if (SysTreeNode::SupportsGranularVcsOperations(items.ItemPath))
+        #            {
+        #                // If this node supports graular check-out operations, make sure checked-out path point to the
+        #                // application object path. Only application object paths are colored.
+        #                checkedOutPath = SysTreeNode::applObjectPath(items.ItemPath);
+        #            }
+        #            else
+        #            {
+        #                checkedOutPath = items.ItemPath;
+        #            }
+        #
+        #            itemPath = strReplace(checkedOutPath,#FilePathDelimiter,'/');
+        #            //<GTX>
+        #            filename = strReplace(items.InternalFilename, #FilePathDelimiter,'/');
+        #            //</GTX>
+        #            len = strLen(filename);
+        #            pos = strScan(filename,itemPath,len,-len);
+        #            if(pos)
+        #            {
+        #                subFolder = subStr(filename,1,pos);
+        #
+        #                if (modelFolderEnumerator)
+        #                {
+        #                    checkMap(modelFolderEnumerator);
+        #                }
+        #
+        #                if (additionalFolderEnumerator)
+        #                {
+        #                    checkMap(additionalFolderEnumerator);
+        #                }
+        #            }
+        #        }
+        #    }
+        #
+        #    this.updateCheckedOutList(checkedOutObjects);
+        #
+        #}
+      ENDSOURCE
+    ENDMETHODS
+  ENDCLASS
+
+***Element: END
