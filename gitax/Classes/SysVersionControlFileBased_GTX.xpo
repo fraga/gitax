@@ -698,7 +698,7 @@ Formatversion: 1
         #/// </remarks>
         #public boolean supportChangeVersion()
         #{
-        #    return true;
+        #    return false;
         #}
       ENDSOURCE
       SOURCE #supportCheckInWizard
