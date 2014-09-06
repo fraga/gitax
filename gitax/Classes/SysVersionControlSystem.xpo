@@ -49,65 +49,6 @@ Formatversion: 1
         #    return true;
         #}
       ENDSOURCE
-      SOURCE #getModelFromFile
-        #/// <summary>
-        #/// Gets the model ID for the specified file name.
-        #/// </summary>
-        #/// <param name="_filename">
-        #/// A file name.
-        #/// </param>
-        #/// <returns>
-        #/// The ID of the model.
-        #/// </returns>
-        #/// <remarks>
-        #/// <c>#ModelId_Undefined</c> is returned if no model is found.
-        #/// </remarks>
-        #public modelId getModelFromFile(Filename _filename)
-        #{
-        #    MapEnumerator modelsEnumerator;
-        #    SysVersionControlModelFile modelFile;
-        #    #File
-        #    #SysModelStore
-        #
-        #    modelsEnumerator = models.getEnumerator();
-        #    while (modelsEnumerator.moveNext())
-        #    {
-        #        modelFile = modelsEnumerator.currentValue();
-        #//<GTX>
-        #        if (strStartsWith(this.GTXstripFilePathDelimiter(_filename), this.GTXstripFilePathDelimiter(modelFile.parmModelFolder())))
-        #//</GTX>
-        #        {
-        #            return modelFile.parmModelId();
-        #        }
-        #    }
-        #
-        #    return #ModelId_Undefined;
-        #}
-      ENDSOURCE
-      SOURCE #GTXIsRootFolder
-        #public boolean GTXIsRootFolder(str repoPath, str relativePath)
-        #{
-        #    ;
-        #    return GTXLibGit2Sharp.GTXRepo::IsRootFolder(repoPath, relativePath);
-        #}
-      ENDSOURCE
-      SOURCE #GTXstripFilePathDelimiter
-        #/// <summary>
-        #/// Removes the folders delimiter
-        #/// </summary>
-        #/// <param name="_fileName">
-        #/// Filename to remove folder
-        #/// </param>
-        #/// <returns>
-        #/// A fileName without folder delimiters
-        #/// </returns>
-        #public str GTXstripFilePathDelimiter(Filename _fileName)
-        #{
-        #    #file
-        #
-        #    return strReplace(_filename, #FilePathDelimiter, '');
-        #}
-      ENDSOURCE
       SOURCE #newType
         #public static SysVersionControlSystem newType(SysVersionControlType _type)
         #{
