@@ -23,15 +23,6 @@ Formatversion: 1
         #    GTXSysVersionControlSystemMock     vcsSystemMock;
         #}
       ENDSOURCE
-      SOURCE #testGTXstripFilePathDelimiter
-        #[SysTestMethodAttribute]
-        #public void testGTXstripFilePathDelimiter()
-        #{
-        #    vcsSystemMock = new GTXSysVersionControlSystemMock();
-        #
-        #    this.assertEquals('c:gitaxsomefolder', vcsSystemMock.GTXstripFilePathDelimiter('C:\\gitax\\somefolder'));
-        #}
-      ENDSOURCE
       SOURCE #testLibGit2SharpVersion
         #[SysTestMethodAttribute]
         #public void testLibGit2SharpVersion()
