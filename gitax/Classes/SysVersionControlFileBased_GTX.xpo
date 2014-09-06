@@ -816,7 +816,7 @@ Formatversion: 1
         #/// </remarks>
         #public boolean supportSyncLabel()
         #{
-        #    return true;
+        #    return false;
         #}
       ENDSOURCE
       SOURCE #verifyOwnerPrefix
