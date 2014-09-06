@@ -17,7 +17,6 @@ Formatversion: 1
       Parameters          #GTXPendingVCSObjects.process
       EnumTypeParameter   #SysOperationExecutionMode
       EnumParameter       #ReliableAsynchronous
-      RunOn               #Client
       Origin              #{EFEA510E-6D40-45DB-8D73-C8C13344E157}
     ENDPROPERTIES
     
