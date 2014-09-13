@@ -476,7 +476,24 @@ Formatversion: 1
         #    Filename _filename,
         #    SysVersionControlSyncParameters _syncParameters)
         #{
-        #    return null;
+        #    Map                         resultMap = new Map(Types::String, Types::Enum);
+        #    boolean                     forceCheckout = _syncParameters.parmForce();
+        #    boolean                     fileExists;
+        #    try
+        #    {
+        #        fileExists = GTXLibGit2Sharp.GTXRepo::FileExists(repositoryFolder, _filename);
+        #
+        #        if(fileExists)
+        #            resultMap.insert(_filename, SysVersionControlSynchronizeCommand::Update);
+        #        else
+        #            resultMap.insert(_filename, SysVersionControlSynchronizeCommand::Add);
+        #    }
+        #    catch
+        #    {
+        #        return null;
+        #    }
+        #
+        #    return resultMap;
         #}
       ENDSOURCE
       SOURCE #fileUndoCheckout
