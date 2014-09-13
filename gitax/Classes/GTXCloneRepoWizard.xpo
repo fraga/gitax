@@ -1,0 +1,74 @@
+﻿Exportfile for AOT version 1.0 or later
+Formatversion: 1
+
+***Element: CLS
+
+; Microsoft Dynamics AX Class: GTXCloneRepoWizard unloaded
+; --------------------------------------------------------------------------------
+  CLSVERSION 1
+  
+  CLASS #GTXCloneRepoWizard
+    PROPERTIES
+      Name                #GTXCloneRepoWizard
+      Extends             #SysWizard
+      RunOn               #Client
+      Origin              #{38CA08A1-6844-4790-A99F-FD01E3AF697A}
+    ENDPROPERTIES
+    
+    METHODS
+      SOURCE #accessMenuFunction
+        #public MenuFunction accessMenuFunction()
+        #{
+        #    return new MenuFunction(menuitemdisplaystr(GTXCloneRepoWizard),MenuItemType::Display);
+        #}
+      ENDSOURCE
+      SOURCE #classDeclaration
+        #public class GTXCloneRepoWizard extends SysWizard
+        #{
+        #}
+        #
+      ENDSOURCE
+      SOURCE #formName
+        #FormName formName()
+        #{
+        #    return formstr(GTXCloneRepoWizard);
+        #}
+        #
+      ENDSOURCE
+      SOURCE #run
+        #void run()
+        #{
+        #
+        #}
+        #
+      ENDSOURCE
+      SOURCE #setupNavigation
+        #/*
+        #Use this method to setup the two arrays: nextEnabled[] and backEnabled[]
+        #Call this.nextEnabled(boolean) and this.backEnabled(boolean) to enable/disable the buttons runtime.
+        #*/
+        #void setupNavigation()
+        #{
+        #
+        #}
+        #
+      ENDSOURCE
+      SOURCE #validate
+        #boolean validate()
+        #{
+        #    return true;
+        #}
+        #
+      ENDSOURCE
+      SOURCE #main
+        #static void main(args args)
+        #{
+        #    GTXCloneRepoWizard wizard = new GTXCloneRepoWizard();
+        #    if (wizard.prompt())
+        #        wizard.run();
+        #}
+      ENDSOURCE
+    ENDMETHODS
+  ENDCLASS
+
+***Element: END
