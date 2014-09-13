@@ -1,0 +1,229 @@
+﻿Exportfile for AOT version 1.0 or later
+Formatversion: 1
+
+***Element: FRM
+
+; Microsoft Dynamics AX Forms unloaded
+; --------------------------------------------------------------------------------
+FRMVERSION 12
+
+FORM #GTXCloneRepoWizard
+  PROPERTIES
+    Name                #GTXCloneRepoWizard
+  ENDPROPERTIES
+  
+  METHODS
+    SOURCE #classDeclaration
+      #class FormRun extends ObjectRun
+      #{
+      #    GTXCloneRepoWizard sysWizard;
+      #}
+      #
+    ENDSOURCE
+    SOURCE #init
+      #void init()
+      #{
+      #    super();
+      #    if (element.Args().caller())
+      #    {
+      #        sysWizard = element.Args().caller();
+      #    }
+      #    else
+      #    {
+      #        GTXCloneRepoWizard::main(new args());
+      #        element.closeCancel();
+      #    }
+      #}
+      #
+    ENDSOURCE
+    SOURCE #run
+      #void run()
+      #{
+      #    element.setTexts();
+      #
+      #    super();
+      #}
+      #
+    ENDSOURCE
+    SOURCE #setTexts
+      #void setTexts()
+      #{
+      #
+      #}
+      #
+    ENDSOURCE
+    SOURCE #tab
+      #FormTabControl tab()
+      #{
+      #    return tab;
+      #}
+      #
+    ENDSOURCE
+    SOURCE #wizard
+      #SysWizard wizard()
+      #{
+      #    return sysWizard;
+      #}
+      #
+    ENDSOURCE
+  ENDMETHODS
+  OBJECTBANK
+    PROPERTIES
+    ENDPROPERTIES
+    
+  ENDOBJECTBANK
+  
+  REFERENCEDATASOURCES
+  ENDREFERENCEDATASOURCES
+  
+  JOINS
+  ENDJOINS
+  
+  PARTREFERENCES
+  ENDPARTREFERENCES
+  
+  DESIGN
+    PROPERTIES
+    ENDPROPERTIES
+    
+    CONTAINER
+      CONTROL TAB
+        PROPERTIES
+          Name                #Tab
+          AutoDeclaration     #Yes
+          Width               #Column width
+          ElementPosition     #1073741823
+        ENDPROPERTIES
+        
+        METHODS
+        ENDMETHODS
+      ENDCONTROL 
+      
+      CONTROL TABPAGE
+        PROPERTIES
+          Name                #Step1
+          Width               #Column width
+          Height              #Column height
+          ElementPosition     #858993458
+          HierarchyParent     #Tab
+          Caption             #Step 1 Title
+        ENDPROPERTIES
+        
+        METHODS
+        ENDMETHODS
+      ENDCONTROL 
+      
+      CONTROL TABPAGE
+        PROPERTIES
+          Name                #Step2
+          Width               #Column width
+          Height              #Column height
+          ElementPosition     #1288490187
+          HierarchyParent     #Tab
+          Caption             #Step 2 Title
+        ENDPROPERTIES
+        
+        METHODS
+        ENDMETHODS
+      ENDCONTROL 
+      
+      CONTROL TABPAGE
+        PROPERTIES
+          Name                #Step3
+          Width               #Column width
+          Height              #Column height
+          ElementPosition     #1717986916
+          HierarchyParent     #Tab
+          Caption             #Step 3 Title
+        ENDPROPERTIES
+        
+        METHODS
+        ENDMETHODS
+      ENDCONTROL 
+      
+    ENDCONTAINER
+    
+  ENDDESIGN
+  
+  PERMISSIONS #Permissions
+    PROPERTIES
+    ENDPROPERTIES
+    
+    PERMISSIONSET #Read
+      PROPERTIES
+      ENDPROPERTIES
+      
+      FORM #Controls
+      ENDFORM
+      
+    TABLES #Tables
+    ENDTABLES
+    
+  SERVERMETHODS #Server Methods
+  ENDSERVERMETHODS
+  
+ASSOCIATEDFORMS #Associated Forms
+ENDASSOCIATEDFORMS
+
+ENDPERMISSIONSET
+
+PERMISSIONSET #Update
+  PROPERTIES
+  ENDPROPERTIES
+  
+  FORM #Controls
+  ENDFORM
+  
+TABLES #Tables
+ENDTABLES
+
+SERVERMETHODS #Server Methods
+ENDSERVERMETHODS
+
+ASSOCIATEDFORMS #Associated Forms
+ENDASSOCIATEDFORMS
+
+ENDPERMISSIONSET
+
+PERMISSIONSET #Create
+  PROPERTIES
+  ENDPROPERTIES
+  
+  FORM #Controls
+  ENDFORM
+  
+TABLES #Tables
+ENDTABLES
+
+SERVERMETHODS #Server Methods
+ENDSERVERMETHODS
+
+ASSOCIATEDFORMS #Associated Forms
+ENDASSOCIATEDFORMS
+
+ENDPERMISSIONSET
+
+PERMISSIONSET #Delete
+  PROPERTIES
+  ENDPROPERTIES
+  
+  FORM #Controls
+  ENDFORM
+  
+TABLES #Tables
+ENDTABLES
+
+SERVERMETHODS #Server Methods
+ENDSERVERMETHODS
+
+ASSOCIATEDFORMS #Associated Forms
+ENDASSOCIATEDFORMS
+
+ENDPERMISSIONSET
+
+ENDPERMISSIONS
+
+ENDFORM
+
+
+***Element: END

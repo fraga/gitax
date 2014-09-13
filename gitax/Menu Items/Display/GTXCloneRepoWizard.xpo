@@ -1,0 +1,22 @@
+﻿Exportfile for AOT version 1.0 or later
+Formatversion: 1
+
+***Element: FTM
+
+; Microsoft Dynamics AX MENUITEM : GTXCloneRepoWizard unloaded
+; --------------------------------------------------------------------------------
+  VERSION 1
+  
+  MENUITEM #GTXCloneRepoWizard
+    Type: 1
+    PROPERTIES
+      Name                #GTXCloneRepoWizard
+      ObjectType          #Class
+      Object              #GTXCloneRepoWizard
+      Origin              #{DB4FE79A-3DAF-4117-ABA9-49D6B839F5B9}
+    ENDPROPERTIES
+    
+  ENDMENUITEM
+  
+
+***Element: END
