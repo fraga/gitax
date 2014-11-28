@@ -11,7 +11,7 @@ Formatversion: 1
   STRING
     PROPERTIES
       Name                #GTXShaShort
-      Label               #Sha
+      Label               #Short Sha
       HelpText            #Git short SHA
       Origin              #{34CD7B35-4F07-4F03-9826-37E6BD4037DF}
       StringSize          #7
