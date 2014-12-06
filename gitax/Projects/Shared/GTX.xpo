@@ -221,6 +221,12 @@ Formatversion: 1
         NODETYPE 329
         NAME #SysVersionControlSystemFileBased
       ENDNODE
+      BEGINNODE
+        FILETYPE 0
+        UTILTYPE 45
+        NODETYPE 329
+        NAME #VersionControl
+      ENDNODE
       ENDGROUP
       
     GROUP #Data_Dictionary
