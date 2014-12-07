@@ -34,11 +34,17 @@ Formatversion: 1
         #/// </returns>
         #public static boolean fileIsDirt(SysVersionControlRepositoryFolder _repositoryFolder, Filename _fileName)
         #{
-        #    GTXFileStatus   fileStatus = GTXLibGit2Sharp.GTXRepo::GetFileStatus(_repositoryFolder, _fileName);
+        #    System.Boolean  isDirtNet;
+        #    System.String   repositoryFolderNet, fileNameNet;
+        #    boolean         isDirt;
         #
-        #    return  (fileStatus != GTXFileStatus::Ignored) &&
-        #            (fileStatus != GTXFileStatus::NonExistent) &&
-        #            (fileStatus != GTXFileStatus::Unaltered);
+        #    repositoryFolderNet = _repositoryFolder;
+        #    fileNameNet = _fileName;
+        #
+        #    isDirtNet = GTXLibGit2Sharp.GTXRepo::IsFileDirt(repositoryFolderNet, fileNameNet);
+        #    isDirt = isDirtNet;
+        #
+        #    return isDirt;
         #}
       ENDSOURCE
     ENDMETHODS

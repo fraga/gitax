@@ -269,6 +269,31 @@ namespace GTXLibGit2Sharp
         }
 
         /// <summary>
+        /// Checks if the file is dirt meaning it has been either modified, deleted or added for the first time
+        /// </summary>
+        /// <param name="repoPath">Main repository path</param>
+        /// <param name="fileName">The filename to check if it's currently dirt</param>
+        /// <returns>True if the file has been modified, deleted or added, false if nothing has been done and in case of an exception</returns>
+        public static bool IsFileDirt(string repoPath, string fileName)
+        {
+            try
+            {
+                GTXFileStatus fileStatus;
+
+                fileStatus = GetFileStatus(repoPath, fileName);
+
+                return (fileStatus != GTXFileStatus.Ignored) &&
+                (fileStatus != GTXFileStatus.NonExistent) &&
+                (fileStatus != GTXFileStatus.Unaltered);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            
+        }
+
+        /// <summary>
         /// Due to restrictions on enum in AX, we're getting GTXFileStatus enum type from here
         /// </summary>
         /// <param name="fileStatus">LibGit2Sharp standard fileStatus</param>
