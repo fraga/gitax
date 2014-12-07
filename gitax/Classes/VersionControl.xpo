@@ -80,7 +80,8 @@ Formatversion: 1
         #
         #            itemPath = strReplace(checkedOutPath,#FilePathDelimiter,'/');
         #            //<GTX>
-        #            filename = strReplace(items.InternalFilename, #FilePathDelimiter,'/');
+        #            if(SysVersionControlParameters::getVCSType() == SysVersionControlType::SysVersionControlGitax)
+        #                filename = strReplace(items.InternalFilename, #FilePathDelimiter,'/');
         #            //</GTX>
         #            len = strLen(filename);
         #            pos = strScan(filename,itemPath,len,-len);
