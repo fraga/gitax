@@ -23,6 +23,22 @@ Formatversion: 1
         PreventEditProperties #No
       ENDPROPERTIES
       
+      GROUP #Display
+        PROPERTIES
+          Name                #Display
+          ProjectGroupType    #Display
+          GroupMask           #
+          PreventEditProperties #No
+        ENDPROPERTIES
+        
+        BEGINNODE
+          FILETYPE 0
+          UTILTYPE 1
+          NODETYPE 296
+          NAME #GTXCloneRepoWizard
+        ENDNODE
+        ENDGROUP
+        
       GROUP #Action
         PROPERTIES
           Name                #Action
@@ -31,6 +47,12 @@ Formatversion: 1
           PreventEditProperties #No
         ENDPROPERTIES
         
+        BEGINNODE
+          FILETYPE 0
+          UTILTYPE 3
+          NODETYPE 296
+          NAME #GTXCloneRepoOperation
+        ENDNODE
         BEGINNODE
           FILETYPE 0
           UTILTYPE 3
@@ -111,6 +133,12 @@ Formatversion: 1
         FILETYPE 0
         UTILTYPE 11
         NODETYPE 201
+        NAME #GTXCloneRepoWizard
+      ENDNODE
+      BEGINNODE
+        FILETYPE 0
+        UTILTYPE 11
+        NODETYPE 201
         NAME #SysVersionControlCheckedOut
       ENDNODE
       BEGINNODE
@@ -118,22 +146,6 @@ Formatversion: 1
         UTILTYPE 11
         NODETYPE 201
         NAME #SysVersionControlItemHistory
-      ENDNODE
-      ENDGROUP
-      
-    GROUP #VSPRojects
-      PROPERTIES
-        Name                #VSPRojects
-        ProjectGroupType    #VisualStudioCSharpProjects
-        GroupMask           #
-        PreventEditProperties #No
-      ENDPROPERTIES
-      
-      BEGINNODE
-        FILETYPE 0
-        UTILTYPE 128
-        NODETYPE 1531
-        NAME #GTXLibGit2Sharp
       ENDNODE
       ENDGROUP
       
@@ -165,7 +177,31 @@ Formatversion: 1
         FILETYPE 0
         UTILTYPE 45
         NODETYPE 329
+        NAME #SysVersionControlSystemFileBased
+      ENDNODE
+      BEGINNODE
+        FILETYPE 0
+        UTILTYPE 45
+        NODETYPE 329
+        NAME #GTXCloneRepoOperation
+      ENDNODE
+      BEGINNODE
+        FILETYPE 0
+        UTILTYPE 45
+        NODETYPE 329
+        NAME #GTXCloneRepoWizard
+      ENDNODE
+      BEGINNODE
+        FILETYPE 0
+        UTILTYPE 45
+        NODETYPE 329
         NAME #GTXDummyClass
+      ENDNODE
+      BEGINNODE
+        FILETYPE 0
+        UTILTYPE 45
+        NODETYPE 329
+        NAME #GTXFileUtil
       ENDNODE
       BEGINNODE
         FILETYPE 0
@@ -214,12 +250,6 @@ Formatversion: 1
         UTILTYPE 45
         NODETYPE 329
         NAME #SysVersionControlSystem
-      ENDNODE
-      BEGINNODE
-        FILETYPE 0
-        UTILTYPE 45
-        NODETYPE 329
-        NAME #SysVersionControlSystemFileBased
       ENDNODE
       BEGINNODE
         FILETYPE 0
