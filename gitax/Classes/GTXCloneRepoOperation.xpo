@@ -1,0 +1,32 @@
+﻿Exportfile for AOT version 1.0 or later
+Formatversion: 1
+
+***Element: CLS
+
+; Microsoft Dynamics AX Class: GTXCloneRepoOperation unloaded
+; --------------------------------------------------------------------------------
+  CLSVERSION 1
+  
+  CLASS #GTXCloneRepoOperation
+    PROPERTIES
+      Name                #GTXCloneRepoOperation
+      Extends             #SysOperationServiceController
+      Origin              #{E088BC19-3A16-4823-A6D4-DB2795DEC9C8}
+    ENDPROPERTIES
+    
+    METHODS
+      SOURCE #classDeclaration
+        #class GTXCloneRepoOperation extends SysOperationServiceController
+        #{
+        #}
+      ENDSOURCE
+      SOURCE #cloneRepository
+        #[SysEntryPointAttribute]
+        #public void cloneRepository()
+        #{
+        #}
+      ENDSOURCE
+    ENDMETHODS
+  ENDCLASS
+
+***Element: END

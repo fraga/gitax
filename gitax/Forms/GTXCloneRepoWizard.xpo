@@ -10,6 +10,7 @@ FRMVERSION 12
 FORM #GTXCloneRepoWizard
   PROPERTIES
     Name                #GTXCloneRepoWizard
+    Origin              #{40898545-7F91-441F-A808-BECA9914E68E}
   ENDPROPERTIES
   
   METHODS
@@ -135,6 +136,17 @@ FORM #GTXCloneRepoWizard
           ElementPosition     #1717986916
           HierarchyParent     #Tab
           Caption             #Step 3 Title
+        ENDPROPERTIES
+        
+        METHODS
+        ENDMETHODS
+      ENDCONTROL 
+      
+      CONTROL STRINGEDIT
+        PROPERTIES
+          Name                #StringEdit
+          ElementPosition     #1431655764
+          HierarchyParent     #Step1
         ENDPROPERTIES
         
         METHODS
