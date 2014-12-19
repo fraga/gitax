@@ -1,0 +1,87 @@
+﻿Exportfile for AOT version 1.0 or later
+Formatversion: 1
+
+***Element: CLS
+
+; Microsoft Dynamics AX Class: GTXPendingVCSObjects unloaded
+; --------------------------------------------------------------------------------
+  CLSVERSION 1
+  
+  CLASS #GTXPendingVCSObjects
+    PROPERTIES
+      Name                #GTXPendingVCSObjects
+      Origin              #{E7DE7E80-48A3-4A07-A0CD-3A39989D698B}
+    ENDPROPERTIES
+    
+    METHODS
+      SOURCE #classDeclaration
+        #class GTXPendingVCSObjects
+        #{
+        #}
+      ENDSOURCE
+      SOURCE #process
+        #public void process()
+        #{
+        #    #SysVersionControl
+        #
+        #    SysVersionControllable  controlable;
+        #
+        #    UtilEntryLevel  curLayer    = currentAOLayer();
+        #    modelId         curModelId  = xInfo::getCurrentModelId();
+        #    str             modelName = SysModelStore::modelId2Name(curModelId);
+        #
+        #    SysModelElementData elemData, parentData;
+        #    SysModelElement     parent, child;
+        #    TreeNode            pNode;
+        #
+        #    if(Session::isServer())
+        #        throw error("Cannot run this code in the server");
+        #
+        #    if(xSession::isCLRSession())
+        #        info("it is CRL");
+        #
+        #    if(xGlobal::clientKind() == ClientType::Client)
+        #        info("is client");
+        #
+        #    //Set options to skip cache lookup of file names
+        #    //infolog.globalCache().set(#VCSCache, #NoPrompt,true);
+        #    setPrefix(strFmt("%1 model", modelName));
+        #
+        #    while select RootModelElement from child
+        #        group by child.RootModelElement, elemData.ModelId
+        #        join ModelId from elemData
+        #            where elemData.ModelElement == child.RecId
+        #                //Layer numbers in SysModel* views are offset by +1
+        #                && elemData.Layer       == (curLayer + 1)
+        #                //Remove the following line to include all models
+        #                && elemData.ModelId     == curModelId
+        #    {
+        #        //Get lowest layer copy of parent
+        #        select firstOnly parent
+        #            order by parentData.Layer
+        #                where parent.RecId == child.RootModelElement
+        #            join parentData
+        #                where parentData.ModelElement == parent.RecId;
+        #
+        #        pNode = SysTreeNode::findNodeInLayer(
+        #                      parent.ElementType, parent.name, 0, parentData.Layer - 1);
+        #        if(!pNode)
+        #            continue;
+        #
+        #        controlable = SysTreeNode::newTreeNode(pNode);
+        #        if(!controlable)
+        #            continue;
+        #
+        #        if(versionControl.allowCreate(controlable))
+        #        {
+        #            //do something if it isn't in version control
+        #            info(strfmt("%1\t%2",pNode.treeNodeType(), pNode.treeNodeName()));
+        #        }
+        #    }
+        #
+        #}
+      ENDSOURCE
+    ENDMETHODS
+  ENDCLASS
+
+***Element: END
