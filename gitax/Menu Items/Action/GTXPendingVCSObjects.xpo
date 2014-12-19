@@ -16,7 +16,6 @@ Formatversion: 1
       Object              #SysOperationServiceController
       Parameters          #GTXPendingVCSObjects.process
       EnumTypeParameter   #SysOperationExecutionMode
-      EnumParameter       #ReliableAsynchronous
       Origin              #{EFEA510E-6D40-45DB-8D73-C8C13344E157}
     ENDPROPERTIES
     
