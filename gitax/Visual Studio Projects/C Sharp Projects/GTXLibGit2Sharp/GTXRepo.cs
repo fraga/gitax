@@ -166,7 +166,6 @@ namespace GTXLibGit2Sharp
         /// <returns>True if reset was successful false if not</returns>
         public static bool FileUndoCheckout(string repoPath, string fileName, bool forceCheckout)
         {
-            //TODO: Dangerous, consider refactoring
             FileInfo fileInfo = new FileInfo(fileName);
 
             using (Repository repo = new Repository(repoPath))
