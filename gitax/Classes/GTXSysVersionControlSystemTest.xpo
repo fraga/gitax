@@ -29,11 +29,11 @@ Formatversion: 1
         #{
         #    System.String currentVersionNet;
         #    str currentVersionXpp;
-        #    str expectedVersion = '0.18.1-unknown-90befde (x86 - Threads, Https)';
+        #    str expectedVersion = '0.21.1';
         #    currentVersionNet = GTXLibGit2Sharp.GTXRepo::GetLibGit2SharpVersion();
         #    currentVersionXpp = currentVersionNet;
         #
-        #    this.assertEquals(currentVersionXpp, expectedVersion);
+        #    this.assertEquals(expectedVersion, currentVersionXpp);
         #}
       ENDSOURCE
       SOURCE #testNewType
