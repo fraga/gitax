@@ -113,7 +113,7 @@ namespace GTXLibGit2Sharp
                 {
                     try
                     {
-                        repo.CheckoutPaths(commit.Id.Sha, new [] { fileName }, options);
+                        repo.CheckoutPaths(commit.Id.Sha, new[] { fileName }, options);
                     }
                     catch (MergeConflictException ex)
                     {
