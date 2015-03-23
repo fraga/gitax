@@ -51,7 +51,43 @@ namespace GTXLibGit2Sharp
         }
 
         /// <summary>
-        /// Brings all commits related to the file
+        /// Builds the file history from a repository path, file path and the reference to object SysVersionControlTmpItem
+        /// </summary>
+        /// <param name="repoPath">Repository main path</param>
+        /// <param name="filePath">File to be pulling the commits</param>
+        /// <param name="tmpItem">Ref to the SysVersionControlTmpItem object to be inserting to</param>
+        /// <returns>A SysVersionControlTmpItem filled with the commits</returns>
+        public static SysVersionControlTmpItem BuildFileHistory(string repoPath, string filePath, ref SysVersionControlTmpItem tmpItem)
+        {
+            FileInfo fileInfo = new FileInfo(filePath);
+
+            using (var repo = new Repository(repoPath))
+            {
+                var indexPath = fileInfo.FullName.Replace(repo.Info.WorkingDirectory, string.Empty);
+                var commits = repo.Head.Commits.Where(c => c.Parents.Count() == 1 && c.Tree[indexPath] != null && (c.Parents.FirstOrDefault().Tree[indexPath] == null || c.Tree[indexPath].Target.Id != c.Parents.FirstOrDefault().Tree[indexPath].Target.Id));
+
+                foreach (Commit commit in commits)
+                {
+                    tmpItem.User = commit.Author.ToString();
+                    tmpItem.GTXShaShort = commit.Sha.Substring(0, 7);
+                    tmpItem.GTXSha = commit.Sha;
+                    tmpItem.Comment = commit.Message;
+                    tmpItem.ShortComment = commit.MessageShort;
+                    tmpItem.VCSDate = commit.Committer.When.Date;
+                    tmpItem.VCSTime = (int)commit.Committer.When.DateTime.TimeOfDay.TotalSeconds;
+                    tmpItem.Filename_ = FileGetVersion(repoPath, fileInfo.FullName, commit.Sha, Path.Combine(Path.GetTempPath(), commit.Sha + fileInfo.Extension));
+                    tmpItem.InternalFilename = fileInfo.FullName;
+                    tmpItem.ItemPath = indexPath;
+                    tmpItem.GTXFileRepoStatus = GetFileStatus(repoPath, fileInfo.FullName);
+                    tmpItem.insert();
+                }
+            }
+
+            return tmpItem;
+        }
+
+        /// <summary>
+        /// Brings all commits related to the file. Currently being called from AX.
         /// </summary>
         /// <param name="repoPath">Repository main path</param>
         /// <param name="filePath">File to be pulling the commits</param>
@@ -59,30 +95,63 @@ namespace GTXLibGit2Sharp
         public static SysVersionControlTmpItem FileHistory(string repoPath, string filePath)
         {
             SysVersionControlTmpItem tmpItem = new SysVersionControlTmpItem();
+
             try
             {
-                FileInfo fileInfo = new FileInfo(filePath);
+                BuildFileHistory(repoPath, filePath, ref tmpItem);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
 
-                using (var repo = new Repository(repoPath))
+            return tmpItem;
+        }
+
+        /// <summary>
+        /// Brings all commits related to the file
+        /// </summary>
+        /// <param name="repoPath">Repository main path</param>
+        /// <param name="filePath">File to be pulling the commits</param>
+        /// <param name="tmpItem">Ref to the SysVersionControlTmpItem object to be inserting to</param>
+        /// <returns>A SysVersionControlTmpItem filled with the commits</returns>
+        public static SysVersionControlTmpItem FileHistory(string repoPath, string filePath, ref SysVersionControlTmpItem tmpItem)
+        {
+            if (tmpItem == null)
+                tmpItem = new SysVersionControlTmpItem();
+
+            try
+            {
+                BuildFileHistory(repoPath, filePath, ref tmpItem);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return tmpItem;
+        }
+
+        /// <summary>
+        /// Brings all commits related to a directory
+        /// </summary>
+        /// <param name="repoPath">Repository main path</param>
+        /// <param name="dirPath">Directory to be pulling the commits</param>
+        /// <returns>A SysVersionControlTmpItem filled with the commits of files in a directory</returns>
+        public static SysVersionControlTmpItem DirectoryHistory(string repoPath, string dirPath)
+        {
+            SysVersionControlTmpItem tmpItem = new SysVersionControlTmpItem();
+            
+            try
+            {
+                DirectoryInfo dirInfo = new DirectoryInfo(dirPath);
+
+                if (!dirInfo.Exists)
+                    return tmpItem;
+
+                foreach (var file in dirInfo.GetFiles())
                 {
-                    var indexPath = fileInfo.FullName.Replace(repo.Info.WorkingDirectory, string.Empty);
-                    var commits = repo.Head.Commits.Where(c => c.Parents.Count() == 1 && c.Tree[indexPath] != null && (c.Parents.FirstOrDefault().Tree[indexPath] == null || c.Tree[indexPath].Target.Id != c.Parents.FirstOrDefault().Tree[indexPath].Target.Id));
-
-                    foreach (Commit commit in commits)
-                    {
-                        tmpItem.User = commit.Author.ToString();
-                        tmpItem.GTXShaShort = commit.Sha.Substring(0, 7);
-                        tmpItem.GTXSha = commit.Sha;
-                        tmpItem.Comment = commit.Message;
-                        tmpItem.ShortComment = commit.MessageShort;
-                        tmpItem.VCSDate = commit.Committer.When.Date;
-                        tmpItem.VCSTime = (int)commit.Committer.When.DateTime.TimeOfDay.TotalSeconds;
-                        tmpItem.Filename_ = FileGetVersion(repoPath, fileInfo.FullName, commit.Sha, Path.Combine(Path.GetTempPath(), commit.Sha + fileInfo.Extension));
-                        tmpItem.InternalFilename = fileInfo.FullName;
-                        tmpItem.ItemPath = indexPath;
-                        tmpItem.GTXFileRepoStatus = GetFileStatus(repoPath, fileInfo.FullName);
-                        tmpItem.insert();
-                    }
+                    FileHistory(repoPath, file.FullName, ref tmpItem);
                 }
             }
             catch (IOException ex)
