@@ -169,7 +169,7 @@ Formatversion: 1
         #{
         #    SysVersionControlTmpItem    tmpItem;
         #
-        #    tmpItem = GTXLibGit2Sharp.GTXRepo::FileHistory(repositoryFolder, _localDirectoryPath);
+        #    tmpItem = GTXLibGit2Sharp.GTXRepo::DirectoryHistory(repositoryFolder, _localDirectoryPath);
         #
         #    return tmpItem;
         #}
