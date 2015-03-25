@@ -38,7 +38,7 @@ Formatversion: 1
         #        throw error("Version control system must be enabled");
         #
         #    if(Session::isServer())
-        #        throw error("Cannot run this code in the server");
+        #        throw error("Cannot run this code on the server");
         #
         #    //Set options to skip cache lookup of file names
         #    //infolog.globalCache().set(#VCSCache, #NoPrompt,true);
