@@ -40,12 +40,6 @@ Formatversion: 1
         #    if(Session::isServer())
         #        throw error("Cannot run this code in the server");
         #
-        #    if(xSession::isCLRSession())
-        #        info("it is CRL");
-        #
-        #    if(xGlobal::clientKind() == ClientType::Client)
-        #        info("is client");
-        #
         #    //Set options to skip cache lookup of file names
         #    //infolog.globalCache().set(#VCSCache, #NoPrompt,true);
         #    setPrefix(strFmt("%1 model", modelName));
