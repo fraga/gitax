@@ -34,6 +34,9 @@ Formatversion: 1
         #    SysModelElement     parent, child;
         #    TreeNode            pNode;
         #
+        #    if(!SysVersionControlParameters::isVCSEnabled())
+        #        throw error("Version control system must be enabled");
+        #
         #    if(Session::isServer())
         #        throw error("Cannot run this code in the server");
         #
