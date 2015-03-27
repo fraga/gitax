@@ -20,7 +20,7 @@ namespace GTXLibGit2Sharp
         /// <param name="repoPath">the repository main path</param>
         public static void Init(string repoPath)
         {
-            if(!Repository.IsValid(repoPath))
+            if (!Repository.IsValid(repoPath))
                 Repository.Init(repoPath, false);
         }
 
@@ -142,7 +142,7 @@ namespace GTXLibGit2Sharp
         public static SysVersionControlTmpItem DirectoryHistory(string repoPath, string dirPath)
         {
             SysVersionControlTmpItem tmpItem = new SysVersionControlTmpItem();
-            
+
             try
             {
                 DirectoryInfo dirInfo = new DirectoryInfo(dirPath);
@@ -159,7 +159,7 @@ namespace GTXLibGit2Sharp
             {
                 throw ex;
             }
-            
+
             return tmpItem;
         }
 
@@ -172,7 +172,7 @@ namespace GTXLibGit2Sharp
         public static string FileGetVersion(string repoPath, string fileName, SysVersionControlTmpItem tmpItem)
         {
             string indexPath = tmpItem.InternalFilename.Replace(repoPath, string.Empty);
-            
+
             CheckoutOptions options = new CheckoutOptions();
             options.CheckoutModifiers = CheckoutModifiers.Force;
 
@@ -190,7 +190,7 @@ namespace GTXLibGit2Sharp
                         //should not reach here as we're forcing checkout
                         throw ex;
                     }
-                    
+
                 }
             }
 
@@ -211,7 +211,7 @@ namespace GTXLibGit2Sharp
                 string indexPath = fileName.Replace(repo.Info.WorkingDirectory, string.Empty);
 
                 var commit = repo.Lookup<Commit>(sha);
-                
+
                 Blob blob = null;
 
                 if (commit != null)
@@ -303,7 +303,7 @@ namespace GTXLibGit2Sharp
                         ? CheckoutModifiers.Force
                         : CheckoutModifiers.None
             };
-            
+
             string tipSha;
 
             using (Repository repo = new Repository(repoPath))
@@ -359,7 +359,7 @@ namespace GTXLibGit2Sharp
             {
                 return false;
             }
-            
+
         }
 
         /// <summary>
@@ -416,7 +416,7 @@ namespace GTXLibGit2Sharp
 
                 var allDirtFiles = repo.RetrieveStatus(new StatusOptions { Show = StatusShowOption.IndexAndWorkDir }).
                                         Where(t => t.State != FileStatus.Unaltered && t.State != FileStatus.Ignored);
-                
+
                 foreach (var dirtFile in allDirtFiles)
                 {
                     FileInfo fileInfo = new FileInfo(Path.Combine(repoPath, dirtFile.FilePath));
@@ -446,7 +446,7 @@ namespace GTXLibGit2Sharp
                     }
                     tmpItem.insert();
                 }
-                
+
             }
 
             return tmpItem;
