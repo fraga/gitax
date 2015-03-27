@@ -54,7 +54,10 @@ Formatversion: 1
         #                    controllable.fromFile(getFilename);
         #                    //<GTX>
         #                    if(SysVersionControlParameters::getVCSType() == SysVersionControlType::SysVersionControlGitax)
+        #                    {
         #                        info(strfmt("@SYS85990", _callerItem.GTXShaShort, _callerItem.ItemPath));
+        #                        versionControl.colorAOT();
+        #                    }
         #                    else
         #                        info(strfmt("@SYS85990", _callerItem.Version, _callerItem.ItemPath));
         #                    //</GTX>
