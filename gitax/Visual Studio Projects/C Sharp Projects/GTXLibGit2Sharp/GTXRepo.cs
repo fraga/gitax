@@ -501,5 +501,59 @@ namespace GTXLibGit2Sharp
 
         }
 
+        /// <summary>
+        /// Gets user name
+        /// </summary>
+        /// <param name="repoPath">The main repo path</param>
+        /// <param name="global">If retreiving global git configuration</param>
+        /// <returns>global or local user.name</returns>
+        public static string GetUserName(string repoPath, bool global = false)
+        {
+            using (Repository repo = new Repository(repoPath))
+            {
+                return repo.Config.Get<string>("user.name", global ? ConfigurationLevel.Global : ConfigurationLevel.Local).Value;
+            }
+        }
+
+        /// <summary>
+        /// Gets user email
+        /// </summary>
+        /// <param name="repoPath">The main repo path</param>
+        /// <param name="global">If retreiving global git configuration</param>
+        /// <returns>global or local user.email</returns>
+        public static string GetUserEmail(string repoPath, bool global = false)
+        {
+            using (Repository repo = new Repository(repoPath))
+            {
+                return repo.Config.Get<string>("user.email", global ? ConfigurationLevel.Global : ConfigurationLevel.Local).Value;
+            }
+        }
+
+        /// <summary>
+        /// Sets user email
+        /// </summary>
+        /// <param name="repoPath">The main repo path</param>
+        /// <param name="global">If setting global git configuration</param>
+        public static void SetUserEmail(string repoPath, string userEmail, bool global = false)
+        {
+            using (Repository repo = new Repository(repoPath))
+            {
+                repo.Config.Set("user.email", userEmail, global ? ConfigurationLevel.Global : ConfigurationLevel.Local);
+            }
+        }
+
+        /// <summary>
+        /// Sets user name
+        /// </summary>
+        /// <param name="repoPath">The main repo path</param>
+        /// <param name="global">If setting global git configuration</param>
+        public static void SetUserName(string repoPath, string userEmail, bool global = false)
+        {
+            using (Repository repo = new Repository(repoPath))
+            {
+                repo.Config.Set("user.name", userEmail, global ? ConfigurationLevel.Global : ConfigurationLevel.Local);
+            }
+        }
+
     }
 }

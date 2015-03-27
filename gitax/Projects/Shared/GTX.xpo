@@ -59,6 +59,12 @@ Formatversion: 1
           NODETYPE 296
           NAME #GTXPendingVCSObjects
         ENDNODE
+        BEGINNODE
+          FILETYPE 0
+          UTILTYPE 3
+          NODETYPE 296
+          NAME #GTXRepositorySettings
+        ENDNODE
         ENDGROUP
         
       ENDGROUP
@@ -147,6 +153,12 @@ Formatversion: 1
         NODETYPE 201
         NAME #SysVersionControlItemHistory
       ENDNODE
+      BEGINNODE
+        FILETYPE 0
+        UTILTYPE 11
+        NODETYPE 201
+        NAME #SysVersionControlParametersDev
+      ENDNODE
       ENDGROUP
       
     GROUP #Classes
@@ -202,6 +214,12 @@ Formatversion: 1
         UTILTYPE 45
         NODETYPE 329
         NAME #GTXPendingVCSObjects
+      ENDNODE
+      BEGINNODE
+        FILETYPE 0
+        UTILTYPE 45
+        NODETYPE 329
+        NAME #GTXRepositorySettings
       ENDNODE
       BEGINNODE
         FILETYPE 0
@@ -272,6 +290,12 @@ Formatversion: 1
         BEGINNODE
           FILETYPE 0
           UTILTYPE 41
+          NODETYPE 234
+          NAME #GTXEmail
+        ENDNODE
+        BEGINNODE
+          FILETYPE 0
+          UTILTYPE 41
           NODETYPE 228
           NAME #GTXFileRepoStatus
         ENDNODE
@@ -287,6 +311,12 @@ Formatversion: 1
           NODETYPE 234
           NAME #GTXShaShort
         ENDNODE
+        BEGINNODE
+          FILETYPE 0
+          UTILTYPE 41
+          NODETYPE 234
+          NAME #GTXUsername
+        ENDNODE
         ENDGROUP
         
       GROUP #Tables
@@ -297,6 +327,12 @@ Formatversion: 1
           PreventEditProperties #No
         ENDPROPERTIES
         
+        BEGINNODE
+          FILETYPE 0
+          UTILTYPE 44
+          NODETYPE 204
+          NAME #SysVersionControlParameters
+        ENDNODE
         BEGINNODE
           FILETYPE 0
           UTILTYPE 44

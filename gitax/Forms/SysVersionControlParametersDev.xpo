@@ -1,0 +1,207 @@
+﻿Exportfile for AOT version 1.0 or later
+Formatversion: 1
+
+***Element: FRM
+
+; Microsoft Dynamics AX Forms unloaded
+; --------------------------------------------------------------------------------
+FRMVERSION 12
+
+FORM #SysVersionControlParametersDev
+  PROPERTIES
+    Name                #SysVersionControlParametersDev
+    Origin              #{0B1E0000-0000-1000-136B-810ACED8B466}
+  ENDPROPERTIES
+  
+  METHODS
+  ENDMETHODS
+  OBJECTBANK
+  ENDOBJECTBANK
+  
+  PARTREFERENCES
+  ENDPARTREFERENCES
+  
+  DESIGN
+    CONTAINER
+      CONTROL ACTIONPANE
+        PROPERTIES
+          Name                #ActionPane
+          ElementPosition     #1073741822
+          HierarchyParent     #Plugin_SysVersionControlGitax
+          Style               #Strip
+        ENDPROPERTIES
+        
+        METHODS
+        ENDMETHODS
+      ENDCONTROL 
+      
+      CONTROL ACTIONPANETAB
+        PROPERTIES
+          Name                #ActionPaneTab
+          ElementPosition     #1431655764
+          HierarchyParent     #ActionPane
+        ENDPROPERTIES
+        
+        METHODS
+        ENDMETHODS
+      ENDCONTROL 
+      
+      CONTROL BUTTONGROUP
+        PROPERTIES
+          Name                #GTXButtonGroup
+          ElementPosition     #1431655764
+          HierarchyParent     #ActionPaneTab
+        ENDPROPERTIES
+        
+        METHODS
+        ENDMETHODS
+      ENDCONTROL 
+      
+      CONTROL GROUP
+        PROPERTIES
+          Name                #GTXUser
+          Width               #Column width
+          Height              #Column height
+          ElementPosition     #1431655764
+          HierarchyParent     #GTXFastTabPages
+        ENDPROPERTIES
+        
+        METHODS
+        ENDMETHODS
+      ENDCONTROL 
+      
+      CONTROL TAB
+        PROPERTIES
+          Name                #GTXFastTab
+          Width               #Column width
+          Height              #Column height
+          ElementPosition     #1610612733
+          HierarchyParent     #Plugin_SysVersionControlGitax
+          Style               #FastTabs
+        ENDPROPERTIES
+        
+        METHODS
+        ENDMETHODS
+      ENDCONTROL 
+      
+      CONTROL TABPAGE
+        PROPERTIES
+          Name                #GTXFastTabPages
+          ElementPosition     #1431655764
+          HierarchyParent     #GTXFastTab
+          TabAppearance       #Buttons
+          Caption             #User settings
+          Columns             #Auto
+        ENDPROPERTIES
+        
+        METHODS
+        ENDMETHODS
+      ENDCONTROL 
+      
+      CONTROL TABPAGE
+        PROPERTIES
+          Name                #Plugin_SysVersionControlGitax
+          AutoDeclaration     #Yes
+          Width               #Column width
+          Height              #Column height
+          ElementPosition     #1932735281
+          HierarchyParent     #Tab
+          Caption             #Git
+        ENDPROPERTIES
+        
+        METHODS
+          SOURCE #pageActivated
+            #//<GTX>
+            #public void pageActivated()
+            #{
+            #    if(!SysVersionControlParameters.GTXEmail && !SysVersionControlParameters.GTXUsername)
+            #    {
+            #        SysVersionControlParameters.GTXInitFromUserInfo();
+            #    }
+            #
+            #    super();
+            #
+            #}
+            #//</GTX>
+          ENDSOURCE
+        ENDMETHODS
+      ENDCONTROL 
+      
+      CONTROL MENUITEMBUTTON
+        PROPERTIES
+          Name                #GTXLoad
+          ElementPosition     #1073741822
+          HierarchyParent     #GTXButtonGroup
+          Text                #Load from git
+          ButtonDisplay       #Text & Image left
+          NormalImage         #1006
+          ImageLocation       #EmbeddedResource
+          DataSource          #SysVersionControlParameters
+          Parameters          #Load
+          MenuItemType        #Action
+          MenuItemName        #gtxrepositorySettings
+        ENDPROPERTIES
+        
+        METHODS
+        ENDMETHODS
+      ENDCONTROL 
+      
+      CONTROL MENUITEMBUTTON
+        PROPERTIES
+          Name                #GTXSave
+          ElementPosition     #1610612733
+          HierarchyParent     #GTXButtonGroup
+          Text                #Save settings to git
+          ButtonDisplay       #Text & Image left
+          NormalImage         #1007
+          ImageLocation       #EmbeddedResource
+          DataSource          #SysVersionControlParameters
+          Parameters          #Save
+          MenuItemType        #Action
+          MenuItemName        #gtxrepositorySettings
+        ENDPROPERTIES
+        
+        METHODS
+        ENDMETHODS
+      ENDCONTROL 
+      
+      CONTROL STRINGEDIT
+        PROPERTIES
+          Name                #SysVersionControlParameters_GTXEmail
+          ElementPosition     #1073741822
+          HierarchyParent     #GTXUser
+          DataSource          #SysVersionControlParameters
+          DataField           #GTXEmail
+        ENDPROPERTIES
+        
+        METHODS
+        ENDMETHODS
+      ENDCONTROL 
+      
+      CONTROL STRINGEDIT
+        PROPERTIES
+          Name                #SysVersionControlParameters_GTXUsername
+          ElementPosition     #715827880
+          HierarchyParent     #GTXUser
+          DataSource          #SysVersionControlParameters
+          DataField           #GTXUsername
+        ENDPROPERTIES
+        
+        METHODS
+        ENDMETHODS
+      ENDCONTROL 
+      
+    ENDCONTAINER
+    
+  ENDDESIGN
+  
+  PERMISSIONS #Permissions
+    PROPERTIES
+    ENDPROPERTIES
+    
+  ENDPERMISSIONS
+  
+ENDFORM
+
+
+***Element: END

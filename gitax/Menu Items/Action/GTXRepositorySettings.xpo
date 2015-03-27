@@ -1,0 +1,24 @@
+﻿Exportfile for AOT version 1.0 or later
+Formatversion: 1
+
+***Element: FTM
+
+; Microsoft Dynamics AX MENUITEM : GTXRepositorySettings unloaded
+; --------------------------------------------------------------------------------
+  VERSION 1
+  
+  MENUITEM #GTXRepositorySettings
+    Type: 3
+    PROPERTIES
+      Name                #GTXRepositorySettings
+      Label               #Save repository settings
+      ObjectType          #Class
+      Object              #GTXRepositorySettings
+      RunOn               #Client
+      Origin              #{73046725-4C78-470C-B8FB-CFF1A46C1FF6}
+    ENDPROPERTIES
+    
+  ENDMENUITEM
+  
+
+***Element: END
