@@ -1,0 +1,80 @@
+﻿Exportfile for AOT version 1.0 or later
+Formatversion: 1
+
+***Element: CLS
+
+; Microsoft Dynamics AX Class: GTXRepositorySettings unloaded
+; --------------------------------------------------------------------------------
+  CLSVERSION 1
+  
+  CLASS #GTXRepositorySettings
+    PROPERTIES
+      Name                #GTXRepositorySettings
+      RunOn               #Client
+      Origin              #{771BE442-AEFD-47C6-8F70-E5DBC7E769AC}
+    ENDPROPERTIES
+    
+    METHODS
+      SOURCE #classDeclaration
+        #class GTXRepositorySettings
+        #{
+        #}
+      ENDSOURCE
+      SOURCE #getUserEmail
+        #public str getUserEmail(filePath _repoPath, boolean _global = false)
+        #{
+        #    return GTXLibGit2Sharp.GTXRepo::GetUserEmail(_repoPath, _global);
+        #}
+      ENDSOURCE
+      SOURCE #getUserName
+        #public str getUserName(filePath _repoPath, boolean _global = false)
+        #{
+        #    return GTXLibGit2Sharp.GTXRepo::GetUserName(_repoPath, _global);
+        #}
+      ENDSOURCE
+      SOURCE #setUserEmail
+        #public void setUserEmail(FilePath _repoPath, str _userEmail, boolean _global = false)
+        #{
+        #    ;
+        #    GTXLibGit2Sharp.GTXRepo::SetUserEmail(_repoPath, _userEmail, _global);
+        #}
+      ENDSOURCE
+      SOURCE #setUserName
+        #public void setUserName(FilePath _repoPath, str _userName, boolean _global = false)
+        #{
+        #    ;
+        #    GTXLibGit2Sharp.GTXRepo::SetUserName(_repoPath, _userName, _global);
+        #}
+      ENDSOURCE
+      SOURCE #main
+        #public static void main(Args _args)
+        #{
+        #    GTXRepositorySettings       repositorySettings = new GTXRepositorySettings();
+        #    SysVersionControlParameters parameters;
+        #
+        #    if(_args.record().TableId != parameters.TableId)
+        #        throw error("Incorrect use of function");
+        #
+        #    parameters = _args.record();
+        #
+        #    if(_args.parm() == 'Save')
+        #    {
+        #        repositorySettings.setUserName(parameters.RepositoryFolder, parameters.GTXUsername);
+        #        repositorySettings.setUserEmail(parameters.RepositoryFolder, parameters.GTXEmail);
+        #    }
+        #
+        #    if(_args.parm() == 'Load')
+        #    {
+        #        parameters.selectForUpdate(true);
+        #        ttsBegin;
+        #        parameters.GTXUsername = repositorySettings.getUserName(parameters.RepositoryFolder);
+        #        parameters.GTXEmail = repositorySettings.getUserEmail(parameters.RepositoryFolder);
+        #        parameters.update();
+        #        ttsCommit;
+        #    }
+        #}
+      ENDSOURCE
+    ENDMETHODS
+  ENDCLASS
+
+***Element: END

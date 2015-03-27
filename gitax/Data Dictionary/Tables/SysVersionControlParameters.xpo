@@ -1,0 +1,61 @@
+﻿Exportfile for AOT version 1.0 or later
+Formatversion: 1
+
+***Element: DBT
+
+; Microsoft Dynamics AX Table : SysVersionControlParameters unloaded
+; --------------------------------------------------------------------------------
+  TABLEVERSION 1
+  
+  TABLE #SysVersionControlParameters
+    EnforceFKRelation 0
+    FIELDS
+      FIELD #GTXEmail
+        STRING
+        PROPERTIES
+          Name                #GTXEmail
+          Table               #SysVersionControlParameters
+          Origin              #{5CFDBBA5-7475-4581-9C9A-823106420009}
+          ExtendedDataType    #GTXEmail
+          StringSize          #80
+        ENDPROPERTIES
+        
+      FIELD #GTXUsername
+        STRING
+        PROPERTIES
+          Name                #GTXUsername
+          Table               #SysVersionControlParameters
+          Origin              #{C00BDF7B-9E43-408F-88B0-B0EBA3A40B95}
+          ExtendedDataType    #GTXUsername
+          StringSize          #60
+        ENDPROPERTIES
+        
+    ENDFIELDS
+    GROUPS
+    ENDGROUPS
+    
+    INDICES
+    ENDINDICES
+    FULLTEXTINDICES
+    ENDFULLTEXTINDICES
+    REFERENCES
+    ENDREFERENCES
+    
+    METHODS
+      SOURCE #GTXInitFromUserInfo
+        #//<GTX>
+        #public void GTXInitFromUserInfo()
+        #{
+        #    SysUserInfo sysUserInfo = SysUserInfo::find(curUserId());
+        #    UserInfo    userInfo = xUserInfo::find(false, curUserId());
+        #
+        #    this.GTXUsername = userInfo.name;
+        #    this.GTXEmail = sysUserInfo.Email;
+        #}
+        #//</GTX>
+      ENDSOURCE
+    ENDMETHODS
+  ENDTABLE
+  
+
+***Element: END
