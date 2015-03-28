@@ -11,6 +11,7 @@ Formatversion: 1
   STRING
     PROPERTIES
       Name                #GTXUsername
+      HelpText            #Author name to be used for the commit messages
       Origin              #{A0837FC9-0C62-4786-9B0C-B29BD1AD72F9}
       Extends             #Name
       StringSize          #60
