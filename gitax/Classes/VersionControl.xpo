@@ -82,7 +82,10 @@ Formatversion: 1
         #            //<GTX>
         #            if(SysVersionControlParameters::getVCSType() == SysVersionControlType::SysVersionControlGitax)
         #                filename = strReplace(items.InternalFilename, #FilePathDelimiter,'/');
+        #            else
         #            //</GTX>
+        #
+        #            filename = items.InternalFilename;
         #            len = strLen(filename);
         #            pos = strScan(filename,itemPath,len,-len);
         #            if(pos)
