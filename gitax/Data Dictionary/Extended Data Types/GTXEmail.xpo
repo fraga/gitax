@@ -11,6 +11,7 @@ Formatversion: 1
   STRING
     PROPERTIES
       Name                #GTXEmail
+      HelpText            #Email to be used for the commit messages
       Origin              #{8DAE3603-4FC0-4362-BE2D-47D3CABDE48B}
       Extends             #EmailBase
       StringSize          #80
