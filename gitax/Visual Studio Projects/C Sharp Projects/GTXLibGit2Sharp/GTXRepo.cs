@@ -428,7 +428,7 @@ namespace GTXLibGit2Sharp
                     {
                         tmpItem.GTXShaShort = indexEntry.Id.Sha.Substring(0, 7);
                         tmpItem.GTXSha = indexEntry.Id.Sha;
-                        tmpItem.Filename_ = FileGetVersion(repoPath, fileInfo.FullName, indexEntry.Id.Sha, Path.Combine(Path.GetTempPath(), indexEntry.Id.Sha + fileInfo.Extension));
+                        tmpItem.Filename_ = FileGetVersion(repoPath, fileInfo.FullName, indexEntry.Id.Sha, Path.Combine(Path.GetTempPath(), string.Format("{0}_{1}{2}", fileInfo.Name, indexEntry.Id.Sha.Substring(0, 7), fileInfo.Extension)));
                         tmpItem.InternalFilename = fileInfo.FullName;
                         tmpItem.ItemPath = indexEntry.Path;
                         tmpItem.GTXFileRepoStatus = GetFileStatus(repoPath, fileInfo.FullName);
