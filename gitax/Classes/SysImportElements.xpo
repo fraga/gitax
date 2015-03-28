@@ -1,0 +1,212 @@
+﻿Exportfile for AOT version 1.0 or later
+Formatversion: 1
+
+***Element: CLS
+
+; Microsoft Dynamics AX Class: SysImportElements unloaded
+; --------------------------------------------------------------------------------
+  CLSVERSION 1
+  
+  CLASS #SysImportElements
+    PROPERTIES
+      Name                #SysImportElements
+      RunOn               #Client
+      Origin              #{2D110667-0000-1000-B009-857A6ACD878B}
+      LegacyId            #1639
+    ENDPROPERTIES
+    
+    METHODS
+      SOURCE #examineApplicationFile
+        #// AOSrunmode::Client
+        #protected void examineApplicationFile(TextIo _textIo)
+        #{
+        #    #define.fileEnd('e'+'n'+'d')
+        #
+        #    TmpSysLabel             tmp;
+        #    container               record;
+        #    str                     line;
+        #    str                     exportCode;
+        #    str                     projectType;
+        #    str                     elementName;
+        #    int                     position;
+        #    int                     endPos;
+        #    int                     startPos;
+        #    str                     progressText;
+        #    str                     xml;
+        #    str                     lastLine;
+        #
+        #    int                     filePosition;
+        #    int                     time;
+        #    TreeNodePath            treeNodePath;
+        #    ImageRes                imageRes;
+        #    UtilElementType         utilElementType;
+        #    utilElementId           utilElementId;
+        #    UtilFileType            utilFileType;
+        #
+        #    _textIo.inFieldDelimiter(#delimiterEnter);
+        #    _textIo.inRecordDelimiter(#expEndRecord);
+        #
+        #    _textIo.read();
+        #
+        #    this.parmAddToProject(true);
+        #
+        #    while (_textIo.status() == IO_Status::Ok)
+        #    {
+        #        filePosition    = _textIo.filePosition() - 10;
+        #        record          = _textIo.read();
+        #
+        #        //
+        #        // If last line starts with an #,
+        #        // it means the inRecordDelimiter() was found within X++ source,
+        #        // and thus not an actual delimiter -> Skip it
+        #        //
+        #        if (strContains(lastLine, '#'))
+        #        {
+        #            lastLine = '';
+        #            continue;
+        #        }
+        #
+        #        if (_textIo.status() == IO_Status::Ok)
+        #        {
+        #            line        = conPeek(record, 1);
+        #            //<GTX>
+        #            exportCode  = this.GTXGetXpoExportCode(line);
+        #            //</GTX>
+        #            if (exportCode)
+        #            {
+        #                if (exportCode == #fileEnd)
+        #                {
+        #                    break;
+        #                }
+        #                line        = conPeek(record, 8);
+        #
+        #                utilElementId = this.findUtilElementId(line);
+        #
+        #                if (!importWithIds &&
+        #                    utilElementId)
+        #                {
+        #                    importWithIds = true;
+        #                }
+        #
+        #                [utilFileType, treeNodePath, imageRes, utilElementType, projectType] = SysImportElements::exportCode2Container(exportCode, line);
+        #
+        #
+        #                lastLine = conPeek(record, conLen(record));
+        #
+        #                if (treeNodePath)
+        #                {
+        #                    if (utilFileType == UtilFileType::Application)
+        #                    {
+        #                        line          = conPeek(record,7);
+        #                        position      = strFind(line,'#', 1, strLen(line)) + 1;
+        #                        elementName   = subStr(line, position, strLen(line)-position);
+        #                        treeNodePath += #FilePathDelimiter + elementName;
+        #                        progressText  = enum2str(utilElementType) + ' ' + elementName ;
+        #                    }
+        #                    else
+        #                    {
+        #                        line          = conPeek(record, 3);
+        #                        treeNodePath += subStr(line, 11, strLen(line)-11);
+        #                        elementName   = SysTreeNode::pathName(treeNodePath);
+        #                        progressText  = enum2str(utilFileType) + ' ' + elementName ;
+        #                    }
+        #
+        #                    select firstonly TreeNodePath from tmpImportAot
+        #                        index PathIdx
+        #                        where tmpImportAot.TreeNodePath == treeNodePath;
+        #
+        #                    if (!tmpImportAot)
+        #                    {
+        #                        tmpImportAot.FilePos            = filePosition;
+        #                        tmpImportAot.TreeNodePath       = treeNodePath;
+        #                        tmpImportAot.TreeNodeName       = elementName;
+        #                        tmpImportAot.UtilFileType       = utilFileType;
+        #                        tmpImportAot.UtilElementType    = utilElementType;
+        #                        tmpImportAot.UtilElementId      = utilElementId;
+        #                        tmpImportAot.ImageRes           = imageRes;
+        #                        tmpImportAot.Import             = true;
+        #                        tmpImportAot.insert();
+        #
+        #                        //Labels
+        #                        endPos  = SysImportElements::findEndPosition(conLen(record), record);
+        #                        line    = conPeek(record, endPos);
+        #
+        #                        while(strScan(line, #expLabelEnd, 1, strLen(line)))
+        #                        {
+        #                            startPos     = endPos;
+        #
+        #                            // Find startposition
+        #                            while (!strScan(line, #expLabelStart, 1, strLen(line)) &&
+        #                                   startPos)
+        #                            {
+        #                                startPos--;
+        #                                line        = conPeek(record, startPos);
+        #                            }
+        #
+        #                            // Build XMl
+        #                            for (position = startPos; position <= endPos; position++)
+        #                            {
+        #                                line   = conPeek(record, position);
+        #                                xml    += line;
+        #                            }
+        #
+        #                            tmp     = SysImportLabel::xml2Label(xml);
+        #
+        #                            xml     = '';
+        #                            endPos  = SysImportElements::findEndPosition((startPos - 1), record);
+        #                            line    = conPeek(record, endPos);
+        #
+        #                            if (tmp.LabelId)
+        #                            {
+        #                                select firstonly LabelId, Language from tmpSysLabel
+        #                                    index LabelIdx
+        #                                    where tmpSysLabel.LabelId  == tmp.LabelId
+        #                                       && tmpSysLabel.Language == tmp.Language;
+        #
+        #                                if (!tmpSysLabel)
+        #                                {
+        #                                    tmpSysLabel.LabelId     = tmp.LabelId;
+        #                                    tmpSysLabel.Language    = tmp.Language;
+        #                                    tmpSysLabel.Label       = tmp.Label;
+        #                                    tmpSysLabel.Description = tmp.Description;
+        #                                    tmpSysLabel.insert();
+        #                                }
+        #
+        #                                select firstonly tmpImportAotLabel
+        #                                    index PathLabelIdx
+        #                                    where tmpImportAotLabel.TreeNodePath == treeNodePath
+        #                                       && tmpImportAotLabel.LabelId      == tmp.LabelId;
+        #
+        #                                if (!tmpImportAotLabel)
+        #                                {
+        #                                    tmpImportAotLabel.TreeNodePath = tmpImportAot.TreeNodePath;
+        #                                    tmpImportAotLabel.LabelId      = tmp.LabelId;
+        #                                    tmpImportAotLabel.insert();
+        #                                }
+        #                            }
+        #                        }
+        #                        if (progressText &&
+        #                            timeNow() > (time + 2))
+        #                        {
+        #                            this.updateProgress(progressText, _textIo.filePosition());
+        #                            time = timeNow();
+        #                        }
+        #                    }
+        #                }
+        #            }
+        #        }
+        #    }
+        #}
+      ENDSOURCE
+      SOURCE #GTXGetXpoExportCode
+        #//<GTX>
+        #public str GTXGetXpoExportCode(str _xpoFirstline)
+        #{
+        #    return System.Text.RegularExpressions.Regex::Replace(_xpoFirstline, "[^a-zA-Z]", "");
+        #}
+        #//</GTX>
+      ENDSOURCE
+    ENDMETHODS
+  ENDCLASS
+
+***Element: END
