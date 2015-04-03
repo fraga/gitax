@@ -17,6 +17,34 @@ Formatversion: 1
     ENDPROPERTIES
     
     METHODS
+      SOURCE #addProcessedSyncElement
+        #/// <summary>
+        #/// Adds the record ID to the processed synchronization log.
+        #/// </summary>
+        #/// <param name="_recId">
+        #/// The record ID.
+        #/// </param>
+        #public void addProcessedSyncElement(RecId _recId)
+        #{
+        #    SysVersionControlTmpChange processedElement;
+        #
+        #    if (_recId)
+        #    {
+        #        processedElement.setTmpData(processedSyncElements);
+        #
+        #        select firstOnly processedElement where processedElement.ChangeNumber == _recId;
+        #
+        #        if (!processedElement.RecId)
+        #        {
+        #            processedElement.clear();
+        #            processedElement.ChangeNumber = _recId;
+        #
+        #            // skip insert logic
+        #            processedElement.doInsert();
+        #        }
+        #    }
+        #}
+      ENDSOURCE
       SOURCE #colorAOT
         #public void colorAOT()
         #{
