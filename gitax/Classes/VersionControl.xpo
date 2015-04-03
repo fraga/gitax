@@ -137,6 +137,36 @@ Formatversion: 1
         #
         #}
       ENDSOURCE
+      SOURCE #save
+        #public void save(TreeNode _treeNode)
+        #{
+        #    SysVersionControllable  controllable;
+        #
+        #    setPrefix("@SYS12229");
+        #
+        #    try
+        #    {
+        #        if (sysVersionControlSystem && _treeNode)
+        #        {
+        #            if (!this.allowCreate(_treeNode) && !SysTreeNode::existsInLayer(_treeNode, currentAOLayer()))
+        #            {
+        #                warning(strFmt("@SYS4007197", _treeNode.treeNodePath()));
+        #            }
+        #
+        #            controllable = SysTreeNode::newTreeNode(_treeNode);
+        #            sysVersionControlSystem.commandSave(controllable);
+        #        }
+        #    }
+        #    catch(Exception::Break)
+        #    {
+        #         throw Exception::Break;
+        #    }
+        #    catch
+        #    {
+        #        exceptionTextFallThrough();
+        #    }
+        #}
+      ENDSOURCE
     ENDMETHODS
   ENDCLASS
 
