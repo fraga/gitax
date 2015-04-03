@@ -76,7 +76,7 @@ namespace GTXLibGit2Sharp
                     tmpItem.ShortComment = commit.MessageShort;
                     tmpItem.VCSDate = commit.Committer.When.Date;
                     tmpItem.VCSTime = (int)commit.Committer.When.DateTime.TimeOfDay.TotalSeconds;
-                    tmpItem.Filename_ = FileGetVersion(repoPath, fileInfo.FullName, commit.Sha, Path.Combine(Path.GetTempPath(), string.Format("{0}_{1}{2}",  fileInfo.Name, commit.Sha.Substring(0,7), fileInfo.Extension)));
+                    tmpItem.Filename_ = FileGetVersion(repoPath, fileInfo.FullName, commit.Sha, Path.Combine(Path.GetTempPath(), string.Format("{0}_{1}", commit.Sha.Substring(0, 7), fileInfo.Name)));
                     tmpItem.InternalFilename = fileInfo.FullName;
                     tmpItem.ItemPath = indexPath;
                     tmpItem.GTXFileRepoStatus = GetFileStatus(repoPath, fileInfo.FullName);
@@ -428,7 +428,7 @@ namespace GTXLibGit2Sharp
                     {
                         tmpItem.GTXShaShort = indexEntry.Id.Sha.Substring(0, 7);
                         tmpItem.GTXSha = indexEntry.Id.Sha;
-                        tmpItem.Filename_ = FileGetVersion(repoPath, fileInfo.FullName, indexEntry.Id.Sha, Path.Combine(Path.GetTempPath(), string.Format("{0}_{1}{2}", fileInfo.Name, indexEntry.Id.Sha.Substring(0, 7), fileInfo.Extension)));
+                        tmpItem.Filename_ = FileGetVersion(repoPath, fileInfo.FullName, indexEntry.Id.Sha, Path.Combine(Path.GetTempPath(), string.Format("{0}_{1}", indexEntry.Id.Sha.Substring(0, 7), fileInfo.Name)));
                         tmpItem.InternalFilename = fileInfo.FullName;
                         tmpItem.ItemPath = indexEntry.Path;
                         tmpItem.GTXFileRepoStatus = GetFileStatus(repoPath, fileInfo.FullName);
