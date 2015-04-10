@@ -20,8 +20,8 @@ namespace GTXLibGit2Sharp
         /// <param name="repoPath">the repository main path</param>
         public static void Init(string repoPath)
         {
-            if (!Repository.IsValid(repoPath))            
-             Global.error(repoPath  + " is not a valid git repo");            
+            if (!Repository.IsValid(repoPath))
+                Repository.Init(repoPath, false);
         }
 
         /// <summary>
