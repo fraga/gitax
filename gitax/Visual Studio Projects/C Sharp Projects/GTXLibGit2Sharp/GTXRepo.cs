@@ -305,13 +305,14 @@ namespace GTXLibGit2Sharp
             };
 
             string tipSha;
+            string folderName = folderPath.Split('\\').Last();
 
             using (Repository repo = new Repository(repoPath))
             {
                 repo.CheckoutPaths(repo.Head.Tip.Id.Sha, new[] { folderPath }, checkoutOptions);
                 tipSha = repo.Head.Tip.Id.Sha;
 
-                InitTmpItemFromTree(repoPath, repo.Head.Tip.Tree, ref tmpItem);
+                InitTmpItemFromTree(repoPath, repo.Head.Tip.Tree[folderName].Target as Tree, ref tmpItem);
 
             }
 
