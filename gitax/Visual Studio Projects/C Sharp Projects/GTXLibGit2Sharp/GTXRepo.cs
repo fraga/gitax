@@ -289,7 +289,7 @@ namespace GTXLibGit2Sharp
         /// Synchronizes a folder
         /// </summary>
         /// <param name="repoPath">Main repository path</param>
-        /// <param name="folderPath">The folder to synchronize (checkout)</param>
+        /// <param name="folderPath">The folder to synchronize (checkout). Could be the model path or the layer path</param>
         /// <param name="forceCheckout">Forces the update from the latest commit (head tip)</param>
         /// <returns>A SysVersionControlItem with all the files that have been affected</returns>
         public static SysVersionControlTmpItem FolderSync(string repoPath, string folderPath, bool forceCheckout)
