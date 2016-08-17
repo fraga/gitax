@@ -1,4 +1,199 @@
 ﻿Exportfile for AOT version 1.0 or later
 Formatversion: 1
 
+***Element: CLS
+
+; Microsoft Dynamics AX Class: SysVersionControlSystemFileBased unloaded
+; --------------------------------------------------------------------------------
+  CLSVERSION 1
+  
+  CLASS #SysVersionControlSystemFileBased
+    PROPERTIES
+      Name                #SysVersionControlSystemFileBased
+      Extends             #SysVersionControlSystem
+      RunOn               #Client
+      Origin              #{2D203541-0000-1000-7FB6-1A763DFA87BD}
+      LegacyId            #13633
+    ENDPROPERTIES
+    
+    METHODS
+      SOURCE #filename2ItemPath
+        #/// <summary>
+        #///    Returns the item path for the specified file name.
+        #/// </summary>
+        #/// <param name="_filename">
+        #///    The name of the file that is used to determine the item path.
+        #/// </param>
+        #/// <returns>
+        #///    The item path for the specified file name.
+        #/// </returns>
+        #/// <remarks>
+        #///    The item path can contain one of the following values
+        #///    <list type="bullet">
+        #///       <item>
+        #///          <description>A treenode path in the AOT.</description>
+        #///       </item>
+        #///       <item>
+        #///          <description>A path for a label file.</description>
+        #///       </item>
+        #///       <item>
+        #///          <description>A path for the version control definition file.</description>
+        #///       </item>
+        #///    </list>
+        #/// </remarks>
+        #public SysVersionControlItemPath filename2ItemPath(
+        #    Filename        _filename)
+        #{
+        #    Filename filename = _filename;
+        #    UtilEntryLevel layer;
+        #    TreeNodePath path;
+        #    int i;
+        #    int pos = 0;
+        #    int tmppos = 0;
+        #    str searchstr;
+        #    int strLength = strLen(filename);
+        #    MapEnumerator enum;
+        #    str vsVcsPath = strReplace(#VSProjectsVCSPath, '/', '\\');
+        #    str modelFolderWithModelFilename;
+        #
+        #    void findPosition()
+        #    {
+        #        int xpoLength = strLen(#xpo);
+        #
+        #        while (tmppos)
+        #        {
+        #            // get to next path (layer or model name) of the filename.
+        #            path = subStr(filename, tmppos+strLen(searchStr)-1, 2+strLength-tmppos-strLen(searchStr));
+        #            path = strReplace(path, '/', '\\');
+        #
+        #            if (strStartsWith(path, vsVcsPath))
+        #            {
+        #                pos = tmppos;
+        #                break;
+        #            }
+        #            else
+        #            {
+        #                if (TreeNode::findNode(subStr(path, 1, strLen(path) - xpoLength)))
+        #                {
+        #                    pos = tmppos;
+        #                    break;
+        #                }
+        #            }
+        #
+        #            tmppos =  strScan(filename, searchStr, tmppos+1, strLength);
+        #        }
+        #    }
+        #
+        #    filename = strReplace(filename, '\\', '/');
+        #
+        #    // Try to find layer in filename
+        #    for (i=0; i < enumCnt(UtilEntryLevel); i++)
+        #    {
+        #        layer = i;
+        #        searchstr = strFmt('/%1/', layer);
+        #        tmppos = strScan(filename, searchStr, 1, strLength);
+        #
+        #        findPosition();
+        #
+        #        if (pos)
+        #        {
+        #            break;
+        #        }
+        #    }
+        #
+        #    // If layer not found, try to find model folder paths in filename
+        #    if (!pos && modelFolders)
+        #    {
+        #        enum = modelFolders.getEnumerator();
+        #        while (enum.moveNext())
+        #        {
+        #            searchstr = strFmt('/%1/', enum.currentKey());
+        #            searchstr = strReplace(searchstr, '\\', '/');
+        #            tmppos = strScan(filename, searchStr, 1, strLength);
+        #
+        #            if (tmppos)
+        #            {
+        #                modelFolderWithModelFilename = strFmt(@'%1%2', searchstr, #ModelFileNameWithExtension);
+        #                if (strEndsWith(filename, modelFolderWithModelFilename))
+        #                {
+        #                    pos = strScan(filename, modelFolderWithModelFilename, strLength, -strLength);
+        #                    break;
+        #                }
+        #
+        #                findPosition();
+        #
+        #                if (pos)
+        #                {
+        #                    break;
+        #                }
+        #            }
+        #        }
+        #    }
+        #
+        #    // If model not found, try to find additional folder paths in filename
+        #    if (!pos && additionalFolders)
+        #    {
+        #        enum = additionalFolders.getEnumerator();
+        #        while (enum.moveNext())
+        #        {
+        #            searchstr = strFmt('/%1/', enum.currentKey());
+        #            searchstr = strReplace(searchstr, '\\', '/');
+        #            pos = strScan(filename, searchStr, 1, strLength);
+        #            if (pos)
+        #            {
+        #                break;
+        #            }
+        #        }
+        #    }
+        #
+        #    if (pos && strScan(filename, #VSProjectsVCSPath, 1, strLen(filename)))
+        #    {
+        #        path = subStr(filename, pos+strLen(searchStr)-1, 2+strLength-pos-strLen(searchStr));
+        #        path = SysTreeNodeVSItem::vcsPath2TreeNodePath(path);
+        #        return path;
+        #    }
+        #
+        #    // If pos is set filename either contains layer or model, additional folder path information.
+        #    if (pos && strEndsWith(filename, #xpo))
+        #    {
+        #        //Is treenode
+        #        path = subStr(filename, pos+strLen(searchStr)-1, 2+strLength-pos-strLen(searchStr)-strLen(#xpo));
+        #        path = strReplace(path, '/', '\\');
+        #        return path;
+        #    }
+        #
+        #    // Is model.xml file
+        #    if (pos && strEndsWith(filename, #ModelFileNameWithExtension))
+        #    {
+        #        // e:\repository\TestModel\Model.xml becomes \TestModel\Model
+        #        path = subStr(filename, pos, 1+strLength-pos-strLen(#xml));
+        #        path = strReplace(path, '/', '\\');
+        #        return path;
+        #    }
+        #
+        #    // Is it a label file?
+        #    if (strEndsWith(filename, #ALD)) //ends with '.ald'
+        #    {
+        #        path = System.IO.Path::GetFileName(filename);
+        #        path = #LabelsPath+path;
+        #        path = strReplace(path, '/', '\\');
+        #        return path;
+        #    }
+        #
+        #    // Last try to find definition path in filename.
+        #    pos = strScan(filename, #DefDepotPath, 1, strLength);
+        #    if (pos)
+        #    {
+        #        //Is Definition file
+        #        path = subStr(filename, pos, 2+strLength-pos);
+        #        path = strReplace(path, '/', '\\');
+        #        return path;
+        #    }
+        #
+        #    return filename;
+        #}
+      ENDSOURCE
+    ENDMETHODS
+  ENDCLASS
+
 ***Element: END

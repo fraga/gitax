@@ -17,6 +17,34 @@ Formatversion: 1
     ENDPROPERTIES
     
     METHODS
+      SOURCE #addProcessedSyncElement
+        #/// <summary>
+        #/// Adds the record ID to the processed synchronization log.
+        #/// </summary>
+        #/// <param name="_recId">
+        #/// The record ID.
+        #/// </param>
+        #public void addProcessedSyncElement(RecId _recId)
+        #{
+        #    SysVersionControlTmpChange processedElement;
+        #
+        #    if (_recId)
+        #    {
+        #        processedElement.setTmpData(processedSyncElements);
+        #
+        #        select firstOnly processedElement where processedElement.ChangeNumber == _recId;
+        #
+        #        if (!processedElement.RecId)
+        #        {
+        #            processedElement.clear();
+        #            processedElement.ChangeNumber = _recId;
+        #
+        #            // skip insert logic
+        #            processedElement.doInsert();
+        #        }
+        #    }
+        #}
+      ENDSOURCE
       SOURCE #colorAOT
         #public void colorAOT()
         #{
@@ -107,6 +135,36 @@ Formatversion: 1
         #
         #    this.updateCheckedOutList(checkedOutObjects);
         #
+        #}
+      ENDSOURCE
+      SOURCE #save
+        #public void save(TreeNode _treeNode)
+        #{
+        #    SysVersionControllable  controllable;
+        #
+        #    setPrefix("@SYS12229");
+        #
+        #    try
+        #    {
+        #        if (sysVersionControlSystem && _treeNode)
+        #        {
+        #            if (!this.allowCreate(_treeNode) && !SysTreeNode::existsInLayer(_treeNode, currentAOLayer()))
+        #            {
+        #                warning(strFmt("@SYS4007197", _treeNode.treeNodePath()));
+        #            }
+        #
+        #            controllable = SysTreeNode::newTreeNode(_treeNode);
+        #            sysVersionControlSystem.commandSave(controllable);
+        #        }
+        #    }
+        #    catch(Exception::Break)
+        #    {
+        #         throw Exception::Break;
+        #    }
+        #    catch
+        #    {
+        #        exceptionTextFallThrough();
+        #    }
         #}
       ENDSOURCE
     ENDMETHODS

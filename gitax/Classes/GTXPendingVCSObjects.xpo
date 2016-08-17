@@ -34,11 +34,14 @@ Formatversion: 1
         #    SysModelElement     parent, child;
         #    TreeNode            pNode;
         #
-        #    if(!SysVersionControlParameters::isVCSEnabled())
-        #        throw error("Version control system must be enabled");
-        #
         #    if(Session::isServer())
-        #        throw error("Cannot run this code on the server");
+        #        throw error("Cannot run this code in the server");
+        #
+        #    if(xSession::isCLRSession())
+        #        info("it is CRL");
+        #
+        #    if(xGlobal::clientKind() == ClientType::Client)
+        #        info("is client");
         #
         #    //Set options to skip cache lookup of file names
         #    //infolog.globalCache().set(#VCSCache, #NoPrompt,true);
@@ -69,11 +72,11 @@ Formatversion: 1
         #        if(!controlable)
         #            continue;
         #
-        #        if(versionControl.allowCreate(controlable))
-        #        {
-        #            //do something if it isn't in version control
-        #            info(strfmt("%1\t%2",pNode.treeNodeType(), pNode.treeNodeName()));
-        #        }
+        #        //if(versionControl.allowCreate(controlable))
+        #        //{
+        #        //    //do something if it isn't in version control
+        #        //    info(strfmt("%1\t%2",pNode.treeNodeType(), pNode.treeNodeName()));
+        #        //}
         #    }
         #
         #}
