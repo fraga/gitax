@@ -50,7 +50,10 @@ Formatversion: 1
         #    int i;
         #    int pos = 0;
         #    int tmppos = 0;
+        #    int lastSeparator = 0;
         #    str searchstr;
+        #    str nodePath;
+        #    str nodeParentPath;
         #    int strLength = strLen(filename);
         #    MapEnumerator enum;
         #    str vsVcsPath = strReplace(#VSProjectsVCSPath, '/', '\\');
@@ -73,7 +76,12 @@ Formatversion: 1
         #            }
         #            else
         #            {
-        #                if (TreeNode::findNode(subStr(path, 1, strLen(path) - xpoLength)))
+        #                nodePath = subStr(path, 1, strLen(path) - strLen(#xpo));
+        #                lastSeparator = strFind(nodePath, '\\', strLen(nodePath), -strLen(nodePath));
+        #                nodeParentPath = subStr(nodePath, 1, lastSeparator - 1);
+        #
+        #                // Deleted objects won't be found in the AOT, but their parent node will be
+        #                if (TreeNode::findNode(nodePath) || (nodeParentPath && nodeParentPath != '\\' && TreeNode::findNode(nodeParentPath)))
         #                {
         #                    pos = tmppos;
         #                    break;
