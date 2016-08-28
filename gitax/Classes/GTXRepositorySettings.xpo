@@ -23,27 +23,27 @@ Formatversion: 1
       SOURCE #getUserEmail
         #public str getUserEmail(filePath _repoPath, boolean _global = false)
         #{
-        #    return GTXLibGit2Sharp.GTXRepo::GetUserEmail(_repoPath, _global);
+        #    return GTXLibGit2Sharp.GTXRepo::GetConfigurationKeyValue(_repoPath, 'user.email');
         #}
       ENDSOURCE
       SOURCE #getUserName
         #public str getUserName(filePath _repoPath, boolean _global = false)
         #{
-        #    return GTXLibGit2Sharp.GTXRepo::GetUserName(_repoPath, _global);
+        #    return GTXLibGit2Sharp.GTXRepo::GetConfigurationKeyValue(_repoPath, 'user.name');
         #}
       ENDSOURCE
       SOURCE #setUserEmail
         #public void setUserEmail(FilePath _repoPath, str _userEmail, boolean _global = false)
         #{
         #    ;
-        #    GTXLibGit2Sharp.GTXRepo::SetUserEmail(_repoPath, _userEmail, _global);
+        #    GTXLibGit2Sharp.GTXRepo::SetConfiguration(_repoPath, 'user.email', _userEmail);
         #}
       ENDSOURCE
       SOURCE #setUserName
         #public void setUserName(FilePath _repoPath, str _userName, boolean _global = false)
         #{
         #    ;
-        #    GTXLibGit2Sharp.GTXRepo::SetUserName(_repoPath, _userName, _global);
+        #    GTXLibGit2Sharp.GTXRepo::SetConfiguration(_repoPath, 'user.email', _userName);
         #}
       ENDSOURCE
       SOURCE #main

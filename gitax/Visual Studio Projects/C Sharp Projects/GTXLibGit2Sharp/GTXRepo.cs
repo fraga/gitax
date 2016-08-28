@@ -432,5 +432,36 @@ namespace GTXLibGit2Sharp
 
         }
 
+        /// <summary>
+        /// Sets the local configuration
+        /// </summary>
+        /// <param name="repoPath">The main repo path</param>
+        /// <param name="key">Configuration key name, check git manual</param>
+        /// <param name="value">Configuration value for the given key, check git manual</param>
+        public static void SetConfiguration(string repoPath, string key, string value)
+        {
+            using (Repository repo = new Repository(repoPath))
+            {
+                repo.Config.Set(key, value);
+            }
+        }
+
+        /// <summary>
+        /// Get the configuration value
+        /// </summary>
+        /// <param name="repoPath">The main repo path</param>
+        /// <param name="key">Configuration key name</param>
+        /// <returns></returns>
+        public static string GetConfigurationKeyValue(string repoPath, string key)
+        {
+            string value = "";
+            using (Repository repo = new Repository(repoPath))
+            {
+                value = repo.Config.FirstOrDefault<ConfigurationEntry<string>>(e => e.Key == key).Value;
+            }
+
+            return value;
+        }
+
     }
 }
