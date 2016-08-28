@@ -53,7 +53,7 @@ Formatversion: 1
         #    SysVersionControlParameters parameters;
         #
         #    if(_args.record().TableId != parameters.TableId)
-        #        throw error("Incorrect use of function");
+        #        throw error("@SYS104799");
         #
         #    parameters = _args.record();
         #
