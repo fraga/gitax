@@ -40,12 +40,12 @@ Formatversion: 1
         #                {
         #                    throw error(strFmt("@SYS26666", filename));
         #                }
-        #                //<GTX>
-        #                versionControl.colorAOT();
-        #                //</GTX>
         #            }
         #        }
         #    }
+        #    //<GTX>
+        #    versionControl.colorAOT();
+        #    //</GTX>
         #    return true;
         #}
       ENDSOURCE
