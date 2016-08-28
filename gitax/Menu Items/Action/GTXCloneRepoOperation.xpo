@@ -1,0 +1,22 @@
+﻿Exportfile for AOT version 1.0 or later
+Formatversion: 1
+
+***Element: FTM
+
+; Microsoft Dynamics AX MENUITEM : GTXCloneRepoOperation unloaded
+; --------------------------------------------------------------------------------
+  VERSION 1
+  
+  MENUITEM #GTXCloneRepoOperation
+    Type: 3
+    PROPERTIES
+      Name                #GTXCloneRepoOperation
+      ObjectType          #Class
+      Object              #SysOperationServiceController
+      Origin              #{99B17801-4EB8-4F3F-AC12-453C8D370C2D}
+    ENDPROPERTIES
+    
+  ENDMENUITEM
+  
+
+***Element: END
