@@ -29,7 +29,7 @@ Formatversion: 1
         #{
         #    System.String currentVersionNet;
         #    str currentVersionXpp;
-        #    str expectedVersion = '0.18.1-unknown-90befde (x86 - Threads, Https)';
+        #    str expectedVersion = '0.22.0-dev00000000000000';
         #    currentVersionNet = GTXLibGit2Sharp.GTXRepo::GetLibGit2SharpVersion();
         #    currentVersionXpp = currentVersionNet;
         #
