@@ -72,7 +72,7 @@ Formatversion: 1
         #        if(!controlable)
         #            continue;
         #
-        #        if(versionControl.allowCreate(controlable))
+        #        if(versionControl.allowCreate(pnode))
         #        {
         #            //do something if it isn't in version control
         #            info(strfmt("%1\t%2",pNode.treeNodeType(), pNode.treeNodeName()));
