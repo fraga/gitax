@@ -625,6 +625,8 @@ Formatversion: 1
         #
         #    GTXLibGit2Sharp.GTXRepo::Init(repositoryFolder);
         #
+        #    GTXLibGit2Sharp.GTXRepo::SetConfiguration(repositoryFolder, 'core.autocrlf', 'false');
+        #
         #    return SysVersionControlSystemStatus::Connected;
         #}
       ENDSOURCE
