@@ -38,7 +38,7 @@ namespace GTXLibGit2Sharp
         /// <returns>LibGit2Sharp version</returns>
         public static string GetLibGit2SharpVersion()
         {
-            return Repository.Version;
+            return GlobalSettings.Version.InformationalVersion;
         }
 
         /// <summary>
@@ -262,7 +262,7 @@ namespace GTXLibGit2Sharp
             using (Repository repo = new Repository(repoPath))
             {
                 string indexPath = fileName.Replace(repo.Info.WorkingDirectory, string.Empty);
-                fileStatus = (int)repo.Index.RetrieveStatus(indexPath);
+                fileStatus = (int)repo.RetrieveStatus(indexPath);
             }
 
             return GetGTXFileStatus(fileStatus);
@@ -342,10 +342,10 @@ namespace GTXLibGit2Sharp
 
             using (Repository repo = new Repository(repoPath))
             {
-                if (!repo.Index.RetrieveStatus().IsDirty)
+                if (!repo.RetrieveStatus().IsDirty)
                     return tmpItem;
 
-                var allDirtFiles = repo.Index.RetrieveStatus(new StatusOptions { Show = StatusShowOption.IndexAndWorkDir }).
+                var allDirtFiles = repo.RetrieveStatus(new StatusOptions { Show = StatusShowOption.IndexAndWorkDir }).
                                         Where(t => t.State != FileStatus.Unaltered && t.State != FileStatus.Ignored);
                 
                 foreach (var dirtFile in allDirtFiles)
